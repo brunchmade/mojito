@@ -1,0 +1,63 @@
+//
+//  main.m
+//  Foobar
+//
+//  Created by Fang-Pen Lin on 12/22/15.
+//  Copyright © 2015 VictorLin. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+#import <InputMethodKit/InputMethodKit.h>
+#import "CocoaLumberjack/CocoaLumberjack.h"
+#import "OVInputSourceHelper.h"
+
+static const int ddLogLevel = DDLogLevelInfo;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        [DDLog addLogger:[DDASLLogger sharedInstance]];
+        
+        // register and enable the input source (along with all its input modes)
+        if (argc > 1 && !strcmp(argv[1], "install")) {
+            NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+            NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+            TISInputSourceRef inputSource = [OVInputSourceHelper inputSourceForInputSourceID:bundleID];
+            
+            if (!inputSource) {
+                NSLog(@"Registering input source %@ at %@.", bundleID, [bundleURL absoluteString]);
+                BOOL status = [OVInputSourceHelper registerInputSource:bundleURL];
+                
+                if (!status) {
+                    NSLog(@"Fatal error: Cannot register input source %@ at %@.", bundleID, [bundleURL absoluteString]);
+                    return -1;
+                }
+                
+                inputSource = [OVInputSourceHelper inputSourceForInputSourceID:bundleID];
+                if (!inputSource) {
+                    NSLog(@"Fatal error: Cannot find input source %@ %@ after registration.", bundleID, [bundleURL absoluteString]);
+                    return -1;
+                }
+            }
+            
+            if (inputSource && ![OVInputSourceHelper inputSourceEnabled:inputSource]) {
+                NSLog(@"Enabling input source %@ at %@.", bundleID, [bundleURL absoluteString]);
+                BOOL status = [OVInputSourceHelper enableInputSource:inputSource];
+                
+                if (!status != noErr) {
+                    NSLog(@"Fatal error: Cannot enable input source %@.", bundleID);
+                    return -1;
+                }
+            }
+            
+            return 0;
+        }
+    
+        NSString *connectionName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"InputMethodConnectionName"];
+        DDLogInfo(@"Connection %@", connectionName);
+        IMKServer *server = [[IMKServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+        DDLogInfo(@"Initialized IMKServer %@", server);
+        
+        [[NSApplication sharedApplication] run];
+    }
+    return 0;
+}
