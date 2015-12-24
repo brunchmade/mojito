@@ -160,7 +160,16 @@ class MojitoInputControllerTests: XCTestCase {
             controller.inputText(String(char), client: textInput)
         }
         XCTAssertEqual(textInput.insertTextCalls.count, 0)
-        // TODO: press enter and ensure we insert the emoji
+        // TODO: check candidates UI stuff?
+        
+        // Press Enter key
+        XCTAssertTrue(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))
+        // See if we insert the emoji
+        XCTAssertEqual(textInput.insertTextCalls.count, 1)
+        XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
+            "string": "💩",
+            "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
+        ])
         
     }
 

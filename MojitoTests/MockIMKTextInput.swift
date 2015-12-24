@@ -11,7 +11,7 @@ import InputMethodKit
 
 class MockIMKTextInput: IMKTextInput {
     var setMarkedTextCalls:NSMutableArray
-    var insertTextCalls:[[String : AnyObject]]!
+    var insertTextCalls:NSMutableArray
     
     init () {
         setMarkedTextCalls = []
@@ -28,8 +28,8 @@ class MockIMKTextInput: IMKTextInput {
     }
     
     @objc func insertText(string: AnyObject!, replacementRange: NSRange) {
-        insertTextCalls.append([
-            "string": string,
+        insertTextCalls.addObject([
+            "string": string as! NSString,
             "replacementRange": replacementRange
         ])
     }
