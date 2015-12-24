@@ -22,16 +22,15 @@ class MojitoInputControllerTests: XCTestCase {
         server = MockMojitServer(engine: engine)
         textInput = MockIMKTextInput()
         controller = MojitoInputController(server: server, delegate: nil, client: textInput)
+        controller.activateServer(textInput)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        controller.activateServer(textInput)
         super.tearDown()
     }
 
     func testInputEmoji() {
-        controller.activateServer(textInput)
-        
         // Type "Hello "
         for char in "Hello ".characters {
             let result = controller.inputText(String(char), client: textInput)
@@ -70,8 +69,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testDeleteBackward() {
-        controller.activateServer(textInput)
-
         // Type "Hello baby"
         for char in "Hello baby".characters {
             let result = controller.inputText(String(char), client: textInput)
@@ -122,7 +119,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testCompleteEngineKeyword() {
-        controller.activateServer(textInput)
         // Type ":shit:"
         let keyword = ":shit:"
         for char in keyword.characters {
@@ -132,7 +128,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
 
     func testIncompleteEngineKeyword() {
-        controller.activateServer(textInput)
         // Type ":shit"
         let keyword = ":shit"
         for char in keyword.characters {
@@ -142,8 +137,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testInputInsert() {
-        controller.activateServer(textInput)
-
         // Type "Hello "
         for char in "Hello ".characters {
             controller.inputText(String(char), client: textInput)
@@ -170,7 +163,6 @@ class MojitoInputControllerTests: XCTestCase {
             "string": "💩",
             "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
         ])
-        
     }
 
 }
