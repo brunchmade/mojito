@@ -10,6 +10,7 @@
 #import <InputMethodKit/InputMethodKit.h>
 #import "CocoaLumberjack/CocoaLumberjack.h"
 #import "OVInputSourceHelper.h"
+#import "Mojito-Swift.h"
 
 static const int ddLogLevel = DDLogLevelInfo;
 
@@ -54,7 +55,7 @@ int main(int argc, const char * argv[]) {
     
         NSString *connectionName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"InputMethodConnectionName"];
         DDLogInfo(@"Connection %@", connectionName);
-        IMKServer *server = [[IMKServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+        IMKServer *server = [[MojitServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
         DDLogInfo(@"Initialized IMKServer %@", server);
         
         [[NSApplication sharedApplication] run];

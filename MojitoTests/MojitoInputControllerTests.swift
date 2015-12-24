@@ -10,13 +10,18 @@ import XCTest
 
 class MojitoInputControllerTests: XCTestCase {
     
+    var engine:MockEmojiInputEngine!
+    var server:MockMojitServer!
     var textInput:MockIMKTextInput!
     var controller:MojitoInputController!
 
     override func setUp() {
         super.setUp()
+        
+        engine = MockEmojiInputEngine()
+        server = MockMojitServer(engine: engine)
         textInput = MockIMKTextInput()
-        controller = MojitoInputController(server: nil, delegate: nil, client: textInput)
+        controller = MojitoInputController(server: server, delegate: nil, client: textInput)
     }
     
     override func tearDown() {
@@ -67,7 +72,7 @@ class MojitoInputControllerTests: XCTestCase {
     func testDeleteBackward() {
         controller.activateServer(textInput)
 
-        // Type "Hello "
+        // Type "Hello baby"
         for char in "Hello baby".characters {
             let result = controller.inputText(String(char), client: textInput)
             XCTAssertFalse(result)
@@ -114,6 +119,49 @@ class MojitoInputControllerTests: XCTestCase {
             // ensure we've already left emoji input mode
             XCTAssertFalse(result)
         }
+    }
+    
+    func testCompleteEngineKeyword() {
+        controller.activateServer(textInput)
+        // Type ":shit:"
+        let keyword = ":shit:"
+        for char in keyword.characters {
+            controller.inputText(String(char), client: textInput)
+        }
+        XCTAssertEqual(engine.keyword, "shit")
+    }
+
+    func testIncompleteEngineKeyword() {
+        controller.activateServer(textInput)
+        // Type ":shit"
+        let keyword = ":shit"
+        for char in keyword.characters {
+            controller.inputText(String(char), client: textInput)
+        }
+        XCTAssertEqual(engine.keyword, "shit")
+    }
+    
+    func testInputInsert() {
+        controller.activateServer(textInput)
+
+        // Type "Hello "
+        for char in "Hello ".characters {
+            controller.inputText(String(char), client: textInput)
+        }
+
+        engine.candidatesToReturn = [EmojiCandidate(
+            char: Character("💩"),
+            key: "shit"
+        )]
+        
+        // Type ":shit:"
+        let keyword = ":shit:"
+        for char in keyword.characters {
+            controller.inputText(String(char), client: textInput)
+        }
+        XCTAssertEqual(textInput.insertTextCalls.count, 0)
+        // TODO: press enter and ensure we insert the emoji
+        
     }
 
 }

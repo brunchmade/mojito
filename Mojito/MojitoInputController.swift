@@ -13,16 +13,20 @@ import CocoaLumberjack
 // Inherit NSObject so that this class can be used with Objective C
 class MojitoInputController : NSObject {
     // String buffer for input chars
-    var inputBuffer:String! = ""
-    var inputEmojiMode:Bool = false;
+    private var inputBuffer:String! = ""
+    private var inputEmojiMode:Bool = false;
+    private var mojitServer:MojitServerProtocol!
+    private var engine:EmojiInputEngineProtocol!
     
     init!(server: IMKServer!, delegate: AnyObject!, client inputClient: AnyObject!) {
         super.init()
         DDLogInfo("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
+        // TODO: test to see if server is a MojitServerProtocol otherwise raise error?
+        mojitServer = server as! MojitServerProtocol
+        engine = mojitServer.makeEmojiInputEngine()
     }
     
     func menu() -> NSMenu! {
-        DDLogInfo("menu")
         return nil
     }
     
@@ -92,9 +96,31 @@ class MojitoInputController : NSObject {
         if (string == ":" || inputEmojiMode) {
             inputEmojiMode = true
             inputBuffer.appendContentsOf(string)
+            engine.keyword = extractInputKeyword()
             client.setMarkedText(inputBuffer, selectionRange: NSMakeRange(0, inputBuffer.characters.count), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
             return true
         }
         return false
     }
+    
+    /// Extract keyword from input buffer
+    /// For example, if the input buffer is something like `:foo bar:`, then the keyword should be `foo bar`
+    /// - Returns: The keyword in the input buffer, if no keyword found, an empty string will be returned
+    private func extractInputKeyword() -> String! {
+        // we have no colon prefix, or the colon is the only char, just return ""
+        if (!inputBuffer.hasPrefix(":") || inputBuffer.characters.count == 1) {
+            return ""
+        }
+        let startIndex = inputBuffer.startIndex.advancedBy(1)
+        var endIndex:String.Index!
+        // we have colon suffix, return the stuff between two
+        if (inputBuffer.hasSuffix(":")) {
+            endIndex = inputBuffer.endIndex.advancedBy(-1)
+        } else {
+            endIndex = inputBuffer.endIndex
+        }
+        // when it comes to here, it means we have no colon suffix, just return things after the first colon
+        return inputBuffer.substringWithRange(Range<String.Index>(start: startIndex, end: endIndex))
+    }
+    
 }
