@@ -1,23 +1,22 @@
 //
-//  EmojiInputControllerTests.swift
-//  EmojiInput
+//  MojitoInputControllerTests.swift
+//  Mojito
 //
 //  Created by Fang-Pen Lin on 12/22/15.
 //  Copyright © 2015 VictorLin. All rights reserved.
 //
 
 import XCTest
-import EmojiInputTests
 
-class EmojiInputControllerTests: XCTestCase {
+class MojitoInputControllerTests: XCTestCase {
     
     var textInput:MockIMKTextInput!
-    var controller:EmojiInputController!
+    var controller:MojitoInputController!
 
     override func setUp() {
         super.setUp()
         textInput = MockIMKTextInput()
-        controller = EmojiInputController(server: nil, delegate: nil, client: textInput)
+        controller = MojitoInputController(server: nil, delegate: nil, client: textInput)
     }
     
     override func tearDown() {

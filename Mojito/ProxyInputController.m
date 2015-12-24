@@ -1,17 +1,17 @@
 //
 //  ProxyInputController.m
-//  EmojiInput
+//  Mojito
 //
 //  Created by Fang-Pen Lin on 12/22/15.
 //  Copyright © 2015 VictorLin. All rights reserved.
 //
 
 #import "ProxyInputController.h"
-#import "EmojiInput-Swift.h"
+#import "Mojito-Swift.h"
 
 @interface ProxyInputController ()
 
-@property (readonly, nonatomic) EmojiInputController *inputController;
+@property (readonly, nonatomic) MojitoInputController *inputController;
 
 @end
 
@@ -20,7 +20,7 @@
 - (id)initWithServer:(IMKServer *)inServer delegate:(id)inDelegate client:(id)inClient {
     self = [super initWithServer:inServer delegate:inDelegate client:inClient];
     if (self) {
-        _inputController = [[EmojiInputController alloc] initWithServer:inServer delegate:inDelegate client:inClient];
+        _inputController = [[MojitoInputController alloc] initWithServer:inServer delegate:inDelegate client:inClient];
     }
     return self;
 }

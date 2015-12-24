@@ -1,6 +1,6 @@
 //
-//  EmojiInputController.swift
-//  EmojiInput
+//  MojitoInputController.swift
+//  Mojito
 //
 //  Created by Fang-Pen Lin on 12/22/15.
 //  Copyright © 2015 VictorLin. All rights reserved.
@@ -11,14 +11,14 @@ import InputMethodKit
 import CocoaLumberjack
 
 // Inherit NSObject so that this class can be used with Objective C
-class EmojiInputController : NSObject {
+class MojitoInputController : NSObject {
     // String buffer for input chars
     var inputBuffer:String! = ""
     var inputEmojiMode:Bool = false;
     
     init!(server: IMKServer!, delegate: AnyObject!, client inputClient: AnyObject!) {
         super.init()
-        DDLogInfo("Init EmojiInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
+        DDLogInfo("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
     }
     
     func menu() -> NSMenu! {

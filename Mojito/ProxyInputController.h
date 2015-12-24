@@ -1,6 +1,6 @@
 //
 //  ProxyInputController.h
-//  EmojiInput
+//  Mojito
 //
 //  Created by Fang-Pen Lin on 12/22/15.
 //  Copyright © 2015 VictorLin. All rights reserved.
