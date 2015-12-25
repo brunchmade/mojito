@@ -31,6 +31,9 @@
 		D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */; };
 		D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */; };
 		D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */; };
+		D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E82CF61C2CA14200866A7A /* Candidates.storyboard */; };
+		D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
+		D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitServerProtocol.swift; sourceTree = "<group>"; };
 		D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMojitServer.swift; sourceTree = "<group>"; };
 		D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockEmojiInputEngine.swift; sourceTree = "<group>"; };
+		D8E82CF61C2CA14200866A7A /* Candidates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Candidates.storyboard; sourceTree = "<group>"; };
+		D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
+		D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +152,12 @@
 				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
 				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
 				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
+				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
+				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
 				D88094D51C2A1086005E57CF /* Mojito-Bridging-Header.h */,
 				D88094BC1C2A0FE2005E57CF /* Assets.xcassets */,
 				D88094BE1C2A0FE2005E57CF /* Main.storyboard */,
+				D8E82CF61C2CA14200866A7A /* Candidates.storyboard */,
 				D88094C11C2A0FE2005E57CF /* Info.plist */,
 				D88094B61C2A0FE2005E57CF /* Supporting Files */,
 			);
@@ -277,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */,
 				D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */,
 				D88094C01C2A0FE2005E57CF /* Main.storyboard in Resources */,
 			);
@@ -360,6 +370,7 @@
 				D8E82CE41C2BDA3300866A7A /* EmojiCandidate.swift in Sources */,
 				D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */,
 				D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */,
+				D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */,
 				D88094D71C2A1086005E57CF /* MojitoInputController.swift in Sources */,
 				D8E82CE81C2BDD8900866A7A /* EmojiInputEngine.swift in Sources */,
 				D88094DD1C2A11DD005E57CF /* OVInputSourceHelper.m in Sources */,
@@ -367,6 +378,7 @@
 				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
 				D88094B81C2A0FE2005E57CF /* main.m in Sources */,
 				D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */,
+				D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */,
 				D88094DA1C2A1193005E57CF /* ProxyInputController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

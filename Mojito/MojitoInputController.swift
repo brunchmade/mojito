@@ -14,7 +14,7 @@ import CocoaLumberjack
 class MojitoInputController : NSObject {
     // String buffer for input chars
     private var inputBuffer:String! = ""
-    private var inputEmojiMode:Bool = false;
+    private var inputEmojiMode:Bool = false
     private var mojitServer:MojitServerProtocol!
     private var engine:EmojiInputEngineProtocol!
     
@@ -31,6 +31,7 @@ class MojitoInputController : NSObject {
     }
     
     func activateServer(sender: AnyObject!) {
+        
         DDLogInfo("activateServer \(sender)")
     }
     

@@ -55,7 +55,7 @@ int main(int argc, const char * argv[]) {
     
         NSString *connectionName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"InputMethodConnectionName"];
         DDLogInfo(@"Connection %@", connectionName);
-        IMKServer *server = [[MojitServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+        MojitServer *server = [[MojitServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
         DDLogInfo(@"Initialized IMKServer %@", server);
         
         [[NSApplication sharedApplication] run];

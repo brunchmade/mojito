@@ -164,5 +164,15 @@ class MojitoInputControllerTests: XCTestCase {
             "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
         ])
     }
+    
+    func testWindow() {
+        let storyboard = NSStoryboard(name: "Candidates", bundle: nil)
+        let windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
+        windowController.window!.setFrame(NSMakeRect(0, 0, 200, 200), display: true)
+        windowController.showWindow(self)
+        
+        var expectation = self.expectationWithDescription("fetch posts")
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
 
 }
