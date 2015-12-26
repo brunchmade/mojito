@@ -18,7 +18,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
         // XXX
         storyboard = NSStoryboard(name: "Candidates", bundle: nil)
         windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
-        windowController.window!.setFrame(NSMakeRect(0, 0, 200, 200), display: true)
+        windowController.window!.setFrame(NSMakeRect(100, 100, 200, 200), display: true)
         windowController.showWindow(self)
     }
     

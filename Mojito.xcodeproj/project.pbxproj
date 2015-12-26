@@ -34,6 +34,8 @@
 		D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E82CF61C2CA14200866A7A /* Candidates.storyboard */; };
 		D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
 		D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
+		D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */; };
+		D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		D8E82CF61C2CA14200866A7A /* Candidates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Candidates.storyboard; sourceTree = "<group>"; };
 		D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
 		D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowController.swift; sourceTree = "<group>"; };
+		D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesItem.xib; sourceTree = "<group>"; };
+		D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CandidatesItem.swift; path = ../CandidatesItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +158,12 @@
 				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
 				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
 				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
+				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
 				D88094D51C2A1086005E57CF /* Mojito-Bridging-Header.h */,
 				D88094BC1C2A0FE2005E57CF /* Assets.xcassets */,
 				D88094BE1C2A0FE2005E57CF /* Main.storyboard */,
 				D8E82CF61C2CA14200866A7A /* Candidates.storyboard */,
+				D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */,
 				D88094C11C2A0FE2005E57CF /* Info.plist */,
 				D88094B61C2A0FE2005E57CF /* Supporting Files */,
 			);
@@ -288,6 +294,7 @@
 			files = (
 				D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */,
 				D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */,
+				D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */,
 				D88094C01C2A0FE2005E57CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +382,7 @@
 				D8E82CE81C2BDD8900866A7A /* EmojiInputEngine.swift in Sources */,
 				D88094DD1C2A11DD005E57CF /* OVInputSourceHelper.m in Sources */,
 				D8E82CE21C2BD8A000866A7A /* EmojiInputEngineProtocol.swift in Sources */,
+				D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */,
 				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
 				D88094B81C2A0FE2005E57CF /* main.m in Sources */,
 				D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */,

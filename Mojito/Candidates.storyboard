@@ -23,32 +23,58 @@
             </objects>
             <point key="canvasLocation" x="108" y="343"/>
         </scene>
-        <!--View Controller-->
+        <!--Candidates View Controller-->
         <scene sceneID="fYL-45-75P">
             <objects>
-                <viewController id="QcC-xc-vDn" sceneMemberID="viewController">
+                <viewController id="QcC-xc-vDn" customClass="CandidatesViewController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="55U-Sm-P2F">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-Do-juf">
-                                <rect key="frame" x="153" y="127" width="174" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="TODO: Candidate goes here" id="KsJ-D6-9Df">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="270"/>
+                                <clipView key="contentView" id="N9e-R8-Nfo">
+                                    <rect key="frame" x="1" y="1" width="606" height="268"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView selectable="YES" id="iat-NE-neh">
+                                            <rect key="frame" x="0.0" y="0.0" width="606" height="268"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="lHF-PM-UFf">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="QcC-xc-vDn" id="Iin-xh-xxd"/>
+                                                <outlet property="delegate" destination="QcC-xc-vDn" id="vx5-JK-3La"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="CwD-NW-2Py">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="QMO-G8-RCa">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="3VA-Do-juf" firstAttribute="centerX" secondItem="55U-Sm-P2F" secondAttribute="centerX" id="Aqr-aO-KKj"/>
-                            <constraint firstItem="3VA-Do-juf" firstAttribute="centerY" secondItem="55U-Sm-P2F" secondAttribute="centerY" id="fPU-FD-YMt"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="55U-Sm-P2F" secondAttribute="leading" id="9TJ-Sd-upj"/>
+                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" id="IJK-TM-zuV"/>
+                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" id="LWF-5P-gmS"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="55U-Sm-P2F" secondAttribute="top" id="ORH-qP-0CT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="iat-NE-neh" id="K9G-fa-Doo"/>
+                    </connections>
                 </viewController>
                 <customObject id="K7y-Ye-BnS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="336"/>
+            <point key="canvasLocation" x="108" y="748"/>
         </scene>
     </scenes>
 </document>
