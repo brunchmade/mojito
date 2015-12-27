@@ -10,16 +10,24 @@ import Cocoa
 import Foundation
 
 class CandidatesViewController : NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+    // The candidate  for measuring size
+    private var sizingCandidatesItem:CandidatesItem!
+    /// Collection view
     @IBOutlet weak var collectionView: NSCollectionView!
+    
     // XXXX
     var candidates:[EmojiCandidate!]! = [
-        EmojiCandidate(char: "😀", key: ":simple:"),
+        EmojiCandidate(char: "😀", key: ":a:"),
+        EmojiCandidate(char: "😀", key: ":fo:"),
+        EmojiCandidate(char: "😀", key: ":smile:"),
         EmojiCandidate(char: "🍹", key: ":mojito:"),
         EmojiCandidate(char: "💩", key: ":shit:"),
+        EmojiCandidate(char: "💩", key: ":shit yolo foobar:"),
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sizingCandidatesItem = CandidatesItem(nibName: "CandidatesItem", bundle: nil)
     }
     
     func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
@@ -34,8 +42,15 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
 	}
     
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
-        // TODO: measure the label size here
-        return NSMakeSize(60, 20)
+        let emojiCandidate = candidates[indexPath.item]
+        sizingCandidatesItem.representedObject = emojiCandidate
+        // access item view here, so that it will be loaded
+        let itemView = sizingCandidatesItem.view
+        let label = sizingCandidatesItem.label
+        label.stringValue = sizingCandidatesItem.itemTitle
+        label.sizeToFit()
+        itemView.layoutSubtreeIfNeeded()
+        return itemView.bounds.size
     }
 
 }

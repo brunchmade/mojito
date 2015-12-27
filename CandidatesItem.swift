@@ -13,20 +13,29 @@ private var kvoContext = 0
 
 class CandidatesItem : NSCollectionViewItem {
     @IBOutlet weak var label: NSTextField!
-    dynamic var itemTitle:String!
-    
-    override var selected:Bool {
-        didSet {
-            if (selected) {
-                view.layer!.backgroundColor = NSColor(red: 0, green: 0.455, blue: 0.851, alpha: 1.0).CGColor /*#0074d9*/
+
+    dynamic var itemTitle:String! {
+        get {
+            if let obj = representedObject as? EmojiCandidate {
+                return "\(obj.char) \(obj.key)"
             } else {
-                view.layer!.backgroundColor = nil
+                return "none"
             }
         }
     }
     
-    override func viewDidLoad() {
-        addObserver(self, forKeyPath: "representedObject", options: .New, context: &kvoContext)
+    override var selected:Bool {
+        didSet {
+            // XXX: Not sure why the label would be nil here, so we just access it via subviews
+            let label = view.subviews[0] as! NSTextField
+            if (selected) {
+                view.layer!.backgroundColor = NSColor(red: 0, green: 0.455, blue: 0.851, alpha: 1.0).CGColor /*#0074d9*/
+                label.textColor = NSColor.whiteColor()
+            } else {
+                view.layer!.backgroundColor = nil
+                label.textColor = NSColor.blackColor()
+            }
+        }
     }
     
     override func viewWillAppear() {
@@ -35,17 +44,9 @@ class CandidatesItem : NSCollectionViewItem {
         view.layer!.masksToBounds = true
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if (context == &kvoContext) {
-            if (keyPath == "representedObject") {
-                if let obj = change?[NSKeyValueChangeNewKey] as? EmojiCandidate {
-                    itemTitle = "\(obj.char) \(obj.key)"
-                } else {
-                    itemTitle = "none"
-                }
-            }
-        } else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-        }
+    // Make the computed property `itemTitle` also observable when representedObject changes
+    // ref: http://stackoverflow.com/a/34478382/25077
+    dynamic class func keyPathsForValuesAffectingItemTitle() -> Set<String> {
+        return ["representedObject.char", "representedObject.key"]
     }
 }
