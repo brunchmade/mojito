@@ -28,6 +28,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColors = [NSColor.clearColor()]
         candidates = [
             EmojiCandidate(char: "😀", key: ":a:"),
             EmojiCandidate(char: "😀", key: ":fo:"),

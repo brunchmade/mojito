@@ -13,7 +13,7 @@
                         <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
                     </window>
                     <connections>
                         <segue destination="QcC-xc-vDn" kind="relationship" relationship="window.shadowedContentViewController" id="405-Od-SZP"/>
@@ -27,13 +27,13 @@
         <scene sceneID="fYL-45-75P">
             <objects>
                 <viewController id="QcC-xc-vDn" customClass="CandidatesViewController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="55U-Sm-P2F">
+                    <visualEffectView key="view" appearanceType="vibrantLight" blendingMode="behindWindow" state="followsWindowActiveState" id="Hdc-E0-VRz">
                         <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
                                 <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
-                                <clipView key="contentView" id="N9e-R8-Nfo">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="N9e-R8-Nfo">
                                     <rect key="frame" x="1" y="1" width="653" height="98"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -63,12 +63,12 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="55U-Sm-P2F" secondAttribute="leading" id="9TJ-Sd-upj"/>
-                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" id="IJK-TM-zuV"/>
-                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" id="LWF-5P-gmS"/>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="55U-Sm-P2F" secondAttribute="top" id="ORH-qP-0CT"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="Hdc-E0-VRz" secondAttribute="top" id="17S-Sc-56i"/>
+                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" id="2T7-np-KtO"/>
+                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" id="9RZ-R8-EUI"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="Hdc-E0-VRz" secondAttribute="leading" id="wse-WF-8yi"/>
                         </constraints>
-                    </view>
+                    </visualEffectView>
                     <connections>
                         <outlet property="collectionView" destination="iat-NE-neh" id="K9G-fa-Doo"/>
                     </connections>
