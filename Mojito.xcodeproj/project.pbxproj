@@ -34,6 +34,7 @@
 		D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E82CF61C2CA14200866A7A /* Candidates.storyboard */; };
 		D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
 		D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
+		D8F633F81C30683900D12B9B /* Mojito.icns in Resources */ = {isa = PBXBuildFile; fileRef = D8F633F71C30683900D12B9B /* Mojito.icns */; };
 		D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */; };
 		D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		D8E82CF61C2CA14200866A7A /* Candidates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Candidates.storyboard; sourceTree = "<group>"; };
 		D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
 		D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowController.swift; sourceTree = "<group>"; };
+		D8F633F71C30683900D12B9B /* Mojito.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mojito.icns; sourceTree = "<group>"; };
 		D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesItem.xib; sourceTree = "<group>"; };
 		D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CandidatesItem.swift; path = ../CandidatesItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +167,7 @@
 				D8E82CF61C2CA14200866A7A /* Candidates.storyboard */,
 				D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */,
 				D88094C11C2A0FE2005E57CF /* Info.plist */,
+				D8F633F71C30683900D12B9B /* Mojito.icns */,
 				D88094B61C2A0FE2005E57CF /* Supporting Files */,
 			);
 			path = Mojito;
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */,
+				D8F633F81C30683900D12B9B /* Mojito.icns in Resources */,
 				D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */,
 				D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */,
 				D88094C01C2A0FE2005E57CF /* Main.storyboard in Resources */,
