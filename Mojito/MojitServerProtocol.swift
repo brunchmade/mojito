@@ -7,6 +7,9 @@
 //
 
 protocol MojitServerProtocol {
+    /// The selected candidate
+    var selectedCandidate:EmojiCandidate? { get }
+    
     /// Make an emoji input engine which conforms EmojiInputEngineProtocol
     func makeEmojiInputEngine() -> EmojiInputEngineProtocol!
     
