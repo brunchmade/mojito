@@ -26,6 +26,8 @@ class CandidatesItem : NSCollectionViewItem {
     
     override var selected:Bool {
         didSet {
+            // ensure we will have layer
+            view.wantsLayer = true
             // XXX: Not sure why the label would be nil here, so we just access it via subviews
             let label = view.subviews[0] as! NSTextField
             if (selected) {

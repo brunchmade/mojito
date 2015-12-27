@@ -7,6 +7,7 @@
 //
 
 import InputMethodKit
+import CocoaLumberjack
 
 class MojitServer : IMKServer, MojitServerProtocol {
     // XXX: I don't think the candidates view stuff should be here, just to try out
@@ -15,11 +16,10 @@ class MojitServer : IMKServer, MojitServerProtocol {
     
     override init!(name: String!, bundleIdentifier: String!) {
         super.init(name: name, bundleIdentifier: bundleIdentifier)
-        // XXX
         storyboard = NSStoryboard(name: "Candidates", bundle: nil)
         windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
-        windowController.window!.setFrame(NSMakeRect(100, 100, 200, 200), display: true)
-        windowController.showWindow(self)
+        // XXX
+        // windowController.showWindow(self)
     }
     
     /// Build an EmojiInputEngine and return
@@ -27,5 +27,21 @@ class MojitServer : IMKServer, MojitServerProtocol {
     func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
         // TODO: pass configuration and emoji lib data to emoji input engine
         return EmojiInputEngine()
+    }
+    
+    func updateCandidates(candidates: [EmojiCandidate!]!) {
+        DDLogInfo("Update candidates \(candidates)")
+        let candidatesViewController = windowController.contentViewController! as! CandidatesViewController
+        candidatesViewController.candidates = candidates
+    }
+    
+    func displayCandidates() {
+        DDLogInfo("Display candidates")
+        windowController.showWindow(self)
+    }
+    
+    func hideCandidates() {
+        DDLogInfo("Hide candidates")
+        windowController.window!.orderOut(self)
     }
 }

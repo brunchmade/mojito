@@ -13,7 +13,18 @@ import CocoaLumberjack
 // Inherit NSObject so that this class can be used with Objective C
 class MojitoInputController : NSObject {
     // String buffer for input chars
-    private var inputBuffer:String! = ""
+    private var inputBuffer:String! = "" {
+        didSet {
+            engine.keyword = extractInputKeyword()
+            let candidates = engine.candidates()
+            mojitServer.updateCandidates(candidates)
+            if (candidates.count > 0) {
+                mojitServer.displayCandidates()
+            } else {
+                mojitServer.hideCandidates()
+            }
+        }
+    }
     private var inputEmojiMode:Bool = false
     private var mojitServer:MojitServerProtocol!
     private var engine:EmojiInputEngineProtocol!
@@ -31,12 +42,12 @@ class MojitoInputController : NSObject {
     }
     
     func activateServer(sender: AnyObject!) {
-        
         DDLogInfo("activateServer \(sender)")
     }
     
     func deactivateServer(sender: AnyObject!) {
         DDLogInfo("deactivateServer \(sender)")
+        mojitServer.hideCandidates()
     }
     
     override func didCommandBySelector(aSelector: Selector, client sender: AnyObject!) -> Bool {
@@ -97,7 +108,7 @@ class MojitoInputController : NSObject {
         if (string == ":" || inputEmojiMode) {
             inputEmojiMode = true
             inputBuffer.appendContentsOf(string)
-            engine.keyword = extractInputKeyword()
+            // TODO: fix this repeating shit
             client.setMarkedText(inputBuffer, selectionRange: NSMakeRange(0, inputBuffer.characters.count), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
             return true
         }

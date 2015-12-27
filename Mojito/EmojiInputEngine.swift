@@ -27,6 +27,17 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     func candidates() -> [EmojiCandidate!]! {
+        // XXX: for debug only
+        if (keyword == "shit") {
+            return [
+                EmojiCandidate(char: "😀", key: ":a:"),
+                EmojiCandidate(char: "😀", key: ":fo:"),
+                EmojiCandidate(char: "😀", key: ":smile:"),
+                EmojiCandidate(char: "🍹", key: ":mojito:"),
+                EmojiCandidate(char: "💩", key: ":shit:"),
+                EmojiCandidate(char: "💩", key: ":shit yolo foobar:"),
+            ]
+        }
         // FIXME:
         return []
     }

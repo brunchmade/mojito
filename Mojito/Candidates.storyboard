@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="nYO-eA-VIt">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -9,8 +9,8 @@
         <scene sceneID="ylY-XP-8mU">
             <objects>
                 <windowController storyboardIdentifier="CandidatesWindowController" id="nYO-eA-VIt" userLabel="Candidates Window Controller" customClass="CandidatesWindowController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pME-pM-05U">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Mojito" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pME-pM-05U">
+                        <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
@@ -28,17 +28,17 @@
             <objects>
                 <viewController id="QcC-xc-vDn" customClass="CandidatesViewController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="55U-Sm-P2F">
-                        <rect key="frame" x="0.0" y="0.0" width="608" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
-                                <rect key="frame" x="0.0" y="0.0" width="608" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
                                 <clipView key="contentView" id="N9e-R8-Nfo">
-                                    <rect key="frame" x="1" y="1" width="606" height="268"/>
+                                    <rect key="frame" x="1" y="1" width="653" height="98"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" allowsEmptySelection="NO" id="iat-NE-neh">
-                                            <rect key="frame" x="0.0" y="0.0" width="606" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="653" height="98"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" id="lHF-PM-UFf">
                                                 <size key="itemSize" width="50" height="20"/>
