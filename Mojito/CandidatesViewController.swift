@@ -35,7 +35,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
         // TODO: measure the label size here
-        return NSMakeSize(60, 50)
+        return NSMakeSize(60, 20)
     }
 
 }

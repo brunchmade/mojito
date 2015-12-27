@@ -37,11 +37,12 @@
                                     <rect key="frame" x="1" y="1" width="606" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" id="iat-NE-neh">
+                                        <collectionView selectable="YES" allowsEmptySelection="NO" id="iat-NE-neh">
                                             <rect key="frame" x="0.0" y="0.0" width="606" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="lHF-PM-UFf">
-                                                <size key="itemSize" width="50" height="50"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" id="lHF-PM-UFf">
+                                                <size key="itemSize" width="50" height="20"/>
+                                                <edgeInsets key="sectionInset" left="10" right="0.0" top="10" bottom="0.0"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
