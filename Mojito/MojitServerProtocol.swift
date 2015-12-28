@@ -21,4 +21,10 @@ protocol MojitServerProtocol {
     
     /// Update candidates
     func updateCandidates(candidates: [EmojiCandidate!]!)
+    
+    /// Select next candidate
+    func selectNext()
+    
+    /// Select previous candidate
+    func selectPrevious()
 }

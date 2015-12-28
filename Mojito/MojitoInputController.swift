@@ -103,10 +103,12 @@ class MojitoInputController : NSObject {
             }
         // navigate among emoji candidates
         } else if (aSelector == "moveLeft:") {
-            // FIXME:
+            mojitServer.selectPrevious()
+            return true
         // navigate among emoji candidates
         } else if (aSelector == "moveRight:") {
-            // FIXME:
+            mojitServer.selectNext()
+            return true
         // ESC pressed, exit emoji input mode
         } else if (aSelector == "cancelOperation:") {
             reset()
