@@ -59,4 +59,48 @@ class EditDistance {
         }
         return v1[rhs.characters.count]
     }
+    
+    /// Generate typo variants for given string within spepcifc edit distance
+    class func generateTypos(string string: String!, distance:UInt!, alphabet: String! = "abcdefghijklmnopqrstuvwxyz0123456789") -> Set<String>! {
+        var typos: [String]! = []
+        _generateTypos(string, distance: distance, alphabet: alphabet, typos: &typos)
+        return Set<String>(typos)
+    }
+
+    private class func _generateTypos(string: String!, distance:UInt!, alphabet: String!, inout typos: [String]!) {
+        if (distance == 0) {
+            return
+        }
+        // Insertion
+        for char in alphabet.characters {
+            for i in 0 ... string.characters.count {
+                var insertedString = string
+                insertedString.insert(char, atIndex: insertedString.startIndex.advancedBy(i))
+                typos.append(insertedString)
+                _generateTypos(insertedString, distance: distance - 1, alphabet: alphabet, typos: &typos)
+            }
+        }
+        
+        // Deletion
+        for i in 0 ..< string.characters.count {
+            var deletedString = string
+            deletedString.removeAtIndex(deletedString.startIndex.advancedBy(i))
+            typos.append(deletedString)
+            _generateTypos(deletedString, distance: distance - 1, alphabet: alphabet, typos: &typos)
+        }
+        
+        // Substitution
+        for char in alphabet.characters {
+            for i in 0 ..< string.characters.count {
+                var subString = string
+                subString.replaceRange(Range<String.Index>(start: subString.startIndex.advancedBy(i), end: subString.startIndex.advancedBy(i + 1)), with: String(char))
+                if (subString == string) {
+                    continue
+                }
+                typos.append(subString)
+                _generateTypos(subString, distance: distance - 1, alphabet: alphabet, typos: &typos)
+            }
+        }
+        
+    }
 }

@@ -27,5 +27,15 @@ class EditDistanceTests: XCTestCase {
         XCTAssertEqual(EditDistance.distance(lhs: "kitten", rhs: "sitting"), 3)
         XCTAssertEqual(EditDistance.distance(lhs: "flaw", rhs: "lawn"), 2)
     }
+    
+    func testGenerateTypos() {
+        let set = EditDistance.generateTypos(string: "a", distance: 1, alphabet: "123")
+        XCTAssertEqual(set, ["", "1", "2", "3", "1a", "a1", "2a", "a2", "3a", "a3"])
+    }
+
+    func testGenerateTyposRemoveOnly() {
+        let set = EditDistance.generateTypos(string: "abc", distance: 3, alphabet: "")
+        XCTAssertEqual(set, ["", "a", "b", "c", "ab", "ac", "bc"])
+    }
 
 }
