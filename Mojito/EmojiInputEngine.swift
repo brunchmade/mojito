@@ -12,8 +12,8 @@ import Foundation
 class EmojiInputEngine : EmojiInputEngineProtocol {
     private var _keyword:String!
     private let emojis:[Emoji!]!
-    // map from keyword to emoji keys, e.g. "face": ["smile", "sad", ...]
-    private let keywordIndex:[String:[String]!]!
+    // map from keyword to emojis, e.g. "face": ["smile", "sad", ...]
+    private let keywordIndex:[String:[Emoji!]!]!
     // Sorted keywords
     private let sortedKeywords:[String]!
     
@@ -28,16 +28,16 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     init(emojis: [Emoji!]!) {
-        var keywordIndex = [String:[String]]()
+        var keywordIndex = [String:[Emoji!]!]()
         for emoji in emojis {
             var keywords = emoji.keywords
             keywords.append(emoji.key)
             for keyword in keywords {
                 let normalizedKeyword = EmojiInputEngine.normalize(keyword)
                 if keywordIndex[normalizedKeyword] != nil {
-                    keywordIndex[normalizedKeyword]?.append(emoji.key)
+                    keywordIndex[normalizedKeyword]?.append(emoji)
                 } else {
-                    keywordIndex[normalizedKeyword] = [emoji.key]
+                    keywordIndex[normalizedKeyword] = [emoji]
                 }
             }
         }
@@ -48,7 +48,15 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     func candidates() -> [EmojiCandidate!]! {
-        return []
+        let prefixMatches = EmojiInputEngine.binarySearch(EmojiInputEngine.normalize(keyword), array: sortedKeywords)
+        var candidates:[EmojiCandidate!]! = []
+        for match in prefixMatches {
+            let emojis = keywordIndex[match]!
+            candidates.appendContentsOf(emojis.map({
+                return EmojiCandidate(emoji: $0)
+            }))
+        }
+        return candidates
     }
     
     /// Do binary search for finding spefic prefix in string array
