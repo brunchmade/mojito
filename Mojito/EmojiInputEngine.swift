@@ -28,18 +28,12 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     func candidates() -> [EmojiCandidate!]! {
-        // XXX: for debug only
-        if (keyword == "shit") {
-            return [
-                EmojiCandidate(char: "😀", key: ":a:"),
-                EmojiCandidate(char: "😀", key: ":fo:"),
-                EmojiCandidate(char: "😀", key: ":smile:"),
-                EmojiCandidate(char: "🍹", key: ":mojito:"),
-                EmojiCandidate(char: "💩", key: ":shit:"),
-                EmojiCandidate(char: "💩", key: ":shit yolo foobar:"),
-            ]
+        // XXX: we should implement fuzzy search here instead
+        for emoji in emojis {
+            if (emoji.key == keyword) {
+                return [EmojiCandidate(emoji: emoji)]
+            }
         }
-        // FIXME:
         return []
     }
 }

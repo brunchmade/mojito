@@ -11,6 +11,8 @@
 		D81B91451C33815800526895 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B91441C33815800526895 /* SwiftyJSON.framework */; };
 		D81B91471C33835F00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B91481C33876C00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
+		D81B914C1C338CDA00526895 /* EditDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B914B1C338CDA00526895 /* EditDistanceTests.swift */; };
+		D81B914D1C338D4F00526895 /* EditDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D885FDC51C337CE40002E0F2 /* EditDistance.swift */; };
 		D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B41C2A0FE1005E57CF /* AppDelegate.m */; };
 		D88094B81C2A0FE2005E57CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B71C2A0FE2005E57CF /* main.m */; };
 		D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094BA1C2A0FE2005E57CF /* ViewController.m */; };
@@ -63,6 +65,7 @@
 		A8F88591748C391BACE8524F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D81B91441C33815800526895 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mojito-dcxkwtrdofxrowcygbyovmeinbvi/Build/Products/Debug/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		D81B91461C33835F00526895 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		D81B914B1C338CDA00526895 /* EditDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDistanceTests.swift; sourceTree = "<group>"; };
 		D88094B01C2A0FE1005E57CF /* Mojito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D88094B31C2A0FE1005E57CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D88094B41C2A0FE1005E57CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 			children = (
 				D8E82CDD1C2A806100866A7A /* Mocks */,
 				D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */,
+				D81B914B1C338CDA00526895 /* EditDistanceTests.swift */,
 				D88094CC1C2A0FE2005E57CF /* Info.plist */,
 			);
 			path = MojitoTests;
@@ -426,12 +430,14 @@
 				D81B91481C33876C00526895 /* Emoji.swift in Sources */,
 				D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */,
 				D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */,
+				D81B914C1C338CDA00526895 /* EditDistanceTests.swift in Sources */,
 				D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */,
 				D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
 				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,
 				D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */,
+				D81B914D1C338D4F00526895 /* EditDistance.swift in Sources */,
 				D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

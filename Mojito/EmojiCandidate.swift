@@ -20,4 +20,9 @@ class EmojiCandidate : NSObject {
         self.char = char
         self.key = key
     }
+    
+    init(emoji: Emoji!) {
+        self.char = emoji.char
+        self.key = emoji.key
+    }
 }
