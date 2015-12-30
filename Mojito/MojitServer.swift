@@ -38,11 +38,11 @@ class MojitServer : IMKServer, MojitServerProtocol {
         let emojilibPath = bundle.pathForResource("emojilib", ofType: "json")
         let emojilibContent = NSData(contentsOfFile: emojilibPath!)
         let emojilibJSON = JSON(data: emojilibContent!)
+        let keys = emojilibJSON["keys"]
         emojis = []
-        for (key, subJSON):(String, JSON) in emojilibJSON {
-            if (key == "keys") {
-                continue
-            }
+        for (_, obj):(String, JSON) in keys {
+            let key = obj.stringValue
+            let subJSON = emojilibJSON[key]
             var categories:[String!]! = []
             for (_, category) in subJSON["category"] {
                 categories.append(category.stringValue)
