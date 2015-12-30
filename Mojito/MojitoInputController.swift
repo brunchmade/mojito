@@ -102,14 +102,15 @@ class MojitoInputController : NSObject {
                     return true
                 }
             }
-        // navigate among emoji candidates
-        } else if (aSelector == "moveLeft:") {
+        // navigate to the next emoji candidate
+        // TODO: should also support shift + tab, not sure how can we get shift here thought
+        } else if (aSelector == "moveLeft:" || aSelector == "moveUp:" ) {
             if (inputEmojiMode) {
                 mojitServer.selectPrevious()
                 return true
             }
-        // navigate among emoji candidates
-        } else if (aSelector == "moveRight:") {
+        // navigate to the previous emoji candidate
+        } else if (aSelector == "moveRight:" || aSelector == "moveDown:" || aSelector == "insertTab:") {
             if (inputEmojiMode) {
                 mojitServer.selectNext()
                 return true
