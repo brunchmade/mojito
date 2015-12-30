@@ -43,14 +43,8 @@ class MojitServer : IMKServer, MojitServerProtocol {
         for (_, obj):(String, JSON) in keys {
             let key = obj.stringValue
             let subJSON = emojilibJSON[key]
-            var categories:[String!]! = []
-            for (_, category) in subJSON["category"] {
-                categories.append(category.stringValue)
-            }
-            var keywords:[String!]! = []
-            for (_, keyword) in subJSON["keywords"] {
-                keywords.append(keyword.stringValue)
-            }
+            let categories:[String!]! = subJSON["category"].map({ $1.stringValue })
+            let keywords:[String!]! = subJSON["keywords"].map({ $1.stringValue })
             if let char = subJSON["char"].string {
                 let emoji = Emoji(
                     key: key,
