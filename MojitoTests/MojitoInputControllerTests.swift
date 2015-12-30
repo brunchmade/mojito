@@ -179,5 +179,17 @@ class MojitoInputControllerTests: XCTestCase {
             "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
         ])
     }
+    
+    func testNotToSupressCommandsOutsideEmojiMode() {
+        // Type "Hello "
+        for char in "Hello ".characters {
+            controller.inputText(String(char), client: textInput)
+        }
+        XCTAssertFalse(controller.didCommandBySelector(Selector("deleteBackward:"), client: textInput))
+        XCTAssertFalse(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))
+        XCTAssertFalse(controller.didCommandBySelector(Selector("moveLeft:"), client: textInput))
+        XCTAssertFalse(controller.didCommandBySelector(Selector("moveRight:"), client: textInput))
+        XCTAssertFalse(controller.didCommandBySelector(Selector("cancelOperation:"), client: textInput))
+    }
 
 }
