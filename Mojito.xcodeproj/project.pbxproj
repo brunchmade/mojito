@@ -16,6 +16,9 @@
 		D88094D71C2A1086005E57CF /* MojitoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88094D61C2A1086005E57CF /* MojitoInputController.swift */; };
 		D88094DA1C2A1193005E57CF /* ProxyInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094D91C2A1193005E57CF /* ProxyInputController.m */; };
 		D88094DD1C2A11DD005E57CF /* OVInputSourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094DC1C2A11DD005E57CF /* OVInputSourceHelper.m */; };
+		D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
+		D891F1931C3372220061B6B0 /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
+		D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
 		D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */; };
 		D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88094D61C2A1086005E57CF /* MojitoInputController.swift */; };
 		D8E82CDF1C2A807600866A7A /* MockIMKTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */; };
@@ -401,12 +404,15 @@
 			files = (
 				D8E82CEF1C2BE6A800866A7A /* EmojiCandidate.swift in Sources */,
 				D8E82CEE1C2BE6A500866A7A /* MojitServerProtocol.swift in Sources */,
+				D891F1931C3372220061B6B0 /* CandidatesWindowController.swift in Sources */,
 				D8E82CDF1C2A807600866A7A /* MockIMKTextInput.swift in Sources */,
 				D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */,
 				D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */,
 				D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */,
+				D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
+				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,
 				D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */,
 				D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */,
 			);

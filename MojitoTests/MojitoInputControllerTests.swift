@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CocoaLumberjack
 
 class MojitoInputControllerTests: XCTestCase {
     
@@ -17,15 +18,20 @@ class MojitoInputControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+        DDLog.addLogger(DDTTYLogger.sharedInstance())
         
         engine = MockEmojiInputEngine()
         server = MockMojitServer(engine: engine)
         textInput = MockIMKTextInput()
         controller = MojitoInputController(server: server, delegate: nil, client: textInput)
         controller.activateServer(textInput)
+
+        // clear setMarkedTextCalls added by activate server -> reset()
+        textInput.setMarkedTextCalls = []
     }
     
     override func tearDown() {
+        DDLog.removeAllLoggers()
         controller.activateServer(textInput)
         super.tearDown()
     }
@@ -94,7 +100,7 @@ class MojitoInputControllerTests: XCTestCase {
             // ensure we are handling these delete backward as we are current in emoji input mode
             XCTAssertTrue(controller.didCommandBySelector(Selector("deleteBackward:"), client: textInput))
             XCTAssertEqual(textInput.setMarkedTextCalls.count, inputBuffer.characters.count + index)
-            XCTAssertEqual(textInput.setMarkedTextCalls[inputBuffer.characters.count + index - 1] as? NSDictionary, [
+            XCTAssertEqual(textInput.setMarkedTextCalls.lastObject as? NSDictionary, [
                 "string": currentInputBuffer,
                 "selectionRange": NSMakeRange(0, currentInputBuffer.characters.count),
                 "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
@@ -137,42 +143,41 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testInputInsert() {
+        XCTAssertFalse(server.candidatesVisible)
         // Type "Hello "
         for char in "Hello ".characters {
             controller.inputText(String(char), client: textInput)
         }
-
-        engine.candidatesToReturn = [EmojiCandidate(
-            char: Character("💩"),
-            key: "shit"
-        )]
+        XCTAssertFalse(server.candidatesVisible)
+    
+        let shitEmoji = EmojiCandidate(char: Character("💩"), key: "shit")
+        let smileEmoji = EmojiCandidate(char: Character("😀"), key: "smile")
+        engine.candidatesToReturn = [shitEmoji, smileEmoji]
         
         // Type ":shit:"
         let keyword = ":shit:"
         for char in keyword.characters {
             controller.inputText(String(char), client: textInput)
+            XCTAssertTrue(server.candidatesVisible)
         }
         XCTAssertEqual(textInput.insertTextCalls.count, 0)
-        // TODO: check candidates UI stuff?
+        // ensure update candidates is called correctly
+        XCTAssertEqual(server.updateCandidatesCalls.count, keyword.characters.count)
+        for candidates in server.updateCandidatesCalls {
+            XCTAssertEqual(candidates as? NSArray, engine.candidatesToReturn as NSArray)
+        }
         
+        // Select smile emoji
+        server.selectedCandidateToReturn = smileEmoji
+    
         // Press Enter key
         XCTAssertTrue(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))
         // See if we insert the emoji
         XCTAssertEqual(textInput.insertTextCalls.count, 1)
         XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
-            "string": "💩",
+            "string": "😀",
             "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
         ])
-    }
-    
-    func testWindow() {
-        let storyboard = NSStoryboard(name: "Candidates", bundle: nil)
-        let windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
-        windowController.window!.setFrame(NSMakeRect(0, 0, 200, 200), display: true)
-        windowController.showWindow(self)
-        
-        var expectation = self.expectationWithDescription("fetch posts")
-        self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
 
 }

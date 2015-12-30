@@ -16,8 +16,9 @@ class MojitoInputController : NSObject {
     private var inputBuffer:String! = "" {
         didSet {
             engine.keyword = inputKeyword
-            let candidates = engine.candidates()
-            mojitServer.updateCandidates(candidates)
+            if let candidates = engine.candidates() {
+                mojitServer.updateCandidates(candidates)
+            }
             textInput.setMarkedText(inputBuffer, selectionRange: NSMakeRange(0, inputBuffer.characters.count), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
         }
     }
@@ -134,7 +135,7 @@ class MojitoInputController : NSObject {
     override func inputText(string: String!, client sender: AnyObject!) -> Bool {
         textInput = sender as! IMKTextInput
         // TODO: only log this when we are building with debug
-        DDLogInfo("inputText string:\(string), client:\(sender)")
+        DDLogInfo("inputText string: \"\(string)\", client:\(sender)")
         if (string == ":" || inputEmojiMode) {
             inputEmojiMode = true
             inputBuffer.appendContentsOf(string)

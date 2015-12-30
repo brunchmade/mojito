@@ -11,7 +11,6 @@ import CocoaLumberjack
 
 class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: Properties
-    // XXX: I don't think the candidates view stuff should be here, just to try out
     private let storyboard:NSStoryboard!
     private let windowController:NSWindowController!
     private let candidatesViewController:CandidatesViewController
