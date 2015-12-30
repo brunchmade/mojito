@@ -9,12 +9,15 @@ PODS:
     - CocoaLumberjack/Default
   - CocoaLumberjack/Swift (2.2.0):
     - CocoaLumberjack/Extensions
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - CocoaLumberjack
   - CocoaLumberjack/Swift
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

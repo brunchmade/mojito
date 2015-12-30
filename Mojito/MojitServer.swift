@@ -8,12 +8,14 @@
 
 import InputMethodKit
 import CocoaLumberjack
+import SwiftyJSON
 
 class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: Properties
     private let storyboard:NSStoryboard!
     private let windowController:NSWindowController!
     private let candidatesViewController:CandidatesViewController
+    private let emojis:[Emoji!]!
     
     var selectedCandidate:EmojiCandidate? {
         get {
@@ -30,6 +32,36 @@ class MojitServer : IMKServer, MojitServerProtocol {
         storyboard = NSStoryboard(name: "Candidates", bundle: nil)
         windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
         candidatesViewController = windowController.contentViewController! as! CandidatesViewController
+
+        // read emoji lib data
+        let bundle = NSBundle.mainBundle()
+        let emojilibPath = bundle.pathForResource("emojilib", ofType: "json")
+        let emojilibContent = NSData(contentsOfFile: emojilibPath!)
+        let emojilibJSON = JSON(data: emojilibContent!)
+        emojis = []
+        for (key, subJSON):(String, JSON) in emojilibJSON {
+            if (key == "keys") {
+                continue
+            }
+            var categories:[String!]! = []
+            for (_, category) in subJSON["category"] {
+                categories.append(category.stringValue)
+            }
+            var keywords:[String!]! = []
+            for (_, keyword) in subJSON["keywords"] {
+                keywords.append(keyword.stringValue)
+            }
+            if let char = subJSON["char"].string {
+                let emoji = Emoji(
+                    key: key,
+                    char:char.characters.first!,
+                    categories: categories,
+                    keywords: keywords
+                )
+                emojis.append(emoji)
+            }
+        }
+        
         super.init(name: name, bundleIdentifier: bundleIdentifier)
         // XXX
         // windowController.showWindow(self)
@@ -40,7 +72,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     /// - Returns: An emoji input engine which conforms EmojiInputEngineProtocol
     func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
         // TODO: pass configuration and emoji lib data to emoji input engine
-        return EmojiInputEngine()
+        return EmojiInputEngine(emojis: emojis)
     }
     
     func updateCandidates(candidates: [EmojiCandidate!]!) {

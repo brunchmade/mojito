@@ -11,6 +11,7 @@ import Foundation
 /// EmojiInputEngine protocol implementation by returning candidates matching
 class EmojiInputEngine : EmojiInputEngineProtocol {
     private var _keyword:String!
+    private let emojis:[Emoji!]!
     
     var keyword:String {
         get {
@@ -22,8 +23,8 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
         }
     }
     
-    init() {
-        // FIXME: load emojilib here
+    init(emojis: [Emoji!]!) {
+        self.emojis = emojis
     }
     
     func candidates() -> [EmojiCandidate!]! {
