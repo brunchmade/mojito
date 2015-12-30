@@ -120,9 +120,9 @@ class MojitoInputController : NSObject {
                 reset()
                 return true
             }
+        // we only want to swllow commands when we are in emoji mode
         } else {
-            // FIXME:
-            return true
+            return inputEmojiMode
         }
         return false
     }
