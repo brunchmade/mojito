@@ -14,6 +14,8 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     private let emojis:[Emoji!]!
     // map from keyword to emoji keys, e.g. "face": ["smile", "sad", ...]
     private let keywordIndex:[String:[String]!]!
+    // Sorted keywords
+    private let sortedKeywords:[String]!
     
     var keyword:String {
         get {
@@ -41,16 +43,49 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
         }
         self.keywordIndex = keywordIndex
         self.emojis = emojis
+        self.sortedKeywords = Array(keywordIndex.keys).sort()
+        print(self.sortedKeywords)
     }
     
     func candidates() -> [EmojiCandidate!]! {
-
         return []
     }
     
-    /// Normalize given string by removing non alphabet and number character, also lower the case
+    /// Do binary search for finding spefic prefix in string array
+    class func binarySearch(prefix: String!, array: [String]!) -> [String]! {
+        var left = 0
+        var right = array.count - 1
+        
+        // find the smallest index
+        while (right >= left) {
+            let middleIndex = (left + right) / 2
+            let middle = array[middleIndex]
+            // find in the right partition
+            if (prefix > middle) {
+                left = middleIndex + 1
+            // find in the left partition
+            } else if (prefix < middle) {
+                right = middleIndex - 1
+            // looks like we find the prefix
+            } else {
+                left = middleIndex
+                break
+            }
+        }
+        
+        var result:[String] = []
+        for index in left ..< array.count {
+            let keyword = array[index]
+            if (!keyword.hasPrefix(prefix)) {
+                break
+            }
+            result.append(keyword)
+        }
+        return result
+    }
+    
+    /// Normalize keywords
     class func normalize(string: String!) -> String! {
-        // FIXME:
-        return string
+        return string.lowercaseString
     }
 }
