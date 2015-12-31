@@ -1,0 +1,15 @@
+language: objective-c
+cache:
+    - cocoapods
+before_install:
+    # upgrade xctool
+    - "brew update"
+    - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
+    # upgrade pod
+    - "gem install cocoapods"
+    - "pod --version"
+script: >
+    xctool
+    -workspace Mojito.xcworkspace
+    -scheme Mojito
+    build test
