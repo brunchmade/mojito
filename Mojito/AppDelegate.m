@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "Mojito-Swift.h"
+#import "CocoaLumberjack/CocoaLumberjack.h"
+
+static const int ddLogLevel = DDLogLevelInfo;
 
 @interface AppDelegate ()
 
@@ -15,6 +19,11 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    NSString *connectionName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"InputMethodConnectionName"];
+    DDLogInfo(@"Connection %@", connectionName);
+    _mojitServer = [[MojitServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    DDLogInfo(@"Initialized IMKServer %@", self.mojitServer);
+    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

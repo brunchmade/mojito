@@ -22,6 +22,10 @@ class CandidateWindow: NSWindow {
         super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
         opaque = false
         backgroundColor = NSColor.clearColor()
+        // ref: https://github.com/danielpunkass/Blockpass/blob/master/Blockpass/AppDelegate.swift#L53-L55
+        // NSStatusWindowLevel doesn't seem available in Swift? And the types for CG constants
+        // are mismatched Int vs Int32 so we have to do this dance
+        level = Int(CGWindowLevelForKey(CGWindowLevelKey.StatusWindowLevelKey))
     }
 
     required init?(coder: NSCoder) {
@@ -45,7 +49,6 @@ class CandidateWindow: NSWindow {
         newOrigin.y += currentLocation.y - initialLocation!.y
         
         // Don't let window get dragged up under the menu bar
-        // Don't let window get dragged up under the menu bar
         if ((newOrigin.y + windowFrame.size.height) > (screenVisibleFrame.origin.y + screenVisibleFrame.size.height)) {
             newOrigin.y = screenVisibleFrame.origin.y + (screenVisibleFrame.size.height - windowFrame.size.height)
         }
@@ -53,4 +56,5 @@ class CandidateWindow: NSWindow {
         // Move the window to the new location
         setFrameOrigin(newOrigin)
     }
+    
 }

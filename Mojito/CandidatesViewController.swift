@@ -80,10 +80,21 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
         ]
     }
     
+    /// Called to handle submit canddate event from the UI
+    private func submitCandidate(item: CandidatesItem!) {
+        let app = NSApplication.sharedApplication().delegate as! AppDelegate
+        if let controller = app.mojitServer.activeInputController {
+            controller.submitCandidate(item.representedObject as! EmojiCandidate)
+        }
+    }
+    
     func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
-        let candidateItem = collectionView.makeItemWithIdentifier("CandidatesItem", forIndexPath: indexPath)
+        let candidateItem = collectionView.makeItemWithIdentifier("CandidatesItem", forIndexPath: indexPath) as! CandidatesItem
         let emojiCandidate = candidates[indexPath.item]
         candidateItem.representedObject = emojiCandidate
+        candidateItem.submitCallback = {
+            self.submitCandidate(candidateItem)
+        }
         return candidateItem
     }
     

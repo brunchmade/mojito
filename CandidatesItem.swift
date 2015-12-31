@@ -12,6 +12,8 @@ import Foundation
 private var kvoContext = 0
 
 class CandidatesItem : NSCollectionViewItem {
+    /// Callback function to be called when the candidate is selected by double click
+    var submitCallback:(() -> Void)?
     @IBOutlet weak var label: NSTextField!
 
     dynamic var itemTitle:String! {
@@ -44,6 +46,16 @@ class CandidatesItem : NSCollectionViewItem {
         view.wantsLayer = true
         view.layer!.cornerRadius = view.frame.height / 2.0
         view.layer!.masksToBounds = true
+    }
+    
+    override func mouseDown(theEvent: NSEvent) {
+        if (theEvent.clickCount <= 1) {
+            super.mouseDown(theEvent)
+            return
+        }
+        if let callback = submitCallback {
+            callback()
+        }
     }
     
     // Make the computed property `itemTitle` also observable when representedObject changes

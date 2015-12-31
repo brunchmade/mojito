@@ -10,9 +10,8 @@
 #import <InputMethodKit/InputMethodKit.h>
 #import "CocoaLumberjack/CocoaLumberjack.h"
 #import "OVInputSourceHelper.h"
-#import "Mojito-Swift.h"
+#import "AppDelegate.h"
 
-static const int ddLogLevel = DDLogLevelInfo;
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -52,13 +51,11 @@ int main(int argc, const char * argv[]) {
             
             return 0;
         }
-    
-        NSString *connectionName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"InputMethodConnectionName"];
-        DDLogInfo(@"Connection %@", connectionName);
-        MojitServer *server = [[MojitServer alloc] initWithName:connectionName bundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
-        DDLogInfo(@"Initialized IMKServer %@", server);
-        
-        [[NSApplication sharedApplication] run];
+
+        NSApplication *app = [NSApplication sharedApplication];
+        AppDelegate *appDelegate = [AppDelegate new];
+        app.delegate = appDelegate;
+        [app run];
     }
     return 0;
 }

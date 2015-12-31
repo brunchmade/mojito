@@ -8,8 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MojitServer;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (readonly, nonatomic) MojitServer* mojitServer;
 
 @end
 

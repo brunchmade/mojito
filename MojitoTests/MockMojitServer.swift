@@ -15,6 +15,7 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
     // whether is candidates UI visible or not
     var candidatesVisible:Bool = false
 
+    weak var activeInputController:MojitoInputController?
     var selectedCandidate:EmojiCandidate? {
         get {
             return selectedCandidateToReturn
@@ -50,6 +51,10 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
     }
     
     func selectPrevious() {
+        
+    }
+    
+    func moveCandidates(rect: NSRect!) {
         
     }
     

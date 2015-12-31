@@ -62,8 +62,8 @@ class MojitoInputController : NSObject {
     init!(server: IMKServer!, delegate: AnyObject!, client inputClient: AnyObject!) {
         super.init()
         DDLogInfo("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
-        // TODO: test to see if server is a MojitServerProtocol otherwise raise error?
         mojitServer = server as! MojitServerProtocol
+        mojitServer.activeInputController = self
         engine = mojitServer.makeEmojiInputEngine()
         textInput = inputClient as! IMKTextInput
     }
@@ -75,6 +75,8 @@ class MojitoInputController : NSObject {
     func activateServer(sender: AnyObject!) {
         textInput = sender as! IMKTextInput
         DDLogInfo("activateServer \(sender)")
+        // TODO: maybe we should find a better way to let UI notify input controller that a candidate is double clicked?
+        mojitServer.activeInputController = self
         reset()
     }
     
@@ -82,6 +84,7 @@ class MojitoInputController : NSObject {
         textInput = sender as! IMKTextInput
         DDLogInfo("deactivateServer \(sender)")
         mojitServer.hideCandidates()
+        mojitServer.activeInputController = nil
         reset()
     }
     
@@ -161,6 +164,12 @@ class MojitoInputController : NSObject {
             return true
         }
         return false
+    }
+    
+    /// Submit candidate to text input
+    func submitCandidate(emoji: EmojiCandidate!) {
+        textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
+        reset()
     }
     
     /// Reset state of input controller
