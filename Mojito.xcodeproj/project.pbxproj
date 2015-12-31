@@ -375,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "killall $EXECUTABLE_NAME\ncp -fR $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME \"$HOME/Library/Input Methods/\"\n\"$HOME/Library/Input Methods/$EXECUTABLE_FOLDER_PATH/$EXECUTABLE_NAME\" install";
+			shellScript = "killall $EXECUTABLE_NAME\n# cp -fR $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME \"$HOME/Library/Input Methods/\"\n# \"$HOME/Library/Input Methods/$EXECUTABLE_FOLDER_PATH/$EXECUTABLE_NAME\" install";
 		};
 		EFF2ACA97E0BC031B99F0B6A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
