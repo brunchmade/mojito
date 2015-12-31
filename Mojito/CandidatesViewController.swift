@@ -29,13 +29,14 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [NSColor.clearColor()]
+        // XXXXXXX
         candidates = [
-            EmojiCandidate(char: "😀", key: ":a:"),
-            EmojiCandidate(char: "😀", key: ":fo:"),
-            EmojiCandidate(char: "😀", key: ":smile:"),
-            EmojiCandidate(char: "🍹", key: ":mojito:"),
-            EmojiCandidate(char: "💩", key: ":shit:"),
-            EmojiCandidate(char: "💩", key: ":shit yolo foobar:"),
+            EmojiCandidate(char: "😀", key: "a"),
+            EmojiCandidate(char: "😀", key: "fo"),
+            EmojiCandidate(char: "😀", key: "smile"),
+            EmojiCandidate(char: "🍹", key: "mojito"),
+            EmojiCandidate(char: "💩", key: "shit"),
+            EmojiCandidate(char: "💩", key: "shit yolo foobar"),
         ]
         
         sizingCandidatesItem = CandidatesItem(nibName: "CandidatesItem", bundle: nil)
