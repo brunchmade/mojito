@@ -10,8 +10,6 @@ import Cocoa
 import Foundation
 
 class CandidatesViewController : NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
-    // The candidate  for measuring size
-    private var sizingCandidatesItem:CandidatesItem!
     /// Collection view
     @IBOutlet weak var collectionView: NSCollectionView!
     
@@ -51,11 +49,11 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
             // draw triangle
             let bezierPath = NSBezierPath()
             // the very bottom point
-            bezierPath.moveToPoint(NSPoint(x: rect.origin.x + rect.width / 2, y: 0))
+            bezierPath.moveToPoint(NSPoint(x: rect.origin.x + rect.width / 2, y: 1))
             // the right point
-            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 + footSize.width / 2, y: footSize.height))
+            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 + footSize.width / 2, y: footSize.height + 2))
             // the left point
-            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 - footSize.width / 2, y: footSize.height))
+            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 - footSize.width / 2, y: footSize.height + 2))
             bezierPath.closePath()
             bezierPath.fill()
             
@@ -70,7 +68,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [NSColor.clearColor()]
-        visualEffectView.maskImage = maskImage(6.0, footSize: NSSize(width: 24, height: 10))
+        visualEffectView.maskImage = maskImage(7.0, footSize: NSSize(width: 27, height: 13))
         // XXXXXXX
         candidates = [
             EmojiCandidate(char: "😀", key: "a"),
@@ -80,8 +78,6 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
             EmojiCandidate(char: "💩", key: "shit"),
             EmojiCandidate(char: "💩", key: "shit yolo foobar"),
         ]
-        
-        sizingCandidatesItem = CandidatesItem(nibName: "CandidatesItem", bundle: nil)
     }
     
     func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
@@ -96,15 +92,18 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
 	}
     
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
+        // TODO: maybe there is a better way to measure the item size?
         let emojiCandidate = candidates[indexPath.item]
-        sizingCandidatesItem.representedObject = emojiCandidate
-        // access item view here, so that it will be loaded
-        let itemView = sizingCandidatesItem.view
-        let label = sizingCandidatesItem.label
-        label.stringValue = sizingCandidatesItem.itemTitle
-        label.sizeToFit()
-        itemView.layoutSubtreeIfNeeded()
-        return itemView.bounds.size
+        let systemFont = NSFont.systemFontOfSize(13)
+        let attrs = [
+            NSFontNameAttribute: systemFont.fontName,
+            NSFontSizeAttribute: 13
+        ]
+        let attrStr = NSAttributedString(string: "\(emojiCandidate.char) :\(emojiCandidate.key):", attributes: attrs as? [String: AnyObject])
+        var size = attrStr.size()
+        size.height = 24
+        size.width += 8
+        return size
     }
 
 }
