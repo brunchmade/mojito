@@ -244,7 +244,6 @@
 				D88094AE1C2A0FE1005E57CF /* Resources */,
 				AF75170C5E2213AF234BC06B /* Embed Pods Frameworks */,
 				93DD09201EE9FA95B2565BC1 /* Copy Pods Resources */,
-				D88094DE1C2A1401005E57CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -363,19 +362,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		D88094DE1C2A1401005E57CF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "killall $EXECUTABLE_NAME\n# cp -fR $BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME \"$HOME/Library/Input Methods/\"\n# \"$HOME/Library/Input Methods/$EXECUTABLE_FOLDER_PATH/$EXECUTABLE_NAME\" install";
 		};
 		EFF2ACA97E0BC031B99F0B6A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
