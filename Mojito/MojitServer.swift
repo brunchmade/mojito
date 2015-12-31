@@ -17,6 +17,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     private let candidatesViewController:CandidatesViewController
     private let emojis:[Emoji!]!
     
+    weak var activeInputController:MojitoInputController?
     var selectedCandidate:EmojiCandidate? {
         get {
             let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
