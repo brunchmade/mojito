@@ -44,7 +44,6 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
         self.keywordIndex = keywordIndex
         self.emojis = emojis
         self.sortedKeywords = Array(keywordIndex.keys).sort()
-        print(self.sortedKeywords)
     }
     
     func candidates() -> [EmojiCandidate!]! {
