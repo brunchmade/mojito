@@ -18,6 +18,9 @@ class MojitoInputController : NSObject {
             engine.keyword = inputKeyword
             if let candidates = engine.candidates() {
                 mojitServer.updateCandidates(candidates)
+                var rect = NSRect()
+                textInput.attributesForCharacterIndex(0, lineHeightRectangle: &rect)
+                mojitServer.moveCandidates(rect)
             }
             textInput.setMarkedText(inputBuffer, selectionRange: NSMakeRange(0, inputBuffer.characters.count), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
         }

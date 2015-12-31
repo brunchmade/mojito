@@ -6,6 +6,8 @@
 //  Copyright © 2015 VictorLin. All rights reserved.
 //
 
+import Cocoa
+
 protocol MojitServerProtocol {
     /// The selected candidate
     var selectedCandidate:EmojiCandidate? { get }
@@ -18,6 +20,9 @@ protocol MojitServerProtocol {
     
     /// Hide candidates
     func hideCandidates()
+    
+    /// Update candidates position according to given text rect
+    func moveCandidates(rect: NSRect!)
     
     /// Update candidates
     func updateCandidates(candidates: [EmojiCandidate!]!)

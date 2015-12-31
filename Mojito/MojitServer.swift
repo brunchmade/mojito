@@ -69,6 +69,11 @@ class MojitServer : IMKServer, MojitServerProtocol {
         return EmojiInputEngine(emojis: emojis)
     }
     
+    func moveCandidates(rect: NSRect!) {
+        // TODO: Adjust the window more according to the rect
+        windowController.window!.setFrameTopLeftPoint(rect.origin)
+    }
+    
     func updateCandidates(candidates: [EmojiCandidate!]!) {
         DDLogInfo("Update candidates \(candidates)")
         candidatesViewController.candidates = candidates

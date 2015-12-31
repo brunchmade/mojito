@@ -24,6 +24,7 @@
 		D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
 		D891F1931C3372220061B6B0 /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
 		D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
+		D8C3523A1C34AF3600FA034E /* CandidatesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C352391C34AF3600FA034E /* CandidatesWindow.swift */; };
 		D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */; };
 		D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88094D61C2A1086005E57CF /* MojitoInputController.swift */; };
 		D8E82CDF1C2A807600866A7A /* MockIMKTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */; };
@@ -82,6 +83,7 @@
 		D88094DB1C2A11DD005E57CF /* OVInputSourceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVInputSourceHelper.h; sourceTree = "<group>"; };
 		D88094DC1C2A11DD005E57CF /* OVInputSourceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OVInputSourceHelper.m; sourceTree = "<group>"; };
 		D885FDC71C337E7F0002E0F2 /* emojilib.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emojilib.json; sourceTree = "<group>"; };
+		D8C352391C34AF3600FA034E /* CandidatesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindow.swift; sourceTree = "<group>"; };
 		D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoInputControllerTests.swift; sourceTree = "<group>"; };
 		D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockIMKTextInput.swift; sourceTree = "<group>"; };
 		D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineProtocol.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
 				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
 				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
+				D8C352391C34AF3600FA034E /* CandidatesWindow.swift */,
 				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
 				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
 				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
@@ -401,6 +404,7 @@
 				D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */,
 				D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */,
 				D88094D71C2A1086005E57CF /* MojitoInputController.swift in Sources */,
+				D8C3523A1C34AF3600FA034E /* CandidatesWindow.swift in Sources */,
 				D8E82CE81C2BDD8900866A7A /* EmojiInputEngine.swift in Sources */,
 				D88094DD1C2A11DD005E57CF /* OVInputSourceHelper.m in Sources */,
 				D8E82CE21C2BD8A000866A7A /* EmojiInputEngineProtocol.swift in Sources */,
