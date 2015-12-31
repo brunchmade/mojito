@@ -31,18 +31,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
-                                <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
+                            <scrollView misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
+                                <rect key="frame" x="20" y="16" width="619" height="68"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="N9e-R8-Nfo">
-                                    <rect key="frame" x="1" y="1" width="653" height="98"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="619" height="68"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView selectable="YES" allowsEmptySelection="NO" id="iat-NE-neh">
-                                            <rect key="frame" x="0.0" y="0.0" width="653" height="98"/>
+                                        <collectionView focusRingType="none" selectable="YES" allowsEmptySelection="NO" id="iat-NE-neh">
+                                            <rect key="frame" x="0.0" y="0.0" width="619" height="68"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" id="lHF-PM-UFf">
                                                 <size key="itemSize" width="50" height="20"/>
-                                                <edgeInsets key="sectionInset" left="10" right="10" top="10" bottom="10"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -63,10 +62,10 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="Hdc-E0-VRz" secondAttribute="top" id="17S-Sc-56i"/>
-                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" id="2T7-np-KtO"/>
-                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" id="9RZ-R8-EUI"/>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="Hdc-E0-VRz" secondAttribute="leading" id="wse-WF-8yi"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="Hdc-E0-VRz" secondAttribute="top" constant="16" id="17S-Sc-56i"/>
+                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" constant="16" id="2T7-np-KtO"/>
+                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" constant="16" id="9RZ-R8-EUI"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="Hdc-E0-VRz" secondAttribute="leading" constant="16" id="wse-WF-8yi"/>
                         </constraints>
                     </visualEffectView>
                     <connections>
