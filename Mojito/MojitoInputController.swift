@@ -148,8 +148,6 @@ class MojitoInputController : NSObject {
     
     override func inputText(string: String!, client sender: AnyObject!) -> Bool {
         textInput = sender as! IMKTextInput
-        // TODO: only log this when we are building with debug
-        DDLogInfo("inputText string: \"\(string)\", client:\(sender)")
         if (string == ":" || inputEmojiMode) {
             // Just submit ":" when user type "::"
             if (string == ":" && inputBuffer.characters.count == 1) {
