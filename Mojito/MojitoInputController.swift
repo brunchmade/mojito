@@ -79,6 +79,7 @@ class MojitoInputController : NSObject {
         textInput = sender as! IMKTextInput
         DDLogInfo("deactivateServer \(sender)")
         mojitServer.hideCandidates()
+        reset()
     }
     
     override func didCommandBySelector(aSelector: Selector, client sender: AnyObject!) -> Bool {
@@ -144,6 +145,14 @@ class MojitoInputController : NSObject {
         // TODO: only log this when we are building with debug
         DDLogInfo("inputText string: \"\(string)\", client:\(sender)")
         if (string == ":" || inputEmojiMode) {
+            // Just submit ":" when user type "::"
+            if (string == ":" && inputBuffer.characters.count == 1) {
+                textInput.insertText(":", replacementRange: NSMakeRange(NSNotFound, NSNotFound))
+                inputEmojiMode = false
+                inputBuffer = ""
+                return true
+            }
+            
             inputEmojiMode = true
             inputBuffer.appendContentsOf(string)
             return true

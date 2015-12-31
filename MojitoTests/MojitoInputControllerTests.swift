@@ -176,7 +176,7 @@ class MojitoInputControllerTests: XCTestCase {
         XCTAssertEqual(textInput.insertTextCalls.count, 1)
         XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
             "string": "😀",
-            "replacementRange": NSMakeRange(NSNotFound, NSNotFound),
+            "replacementRange": NSMakeRange(NSNotFound, NSNotFound)
         ])
     }
     
@@ -190,6 +190,22 @@ class MojitoInputControllerTests: XCTestCase {
         XCTAssertFalse(controller.didCommandBySelector(Selector("moveLeft:"), client: textInput))
         XCTAssertFalse(controller.didCommandBySelector(Selector("moveRight:"), client: textInput))
         XCTAssertFalse(controller.didCommandBySelector(Selector("cancelOperation:"), client: textInput))
+    }
+    
+    func testTypeColon() {
+        // Type "::"
+        for char in "::".characters {
+            XCTAssertTrue(controller.inputText(String(char), client: textInput))
+        }
+        XCTAssertEqual(textInput.insertTextCalls.count, 1)
+        XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
+            "string": ":",
+            "replacementRange": NSMakeRange(NSNotFound, NSNotFound)
+        ])
+        // Type "Hello ", ensure we are out of emoji mode
+        for char in "Hello ".characters {
+            XCTAssertFalse(controller.inputText(String(char), client: textInput))
+        }
     }
 
 }

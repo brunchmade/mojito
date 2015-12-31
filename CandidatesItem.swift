@@ -17,7 +17,7 @@ class CandidatesItem : NSCollectionViewItem {
     dynamic var itemTitle:String! {
         get {
             if let obj = representedObject as? EmojiCandidate {
-                return "\(obj.char) \(obj.key)"
+                return "\(obj.char) :\(obj.key):"
             } else {
                 return "none"
             }

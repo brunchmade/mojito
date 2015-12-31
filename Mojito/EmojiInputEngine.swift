@@ -48,6 +48,7 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     func candidates() -> [EmojiCandidate!]! {
+        // TODO: Implement fuzzy search here
         let prefixMatches = EmojiInputEngine.binarySearch(EmojiInputEngine.normalize(keyword), array: sortedKeywords)
         var candidates:[EmojiCandidate!]! = []
         for match in prefixMatches {
