@@ -28,17 +28,17 @@
             <objects>
                 <viewController id="QcC-xc-vDn" customClass="CandidatesViewController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
                     <visualEffectView key="view" appearanceType="vibrantLight" blendingMode="behindWindow" state="active" id="Hdc-E0-VRz">
-                        <rect key="frame" x="0.0" y="0.0" width="655" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="124"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <scrollView misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
-                                <rect key="frame" x="20" y="16" width="619" height="68"/>
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-4s-mvc">
+                                <rect key="frame" x="6" y="24" width="488" height="76"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="N9e-R8-Nfo">
-                                    <rect key="frame" x="0.0" y="0.0" width="619" height="68"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="488" height="76"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView focusRingType="none" selectable="YES" allowsEmptySelection="NO" id="iat-NE-neh">
-                                            <rect key="frame" x="0.0" y="0.0" width="619" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="516" height="84"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="5" minimumLineSpacing="5" id="lHF-PM-UFf">
                                                 <size key="itemSize" width="50" height="20"/>
@@ -51,25 +51,26 @@
                                         </collectionView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="CwD-NW-2Py">
-                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="CwD-NW-2Py">
+                                    <rect key="frame" x="0.0" y="60" width="488" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="QMO-G8-RCa">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="QMO-G8-RCa">
+                                    <rect key="frame" x="472" y="0.0" width="16" height="76"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="Hdc-E0-VRz" secondAttribute="top" constant="16" id="17S-Sc-56i"/>
-                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" constant="16" id="2T7-np-KtO"/>
-                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" constant="16" id="9RZ-R8-EUI"/>
-                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="Hdc-E0-VRz" secondAttribute="leading" constant="16" id="wse-WF-8yi"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="top" secondItem="Hdc-E0-VRz" secondAttribute="top" constant="24" id="17S-Sc-56i"/>
+                            <constraint firstAttribute="bottom" secondItem="cx9-4s-mvc" secondAttribute="bottom" constant="24" id="2T7-np-KtO"/>
+                            <constraint firstAttribute="trailing" secondItem="cx9-4s-mvc" secondAttribute="trailing" constant="6" id="9RZ-R8-EUI"/>
+                            <constraint firstItem="cx9-4s-mvc" firstAttribute="leading" secondItem="Hdc-E0-VRz" secondAttribute="leading" constant="6" id="wse-WF-8yi"/>
                         </constraints>
                     </visualEffectView>
                     <connections>
                         <outlet property="collectionView" destination="iat-NE-neh" id="K9G-fa-Doo"/>
+                        <outlet property="visualEffectView" destination="Hdc-E0-VRz" id="xFL-zn-pxf"/>
                     </connections>
                 </viewController>
                 <customObject id="K7y-Ye-BnS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,8 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     /// Collection view
     @IBOutlet weak var collectionView: NSCollectionView!
     
+    @IBOutlet weak var visualEffectView: NSVisualEffectView!
+    
     /// Candidates to display
     var candidates:[EmojiCandidate!]! = [] {
         didSet {
@@ -26,9 +28,49 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
         }
     }
     
+    // TODO: move these stuff to other place
+    func roundCornerImage(cornerRadius: CGFloat) -> NSImage! {
+        let edgeLength = 2.0 * cornerRadius + 1.0
+        let roundCornerImage = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
+            let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
+            NSColor.blackColor().set()
+            bezierPath.fill()
+            return true
+        }
+        roundCornerImage.capInsets = NSEdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius)
+        roundCornerImage.resizingMode = .Stretch
+        return roundCornerImage
+    }
+    
+    func maskImage(cornerRadius: CGFloat, footSize: NSSize) -> NSImage {
+        let roundImage = roundCornerImage(cornerRadius)
+        //let roundCornerImage = roundCornerImage(cornerRadius)
+        let maskedImage = NSImage(size: view.frame.size, flipped: false) { rect in
+            NSColor.blackColor().set()
+            
+            // draw triangle
+            let bezierPath = NSBezierPath()
+            // the very bottom point
+            bezierPath.moveToPoint(NSPoint(x: rect.origin.x + rect.width / 2, y: 0))
+            // the right point
+            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 + footSize.width / 2, y: footSize.height))
+            // the left point
+            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 - footSize.width / 2, y: footSize.height))
+            bezierPath.closePath()
+            bezierPath.fill()
+            
+            roundImage.drawInRect(NSRect(x: 0, y: footSize.height, width: rect.width, height: rect.height - footSize.height), fromRect: NSZeroRect, operation: .CompositeSourceOver, fraction: 1.0)
+            
+            //roundCornerImage
+            return true
+        }
+        return maskedImage
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [NSColor.clearColor()]
+        visualEffectView.maskImage = maskImage(6.0, footSize: NSSize(width: 24, height: 10))
         // XXXXXXX
         candidates = [
             EmojiCandidate(char: "😀", key: "a"),
