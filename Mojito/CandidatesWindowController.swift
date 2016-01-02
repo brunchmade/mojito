@@ -15,6 +15,6 @@ class CandidatesWindowController: NSWindowController {
             x: rect.origin.x + rect.width / 2 - frame.width / 2,
             y: rect.origin.y + rect.height + 10
         )
-        window!.setFrame(frame, display: true, animate: true)
+        window!.setFrame(frame, display: true, animate: false)
     }
 }
