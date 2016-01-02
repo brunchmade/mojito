@@ -13,7 +13,7 @@ import SwiftyJSON
 class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: Properties
     private let storyboard:NSStoryboard!
-    private let windowController:NSWindowController!
+    private let windowController:CandidatesWindowController!
     private let candidatesViewController:CandidatesViewController
     private let emojis:[Emoji!]!
     
@@ -31,7 +31,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: Init
     override init!(name: String!, bundleIdentifier: String!) {
         storyboard = NSStoryboard(name: "Candidates", bundle: nil)
-        windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! NSWindowController
+        windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
         candidatesViewController = windowController.contentViewController! as! CandidatesViewController
 
         // read emoji lib data
@@ -58,8 +58,6 @@ class MojitServer : IMKServer, MojitServerProtocol {
         }
         
         super.init(name: name, bundleIdentifier: bundleIdentifier)
-        // XXX
-        // windowController.showWindow(self)
     }
     
     // MARK: MojitServerProtocol
@@ -71,8 +69,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     }
     
     func moveCandidates(rect: NSRect!) {
-        // TODO: Adjust the window more according to the rect
-        windowController.window!.setFrameTopLeftPoint(rect.origin)
+        windowController.moveForInputText(rect)
     }
     
     func updateCandidates(candidates: [EmojiCandidate!]!) {
@@ -89,7 +86,6 @@ class MojitServer : IMKServer, MojitServerProtocol {
         DDLogInfo("Hide candidates")
         windowController.window!.orderOut(self)
     }
-
     
     func selectNext() {
         let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
