@@ -207,5 +207,20 @@ class MojitoInputControllerTests: XCTestCase {
             XCTAssertFalse(controller.inputText(String(char), client: textInput))
         }
     }
+    
+    func testPressEnter() {
+        // Type ":)"
+        for char in ":)".characters {
+            XCTAssertTrue(controller.inputText(String(char), client: textInput))
+        }
+        // Press enter
+        XCTAssertTrue(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))
+        // then it should flush the input buffer
+        XCTAssertEqual(textInput.insertTextCalls.count, 1)
+        XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
+            "string": ":)",
+            "replacementRange": NSMakeRange(NSNotFound, NSNotFound)
+        ])
+    }
 
 }
