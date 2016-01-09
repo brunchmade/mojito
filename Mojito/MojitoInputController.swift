@@ -137,10 +137,13 @@ class MojitoInputController : NSObject {
     
     override func commitComposition(sender: AnyObject!) {
         textInput = sender as! IMKTextInput
-        DDLogInfo("commitComposition \(sender)")
+        DDLogInfo("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate)")
         if (inputEmojiMode) {
             if let emoji = mojitServer.selectedCandidate {
                 textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
+            // we don't have selected candidate, just flush the input buffer
+            } else {
+                textInput.insertText(inputBuffer, replacementRange: NSMakeRange(NSNotFound, NSNotFound))
             }
         }
         reset()
