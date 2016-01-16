@@ -15,6 +15,11 @@ class MojitoInputController : NSObject {
     // String buffer for input chars
     private var inputBuffer:String! = "" {
         didSet {
+            if (inputBuffer.characters.count >= 3) {
+                mojitServer.displayCandidates()
+            } else {
+                mojitServer.hideCandidates()
+            }
             engine.keyword = inputKeyword
             if let candidates = engine.candidates() {
                 mojitServer.updateCandidates(candidates)
@@ -48,9 +53,7 @@ class MojitoInputController : NSObject {
     }
     private var inputEmojiMode:Bool = false {
         didSet {
-            if (inputEmojiMode) {
-                mojitServer.displayCandidates()
-            } else {
+            if (!inputEmojiMode) {
                 mojitServer.hideCandidates()
             }
         }
