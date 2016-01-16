@@ -158,7 +158,6 @@ class MojitoInputControllerTests: XCTestCase {
         let keyword = ":shit:"
         for char in keyword.characters {
             controller.inputText(String(char), client: textInput)
-            XCTAssertTrue(server.candidatesVisible)
         }
         XCTAssertEqual(textInput.insertTextCalls.count, 0)
         // ensure update candidates is called correctly
@@ -223,4 +222,19 @@ class MojitoInputControllerTests: XCTestCase {
         ])
     }
 
+    func testShowCandidateOnlyAfter2Chars() {
+        // Type ":f"
+        for char in ":f".characters {
+            controller.inputText(String(char), client: textInput)
+        }
+        XCTAssertFalse(server.candidatesVisible)
+        // Type "o"
+        controller.inputText("o", client: textInput)
+        XCTAssertTrue(server.candidatesVisible)
+        
+        // press backword delete
+        controller.didCommandBySelector(Selector("deleteBackward:"), client: textInput)
+        XCTAssertFalse(server.candidatesVisible)
+        
+    }
 }
