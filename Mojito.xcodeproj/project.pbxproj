@@ -23,7 +23,7 @@
 		D84045871C648B18007FBD31 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; };
 		D84045881C648B18007FBD31 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D840458A1C648B29007FBD31 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045891C648B29007FBD31 /* Result.framework.dSYM */; };
-		D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B41C2A0FE1005E57CF /* AppDelegate.m */; };
+		D840458C1C648BBE007FBD31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840458B1C648BBE007FBD31 /* AppDelegate.swift */; };
 		D88094B81C2A0FE2005E57CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B71C2A0FE2005E57CF /* main.m */; };
 		D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094BA1C2A0FE2005E57CF /* ViewController.m */; };
 		D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D88094BC1C2A0FE2005E57CF /* Assets.xcassets */; };
@@ -114,9 +114,8 @@
 		D84045841C648B0B007FBD31 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		D84045861C648B18007FBD31 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		D84045891C648B29007FBD31 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/Mac/Result.framework.dSYM; sourceTree = "<group>"; };
+		D840458B1C648BBE007FBD31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D88094B01C2A0FE1005E57CF /* Mojito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojito.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D88094B31C2A0FE1005E57CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D88094B41C2A0FE1005E57CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D88094B71C2A0FE2005E57CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D88094B91C2A0FE2005E57CF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D88094BA1C2A0FE2005E57CF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -213,8 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				D8E82CE01C2BD79A00866A7A /* models */,
-				D88094B31C2A0FE1005E57CF /* AppDelegate.h */,
-				D88094B41C2A0FE1005E57CF /* AppDelegate.m */,
+				D840458B1C648BBE007FBD31 /* AppDelegate.swift */,
 				D88094B91C2A0FE2005E57CF /* ViewController.h */,
 				D88094BA1C2A0FE2005E57CF /* ViewController.m */,
 				D88094D81C2A1193005E57CF /* ProxyInputController.h */,
@@ -399,9 +397,9 @@
 				D8E82CE21C2BD8A000866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */,
 				D81B91471C33835F00526895 /* Emoji.swift in Sources */,
+				D840458C1C648BBE007FBD31 /* AppDelegate.swift in Sources */,
 				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
 				D88094B81C2A0FE2005E57CF /* main.m in Sources */,
-				D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */,
 				D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */,
 				D88094DA1C2A1193005E57CF /* ProxyInputController.m in Sources */,
 			);

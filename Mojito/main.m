@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import <InputMethodKit/InputMethodKit.h>
 #import "OVInputSourceHelper.h"
-#import "AppDelegate.h"
 #import "Mojito-Swift.h"
 
 int main(int argc, const char * argv[]) {
@@ -46,7 +45,6 @@ int main(int argc, const char * argv[]) {
                     return -1;
                 }
             }
-            
             return 0;
         }
 
