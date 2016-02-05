@@ -16,7 +16,7 @@ protocol MojitServerProtocol {
     weak var activeInputController:MojitoInputController? { get set }
     
     /// Make an emoji input engine which conforms EmojiInputEngineProtocol
-    func makeEmojiInputEngine() -> EmojiInputEngineProtocol!
+    func makeEmojiInputEngine() -> EmojiInputEngineProtocol
     
     /// Display candidates
     func displayCandidates()
@@ -25,10 +25,10 @@ protocol MojitServerProtocol {
     func hideCandidates()
     
     /// Update candidates position according to given text rect
-    func moveCandidates(rect: NSRect!)
+    func moveCandidates(rect: NSRect)
     
     /// Update candidates
-    func updateCandidates(candidates: [EmojiCandidate!]!)
+    func updateCandidates(candidates: [EmojiCandidate])
     
     /// Select next candidate
     func selectNext()

@@ -9,8 +9,8 @@
 import Foundation
 
 struct Emoji {
-    let key:String!
-    let char:Character!
-    let categories:[String!]!
-    let keywords:[String!]!
+    let key:String
+    let char:Character
+    let categories:[String]
+    let keywords:[String]
 }

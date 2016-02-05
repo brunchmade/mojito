@@ -9,7 +9,7 @@
 import InputMethodKit
 
 class MockMojitServer: IMKServer, MojitServerProtocol {
-    var emojiEngine:EmojiInputEngineProtocol?
+    var emojiEngine:EmojiInputEngineProtocol
     var selectedCandidateToReturn:EmojiCandidate?
     var updateCandidatesCalls:NSMutableArray
     // whether is candidates UI visible or not
@@ -22,20 +22,17 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
         }
     }
     
-    init!(engine: EmojiInputEngineProtocol!) {
-        emojiEngine = engine
-        if (emojiEngine == nil) {
-            emojiEngine = MockEmojiInputEngine()
-        }
+    init!(engine: EmojiInputEngineProtocol = MockEmojiInputEngine()) {
+        self.emojiEngine = engine
         updateCandidatesCalls = NSMutableArray()
         super.init()
     }
     
-    func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
+    func makeEmojiInputEngine() -> EmojiInputEngineProtocol {
         return emojiEngine
     }
 
-    func updateCandidates(candidates: [EmojiCandidate!]!) {
+    func updateCandidates(candidates: [EmojiCandidate]) {
         updateCandidatesCalls.addObject(candidates)
     }
     
@@ -54,7 +51,7 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
         
     }
     
-    func moveCandidates(rect: NSRect!) {
+    func moveCandidates(rect: NSRect) {
         
     }
     

@@ -15,5 +15,5 @@ protocol EmojiInputEngineProtocol {
     
     /// Get candidates for given emoji keyword
     /// - Returns: An Array of EmojiCandidate order by the matching score
-    func candidates() -> [EmojiCandidate!]!
+    func candidates() -> [EmojiCandidate]
 }

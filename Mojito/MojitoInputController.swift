@@ -13,7 +13,7 @@ import CocoaLumberjack
 // Inherit NSObject so that this class can be used with Objective C
 class MojitoInputController : NSObject {
     // String buffer for input chars
-    private var inputBuffer:String! = "" {
+    private var inputBuffer:String = "" {
         didSet {
             if (inputBuffer.characters.count >= 3) {
                 mojitServer.displayCandidates()
@@ -21,7 +21,8 @@ class MojitoInputController : NSObject {
                 mojitServer.hideCandidates()
             }
             engine.keyword = inputKeyword
-            if let candidates = engine.candidates() {
+            let candidates = engine.candidates()
+            if (candidates.count > 0) {
                 mojitServer.updateCandidates(candidates)
                 var rect = NSRect()
                 textInput.attributesForCharacterIndex(0, lineHeightRectangle: &rect)
@@ -33,7 +34,7 @@ class MojitoInputController : NSObject {
     
     /// The keyword part in input buffer
     /// For example, if the input buffer is something like `:foo bar:`, then the keyword should be `foo bar`
-    private var inputKeyword:String! {
+    private var inputKeyword:String {
         get {
             // we have no colon prefix, or the colon is the only char, just return ""
             if (!inputBuffer.hasPrefix(":") || inputBuffer.characters.count == 1) {
@@ -58,24 +59,24 @@ class MojitoInputController : NSObject {
             }
         }
     }
-    private var mojitServer:MojitServerProtocol!
-    private var engine:EmojiInputEngineProtocol!
-    private var textInput:IMKTextInput!
+    private var mojitServer:MojitServerProtocol
+    private var engine:EmojiInputEngineProtocol
+    private var textInput:IMKTextInput
     
-    init!(server: IMKServer!, delegate: AnyObject!, client inputClient: AnyObject!) {
-        super.init()
+    init!(server: IMKServer, delegate: AnyObject!, client inputClient: AnyObject) {
         DDLogInfo("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
         mojitServer = server as! MojitServerProtocol
-        mojitServer.activeInputController = self
         engine = mojitServer.makeEmojiInputEngine()
         textInput = inputClient as! IMKTextInput
+        super.init()
+        mojitServer.activeInputController = self
     }
     
     func menu() -> NSMenu! {
         return nil
     }
     
-    func activateServer(sender: AnyObject!) {
+    func activateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
         DDLogInfo("activateServer \(sender)")
         // TODO: maybe we should find a better way to let UI notify input controller that a candidate is double clicked?
@@ -83,7 +84,7 @@ class MojitoInputController : NSObject {
         reset()
     }
     
-    func deactivateServer(sender: AnyObject!) {
+    func deactivateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
         DDLogInfo("deactivateServer \(sender)")
         mojitServer.hideCandidates()
@@ -91,7 +92,7 @@ class MojitoInputController : NSObject {
         reset()
     }
     
-    override func didCommandBySelector(aSelector: Selector, client sender: AnyObject!) -> Bool {
+    override func didCommandBySelector(aSelector: Selector, client sender: AnyObject) -> Bool {
         textInput = sender as! IMKTextInput
         DDLogInfo("didCommandBySelector \(aSelector) \(sender)")
         if (aSelector == "insertNewline:") {
@@ -138,7 +139,7 @@ class MojitoInputController : NSObject {
         return false
     }
     
-    override func commitComposition(sender: AnyObject!) {
+    override func commitComposition(sender: AnyObject) {
         textInput = sender as! IMKTextInput
         DDLogInfo("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate)")
         if (inputEmojiMode) {
@@ -152,7 +153,7 @@ class MojitoInputController : NSObject {
         reset()
     }
     
-    override func inputText(string: String!, client sender: AnyObject!) -> Bool {
+    override func inputText(string: String, client sender: AnyObject) -> Bool {
         textInput = sender as! IMKTextInput
         if (string == ":" || inputEmojiMode) {
             // Just submit ":" when user type "::"
@@ -171,7 +172,7 @@ class MojitoInputController : NSObject {
     }
     
     /// Submit candidate to text input
-    func submitCandidate(emoji: EmojiCandidate!) {
+    func submitCandidate(emoji: EmojiCandidate) {
         textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
         reset()
     }

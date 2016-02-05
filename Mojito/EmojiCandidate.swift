@@ -12,16 +12,16 @@ import Cocoa
 
 class EmojiCandidate : NSObject {
     /// Character of the emoji candidate
-    var char:Character!
+    var char:Character
     /// The key name for the emoji, e.g. for :grinning:, the key is `grinning`
-    var key:String!
+    var key:String
 
-    init(char: Character!, key: String!) {
+    init(char: Character, key: String) {
         self.char = char
         self.key = key
     }
     
-    init(emoji: Emoji!) {
+    init(emoji: Emoji) {
         self.char = emoji.char
         self.key = emoji.key
     }

@@ -12,10 +12,10 @@ import SwiftyJSON
 
 class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: Properties
-    private let storyboard:NSStoryboard!
-    private let windowController:CandidatesWindowController!
+    private let storyboard:NSStoryboard
+    private let windowController:CandidatesWindowController
     private let candidatesViewController:CandidatesViewController
-    private let emojis:[Emoji!]!
+    private var emojis:[Emoji] = []
     
     weak var activeInputController:MojitoInputController?
     var selectedCandidate:EmojiCandidate? {
@@ -29,10 +29,10 @@ class MojitServer : IMKServer, MojitServerProtocol {
     }
     
     // MARK: Init
-    override init!(name: String!, bundleIdentifier: String!) {
-        storyboard = NSStoryboard(name: "Candidates", bundle: nil)
-        windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
-        candidatesViewController = windowController.contentViewController! as! CandidatesViewController
+    override init!(name: String, bundleIdentifier: String) {
+        self.storyboard = NSStoryboard(name: "Candidates", bundle: nil)
+        self.windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
+        self.candidatesViewController = windowController.contentViewController! as! CandidatesViewController
 
         // read emoji lib data
         let bundle = NSBundle.mainBundle()
@@ -40,12 +40,11 @@ class MojitServer : IMKServer, MojitServerProtocol {
         let emojilibContent = NSData(contentsOfFile: emojilibPath!)
         let emojilibJSON = JSON(data: emojilibContent!)
         let keys = emojilibJSON["keys"]
-        emojis = []
         for (_, obj):(String, JSON) in keys {
             let key = obj.stringValue
             let subJSON = emojilibJSON[key]
-            let categories:[String!]! = subJSON["category"].map({ $1.stringValue })
-            let keywords:[String!]! = subJSON["keywords"].map({ $1.stringValue })
+            let categories:[String] = subJSON["category"].map({ $1.stringValue })
+            let keywords:[String] = subJSON["keywords"].map({ $1.stringValue })
             if let char = subJSON["char"].string {
                 let emoji = Emoji(
                     key: key,
@@ -63,16 +62,16 @@ class MojitServer : IMKServer, MojitServerProtocol {
     // MARK: MojitServerProtocol
     /// Build an EmojiInputEngine and return
     /// - Returns: An emoji input engine which conforms EmojiInputEngineProtocol
-    func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
+    func makeEmojiInputEngine() -> EmojiInputEngineProtocol {
         // TODO: pass configuration and emoji lib data to emoji input engine
         return EmojiInputEngine(emojis: emojis)
     }
     
-    func moveCandidates(rect: NSRect!) {
+    func moveCandidates(rect: NSRect) {
         windowController.moveForInputText(rect)
     }
     
-    func updateCandidates(candidates: [EmojiCandidate!]!) {
+    func updateCandidates(candidates: [EmojiCandidate]) {
         DDLogInfo("Update candidates \(candidates)")
         candidatesViewController.candidates = candidates
     }

@@ -11,11 +11,11 @@ import Foundation
 /// EmojiInputEngine protocol implementation by returning candidates matching
 class EmojiInputEngine : EmojiInputEngineProtocol {
     private var _keyword:String!
-    private let emojis:[Emoji!]!
+    private let emojis:[Emoji]
     // map from keyword to emojis, e.g. "face": ["smile", "sad", ...]
-    private let keywordIndex:[String:[Emoji!]!]!
+    private let keywordIndex:[String:[Emoji]]
     // Sorted keywords
-    private let sortedKeywords:[String]!
+    private let sortedKeywords:[String]
     
     var keyword:String {
         get {
@@ -27,8 +27,8 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
         }
     }
     
-    init(emojis: [Emoji!]!) {
-        var keywordIndex = [String:[Emoji!]!]()
+    init(emojis: [Emoji]) {
+        var keywordIndex = [String:[Emoji]]()
         for emoji in emojis {
             var keywords = emoji.keywords
             keywords.append(emoji.key)
@@ -46,10 +46,10 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
         self.sortedKeywords = Array(keywordIndex.keys).sort()
     }
     
-    func candidates() -> [EmojiCandidate!]! {
+    func candidates() -> [EmojiCandidate] {
         // TODO: Implement fuzzy search here
         let prefixMatches = EmojiInputEngine.binarySearch(EmojiInputEngine.normalize(keyword), array: sortedKeywords)
-        var candidates:[EmojiCandidate!]! = []
+        var candidates:[EmojiCandidate] = []
         for match in prefixMatches {
             let emojis = keywordIndex[match]!
             candidates.appendContentsOf(emojis.map({
@@ -60,7 +60,7 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     /// Do binary search for finding spefic prefix in string array
-    class func binarySearch(prefix: String!, array: [String]!) -> [String]! {
+    class func binarySearch(prefix: String, array: [String]) -> [String]! {
         var left = 0
         var right = array.count - 1
         
@@ -93,7 +93,7 @@ class EmojiInputEngine : EmojiInputEngineProtocol {
     }
     
     /// Normalize keywords
-    class func normalize(string: String!) -> String! {
+    class func normalize(string: String) -> String {
         return string.lowercaseString
     }
 }

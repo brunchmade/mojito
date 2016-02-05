@@ -81,7 +81,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     }
     
     /// Called to handle submit canddate event from the UI
-    private func submitCandidate(item: CandidatesItem!) {
+    private func submitCandidate(item: CandidatesItem) {
         let app = NSApplication.sharedApplication().delegate as! AppDelegate
         if let controller = app.mojitServer.activeInputController {
             controller.submitCandidate(item.representedObject as! EmojiCandidate)
