@@ -6,11 +6,12 @@
 //  Copyright © 2015 VictorLin. All rights reserved.
 //
 
+import XCGLogger
 import InputMethodKit
-import CocoaLumberjack
 import SwiftyJSON
 
 class MojitServer : IMKServer, MojitServerProtocol {
+    let log = XCGLogger.defaultInstance()
     // MARK: Properties
     private let storyboard:NSStoryboard
     private let windowController:CandidatesWindowController
@@ -72,17 +73,17 @@ class MojitServer : IMKServer, MojitServerProtocol {
     }
     
     func updateCandidates(candidates: [EmojiCandidate]) {
-        DDLogInfo("Update candidates \(candidates)")
+        log.info("Update candidates \(candidates)")
         candidatesViewController.candidates = candidates
     }
     
     func displayCandidates() {
-        DDLogInfo("Display candidates")
+        log.info("Display candidates")
         windowController.showWindow(self)
     }
     
     func hideCandidates() {
-        DDLogInfo("Hide candidates")
+        log.info("Hide candidates")
         windowController.window!.orderOut(self)
     }
     

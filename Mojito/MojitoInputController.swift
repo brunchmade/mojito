@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import XCGLogger
 import InputMethodKit
-import CocoaLumberjack
 
 // Inherit NSObject so that this class can be used with Objective C
 class MojitoInputController : NSObject {
+    let log = XCGLogger.defaultInstance()
     // String buffer for input chars
     private var inputBuffer:String = "" {
         didSet {
@@ -64,7 +65,7 @@ class MojitoInputController : NSObject {
     private var textInput:IMKTextInput
     
     init!(server: IMKServer, delegate: AnyObject!, client inputClient: AnyObject) {
-        DDLogInfo("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
+        log.info("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
         mojitServer = server as! MojitServerProtocol
         engine = mojitServer.makeEmojiInputEngine()
         textInput = inputClient as! IMKTextInput
@@ -78,7 +79,7 @@ class MojitoInputController : NSObject {
     
     func activateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
-        DDLogInfo("activateServer \(sender)")
+        log.info("activateServer \(sender)")
         // TODO: maybe we should find a better way to let UI notify input controller that a candidate is double clicked?
         mojitServer.activeInputController = self
         reset()
@@ -86,7 +87,7 @@ class MojitoInputController : NSObject {
     
     func deactivateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
-        DDLogInfo("deactivateServer \(sender)")
+        log.info("deactivateServer \(sender)")
         mojitServer.hideCandidates()
         mojitServer.activeInputController = nil
         reset()
@@ -94,9 +95,9 @@ class MojitoInputController : NSObject {
     
     override func didCommandBySelector(aSelector: Selector, client sender: AnyObject) -> Bool {
         textInput = sender as! IMKTextInput
-        DDLogInfo("didCommandBySelector \(aSelector) \(sender)")
+        log.info("didCommandBySelector \(aSelector) \(sender)")
         if (aSelector == "insertNewline:") {
-            DDLogInfo("Insert new line")
+            log.info("Insert new line")
             if (inputEmojiMode) {
                 self.commitComposition(sender)
                 return true
@@ -141,7 +142,7 @@ class MojitoInputController : NSObject {
     
     override func commitComposition(sender: AnyObject) {
         textInput = sender as! IMKTextInput
-        DDLogInfo("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate)")
+        log.info("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate)")
         if (inputEmojiMode) {
             if let emoji = mojitServer.selectedCandidate {
                 textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))

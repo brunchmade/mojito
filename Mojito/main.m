@@ -8,15 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import <InputMethodKit/InputMethodKit.h>
-#import "CocoaLumberjack/CocoaLumberjack.h"
 #import "OVInputSourceHelper.h"
 #import "AppDelegate.h"
-
+#import "Mojito-Swift.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        [DDLog addLogger:[DDASLLogger sharedInstance]];
-        
+        [Logging setupLogging];
         // register and enable the input source (along with all its input modes)
         if (argc > 1 && !strcmp(argv[1], "install")) {
             NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];

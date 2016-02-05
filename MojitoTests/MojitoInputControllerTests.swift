@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import CocoaLumberjack
 
 class MojitoInputControllerTests: XCTestCase {
     

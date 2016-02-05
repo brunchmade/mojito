@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0E3102A584E0CFC685FAF3 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BB8C363AA021B892CC9DFCA /* Pods.framework */; };
-		D81B91451C33815800526895 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81B91441C33815800526895 /* SwiftyJSON.framework */; };
 		D81B91471C33835F00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B91481C33876C00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B914F1C33D85700526895 /* EmojiInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */; };
+		D84045701C6484D1007FBD31 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; };
+		D84045711C6484D1007FBD31 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84045721C6484D1007FBD31 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */; };
+		D84045731C6484D1007FBD31 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D840457A1C64861F007FBD31 /* ReactiveCocoa.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */; };
+		D840457B1C64861F007FBD31 /* SwiftyJSON.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */; };
+		D840457D1C648804007FBD31 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840457C1C648804007FBD31 /* Logging.swift */; };
+		D84045801C6489CC007FBD31 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840457F1C6489CC007FBD31 /* XCGLogger.framework */; };
+		D84045811C6489CC007FBD31 /* XCGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D840457F1C6489CC007FBD31 /* XCGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D84045831C6489DA007FBD31 /* XCGLogger.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045821C6489DA007FBD31 /* XCGLogger.framework.dSYM */; };
+		D84045871C648B18007FBD31 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; };
+		D84045881C648B18007FBD31 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D840458A1C648B29007FBD31 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045891C648B29007FBD31 /* Result.framework.dSYM */; };
 		D88094B51C2A0FE1005E57CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B41C2A0FE1005E57CF /* AppDelegate.m */; };
 		D88094B81C2A0FE2005E57CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B71C2A0FE2005E57CF /* main.m */; };
 		D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094BA1C2A0FE2005E57CF /* ViewController.m */; };
@@ -58,13 +69,51 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D840456A1C648426007FBD31 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D84045711C6484D1007FBD31 /* ReactiveCocoa.framework in Embed Frameworks */,
+				D84045731C6484D1007FBD31 /* SwiftyJSON.framework in Embed Frameworks */,
+				D84045811C6489CC007FBD31 /* XCGLogger.framework in Embed Frameworks */,
+				D84045881C648B18007FBD31 /* Result.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D84045751C6485FB007FBD31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				D840458A1C648B29007FBD31 /* Result.framework.dSYM in CopyFiles */,
+				D840457A1C64861F007FBD31 /* ReactiveCocoa.framework.dSYM in CopyFiles */,
+				D84045831C6489DA007FBD31 /* XCGLogger.framework.dSYM in CopyFiles */,
+				D840457B1C64861F007FBD31 /* SwiftyJSON.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		6BB8C363AA021B892CC9DFCA /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		974D1C5801A2732007299E1A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A8F88591748C391BACE8524F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		D81B91441C33815800526895 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mojito-dcxkwtrdofxrowcygbyovmeinbvi/Build/Products/Debug/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		D81B91461C33835F00526895 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineTests.swift; sourceTree = "<group>"; };
+		D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/Mac/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
+		D84045761C64861F007FBD31 /* CocoaLumberjack.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CocoaLumberjack.framework.dSYM; path = Carthage/Build/Mac/CocoaLumberjack.framework.dSYM; sourceTree = "<group>"; };
+		D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/Mac/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
+		D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = Carthage/Build/Mac/SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
+		D840457C1C648804007FBD31 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		D840457F1C6489CC007FBD31 /* XCGLogger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCGLogger.framework; path = Carthage/Build/Mac/XCGLogger.framework; sourceTree = "<group>"; };
+		D84045821C6489DA007FBD31 /* XCGLogger.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = XCGLogger.framework.dSYM; path = Carthage/Build/Mac/XCGLogger.framework.dSYM; sourceTree = "<group>"; };
+		D84045841C648B0B007FBD31 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		D84045861C648B18007FBD31 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		D84045891C648B29007FBD31 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/Mac/Result.framework.dSYM; sourceTree = "<group>"; };
 		D88094B01C2A0FE1005E57CF /* Mojito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D88094B31C2A0FE1005E57CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D88094B41C2A0FE1005E57CF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -106,8 +155,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81B91451C33815800526895 /* SwiftyJSON.framework in Frameworks */,
-				4F0E3102A584E0CFC685FAF3 /* Pods.framework in Frameworks */,
+				D84045701C6484D1007FBD31 /* ReactiveCocoa.framework in Frameworks */,
+				D84045721C6484D1007FBD31 /* SwiftyJSON.framework in Frameworks */,
+				D84045801C6489CC007FBD31 /* XCGLogger.framework in Frameworks */,
+				D84045871C648B18007FBD31 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,28 +175,27 @@
 		687C0858694B9856B608F468 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D81B91441C33815800526895 /* SwiftyJSON.framework */,
-				6BB8C363AA021B892CC9DFCA /* Pods.framework */,
+				D84045841C648B0B007FBD31 /* Result.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B1C570282084926BEB12DC18 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A8F88591748C391BACE8524F /* Pods.debug.xcconfig */,
-				974D1C5801A2732007299E1A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		D88094A71C2A0FE1005E57CF = {
 			isa = PBXGroup;
 			children = (
+				D84045891C648B29007FBD31 /* Result.framework.dSYM */,
+				D84045861C648B18007FBD31 /* Result.framework */,
+				D84045821C6489DA007FBD31 /* XCGLogger.framework.dSYM */,
+				D840457F1C6489CC007FBD31 /* XCGLogger.framework */,
+				D84045761C64861F007FBD31 /* CocoaLumberjack.framework.dSYM */,
+				D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */,
+				D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */,
+				D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */,
+				D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */,
+				D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */,
 				D88094B21C2A0FE1005E57CF /* Mojito */,
 				D88094C91C2A0FE2005E57CF /* MojitoTests */,
 				D88094B11C2A0FE1005E57CF /* Products */,
-				B1C570282084926BEB12DC18 /* Pods */,
 				687C0858694B9856B608F468 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -178,6 +228,7 @@
 				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
 				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
 				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
+				D840457C1C648804007FBD31 /* Logging.swift */,
 				D88094D51C2A1086005E57CF /* Mojito-Bridging-Header.h */,
 				D88094BC1C2A0FE2005E57CF /* Assets.xcassets */,
 				D88094BE1C2A0FE2005E57CF /* Main.storyboard */,
@@ -238,12 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D88094CF1C2A0FE2005E57CF /* Build configuration list for PBXNativeTarget "Mojito" */;
 			buildPhases = (
-				EFF2ACA97E0BC031B99F0B6A /* Check Pods Manifest.lock */,
 				D88094AC1C2A0FE1005E57CF /* Sources */,
 				D88094AD1C2A0FE1005E57CF /* Frameworks */,
 				D88094AE1C2A0FE1005E57CF /* Resources */,
-				AF75170C5E2213AF234BC06B /* Embed Pods Frameworks */,
-				93DD09201EE9FA95B2565BC1 /* Copy Pods Resources */,
+				D840456A1C648426007FBD31 /* Embed Frameworks */,
+				D84045751C6485FB007FBD31 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -332,54 +382,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		93DD09201EE9FA95B2565BC1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF75170C5E2213AF234BC06B /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFF2ACA97E0BC031B99F0B6A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D88094AC1C2A0FE1005E57CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -389,6 +391,7 @@
 				D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */,
 				D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */,
 				D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */,
+				D840457D1C648804007FBD31 /* Logging.swift in Sources */,
 				D88094D71C2A1086005E57CF /* MojitoInputController.swift in Sources */,
 				D8C3523A1C34AF3600FA034E /* CandidatesWindow.swift in Sources */,
 				D8E82CE81C2BDD8900866A7A /* EmojiInputEngine.swift in Sources */,
@@ -533,11 +536,14 @@
 		};
 		D88094D01C2A0FE2005E57CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8F88591748C391BACE8524F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Mojito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.brunch.inputmethod.Mojito;
@@ -549,11 +555,14 @@
 		};
 		D88094D11C2A0FE2005E57CF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 974D1C5801A2732007299E1A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Mojito/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.brunch.inputmethod.Mojito;
