@@ -24,6 +24,12 @@
 		D84045881C648B18007FBD31 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D840458A1C648B29007FBD31 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045891C648B29007FBD31 /* Result.framework.dSYM */; };
 		D840458C1C648BBE007FBD31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840458B1C648BBE007FBD31 /* AppDelegate.swift */; };
+		D840458D1C64959E007FBD31 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */; };
+		D840458E1C64959E007FBD31 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; };
+		D840458F1C64959E007FBD31 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; };
+		D84045901C64959E007FBD31 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */; };
+		D84045911C64959E007FBD31 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840457F1C6489CC007FBD31 /* XCGLogger.framework */; };
+		D84045921C649D03007FBD31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840458B1C648BBE007FBD31 /* AppDelegate.swift */; };
 		D88094B81C2A0FE2005E57CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B71C2A0FE2005E57CF /* main.m */; };
 		D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094BA1C2A0FE2005E57CF /* ViewController.m */; };
 		D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D88094BC1C2A0FE2005E57CF /* Assets.xcassets */; };
@@ -165,6 +171,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D840458D1C64959E007FBD31 /* CocoaLumberjack.framework in Frameworks */,
+				D840458E1C64959E007FBD31 /* ReactiveCocoa.framework in Frameworks */,
+				D840458F1C64959E007FBD31 /* Result.framework in Frameworks */,
+				D84045901C64959E007FBD31 /* SwiftyJSON.framework in Frameworks */,
+				D84045911C64959E007FBD31 /* XCGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +428,7 @@
 				D81B91481C33876C00526895 /* Emoji.swift in Sources */,
 				D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */,
 				D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */,
+				D84045921C649D03007FBD31 /* AppDelegate.swift in Sources */,
 				D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */,
 				D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
@@ -575,6 +587,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MojitoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.brunch.MojitoTests;
@@ -591,6 +607,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MojitoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cool.brunch.MojitoTests;

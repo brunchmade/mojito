@@ -17,7 +17,6 @@ class MojitoInputControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        DDLog.addLogger(DDTTYLogger.sharedInstance())
         
         engine = MockEmojiInputEngine()
         server = MockMojitServer(engine: engine)
@@ -30,7 +29,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     override func tearDown() {
-        DDLog.removeAllLoggers()
         controller.activateServer(textInput)
         super.tearDown()
     }
