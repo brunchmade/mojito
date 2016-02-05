@@ -12,6 +12,6 @@ before_install:
     - "carthage update"
 script: >
     xctool
-    -workspace Mojito.xcworkspace
+    -project Mojito.xcodeproj
     -scheme Mojito
     build test
