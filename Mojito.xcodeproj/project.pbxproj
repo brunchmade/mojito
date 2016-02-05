@@ -24,7 +24,6 @@
 		D84045881C648B18007FBD31 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D840458A1C648B29007FBD31 /* Result.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D84045891C648B29007FBD31 /* Result.framework.dSYM */; };
 		D840458C1C648BBE007FBD31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840458B1C648BBE007FBD31 /* AppDelegate.swift */; };
-		D840458D1C64959E007FBD31 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */; };
 		D840458E1C64959E007FBD31 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; };
 		D840458F1C64959E007FBD31 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84045861C648B18007FBD31 /* Result.framework */; };
 		D84045901C64959E007FBD31 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */; };
@@ -171,7 +170,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D840458D1C64959E007FBD31 /* CocoaLumberjack.framework in Frameworks */,
 				D840458E1C64959E007FBD31 /* ReactiveCocoa.framework in Frameworks */,
 				D840458F1C64959E007FBD31 /* Result.framework in Frameworks */,
 				D84045901C64959E007FBD31 /* SwiftyJSON.framework in Frameworks */,
