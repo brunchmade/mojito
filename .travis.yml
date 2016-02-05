@@ -6,9 +6,10 @@ before_install:
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
-    # upgrade pod
-    - "gem install cocoapods"
-    - "pod --version"
+    # install carthage
+    - "brew gem install carthage"
+    - "carthage bootstrap"
+    - "carthage update"
 script: >
     xctool
     -workspace Mojito.xcworkspace
