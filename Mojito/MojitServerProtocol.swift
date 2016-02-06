@@ -7,22 +7,23 @@
 //
 
 import Cocoa
+import ReactiveCocoa
 
 protocol MojitServerProtocol {
     /// The selected candidate
     var selectedCandidate:EmojiCandidate? { get }
+    
+    /// Property for determining whether the candidates view is visible or not
+    var candidatesVisible:MutableProperty<Bool> { get }
+    
+    /// Candidates to display
+    var candidates:MutableProperty<[EmojiCandidate]> { get }
     
     /// The active input controller
     weak var activeInputController:MojitoInputController? { get set }
     
     /// Make an emoji input engine which conforms EmojiInputEngineProtocol
     func makeEmojiInputEngine() -> EmojiInputEngineProtocol
-    
-    /// Display candidates
-    func displayCandidates()
-    
-    /// Hide candidates
-    func hideCandidates()
     
     /// Update candidates position according to given text rect
     func moveCandidates(rect: NSRect)

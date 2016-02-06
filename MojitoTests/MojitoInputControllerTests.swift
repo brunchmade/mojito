@@ -140,12 +140,12 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testInputInsert() {
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
         // Type "Hello "
         for char in "Hello ".characters {
             controller.inputText(String(char), client: textInput)
         }
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
     
         let shitEmoji = EmojiCandidate(char: Character("💩"), key: "shit")
         let smileEmoji = EmojiCandidate(char: Character("😀"), key: "smile")
@@ -224,14 +224,14 @@ class MojitoInputControllerTests: XCTestCase {
         for char in ":f".characters {
             controller.inputText(String(char), client: textInput)
         }
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
         // Type "o"
         controller.inputText("o", client: textInput)
-        XCTAssertTrue(server.candidatesVisible)
+        XCTAssertTrue(server.candidatesVisible.value)
         
         // press backword delete
         controller.didCommandBySelector(Selector("deleteBackward:"), client: textInput)
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
         
     }
 }

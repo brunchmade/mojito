@@ -7,13 +7,14 @@
 //
 
 import InputMethodKit
+import ReactiveCocoa
 
 class MockMojitServer: IMKServer, MojitServerProtocol {
     var emojiEngine:EmojiInputEngineProtocol
     var selectedCandidateToReturn:EmojiCandidate?
     var updateCandidatesCalls:NSMutableArray
-    // whether is candidates UI visible or not
-    var candidatesVisible:Bool = false
+    private(set) var candidatesVisible = MutableProperty<Bool>(false)
+    private(set) var candidates = MutableProperty<[EmojiCandidate]>([])
 
     weak var activeInputController:MojitoInputController?
     var selectedCandidate:EmojiCandidate? {
@@ -34,14 +35,6 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
 
     func updateCandidates(candidates: [EmojiCandidate]) {
         updateCandidatesCalls.addObject(candidates)
-    }
-    
-    func displayCandidates() {
-        candidatesVisible = true
-    }
-    
-    func hideCandidates() {
-        candidatesVisible = false
     }
     
     func selectNext() {

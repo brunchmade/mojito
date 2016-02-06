@@ -17,9 +17,9 @@ class MojitoInputController : NSObject {
     private var inputBuffer:String = "" {
         didSet {
             if (inputBuffer.characters.count >= 3) {
-                mojitServer.displayCandidates()
+                mojitServer.candidatesVisible.value = true
             } else {
-                mojitServer.hideCandidates()
+                mojitServer.candidatesVisible.value = false
             }
             engine.keyword = inputKeyword
             let candidates = engine.candidates()
@@ -56,7 +56,7 @@ class MojitoInputController : NSObject {
     private var inputEmojiMode:Bool = false {
         didSet {
             if (!inputEmojiMode) {
-                mojitServer.hideCandidates()
+                mojitServer.candidatesVisible.value = false
             }
         }
     }
@@ -88,7 +88,7 @@ class MojitoInputController : NSObject {
     func deactivateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
         log.info("deactivateServer \(sender)")
-        mojitServer.hideCandidates()
+        mojitServer.candidatesVisible.value = false
         mojitServer.activeInputController = nil
         reset()
     }
