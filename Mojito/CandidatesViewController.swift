@@ -35,17 +35,34 @@ class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSC
                     if (index == NSNotFound) {
                         return
                     }
-                    self.collectionView.selectionIndexes = NSIndexSet(index: (index + 1) % viewModel.candidates.value.count)
+                    let newIndex = (index + 1) % viewModel.candidates.value.count
+                    self.collectionView.selectionIndexes = NSIndexSet(index: newIndex)
                 case .SelectPrevious:
                     let index = self.collectionView.selectionIndexes.firstIndex
                     if (index == NSNotFound) {
                         return
                     }
                     let count = viewModel.candidates.value.count
-                    self.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)
+                    let newIndex = (count + index - 1) % count
+                    self.collectionView.selectionIndexes = NSIndexSet(index: newIndex)
                 }
             }
-        
+        viewModel.selectedCandidate <~ self.collectionView.rac_valuesForKeyPath("selectionIndexes", observer: nil)
+            .toSignalProducer()
+            .flatMapError { error in
+                // there should be no error, raise fatal error?
+                return SignalProducer.empty
+            }
+            .lift { signal in
+                return signal
+                    .map { selectionIndexes -> EmojiCandidate? in
+                        let index = (selectionIndexes as! NSIndexSet).firstIndex
+                        if (index == NSNotFound) {
+                            return nil
+                        }
+                        return viewModel.candidates.value[index]
+                }
+            }
     }
     
     override func viewDidLoad() {
