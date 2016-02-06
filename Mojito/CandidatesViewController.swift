@@ -9,8 +9,10 @@
 import Cocoa
 import Foundation
 import ReactiveCocoa
+import XCGLogger
 
 class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+    let log = XCGLogger.defaultInstance()
     var viewModel:CandidatesViewModel!
     
     /// Collection view
@@ -63,6 +65,11 @@ class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSC
                         return viewModel.candidates.value[index]
                 }
             }
+        self.collectionView.rac_valuesForKeyPath("selectionIndexes", observer: nil)
+            .toSignalProducer()
+            .startWithNext { [unowned self] _ in
+                self.collectionView.scrollToItemsAtIndexPaths(self.collectionView.selectionIndexPaths, scrollPosition: .Top)
+            }
     }
     
     override func viewDidLoad() {
@@ -107,6 +114,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSC
     
     func collectionView(collectionView: NSCollectionView, didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>) {
         if let index = indexPaths.first {
+            log.debug("Candidate selected at \(index)")
             viewModel.selectedCandidate.value = viewModel.candidates.value[index.indexAtPosition(1)]
         }
     }
