@@ -7,7 +7,7 @@ before_install:
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
     # install carthage
-    - "brew gem install carthage"
+    - "brew install carthage"
     - "carthage bootstrap"
     - "carthage update"
 script: >
