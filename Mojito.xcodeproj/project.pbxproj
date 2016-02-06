@@ -62,6 +62,8 @@
 		D8F1E9491C65D6300020AE5F /* CandidatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E9471C65D6300020AE5F /* CandidatesViewModel.swift */; };
 		D8F1E94B1C65DFC20020AE5F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94A1C65DFC20020AE5F /* Helpers.swift */; };
 		D8F1E94C1C65DFC20020AE5F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94A1C65DFC20020AE5F /* Helpers.swift */; };
+		D8F1E94E1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */; };
+		D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */; };
 		D8F633F81C30683900D12B9B /* Mojito.icns in Resources */ = {isa = PBXBuildFile; fileRef = D8F633F71C30683900D12B9B /* Mojito.icns */; };
 		D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */; };
 		D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
@@ -152,6 +154,7 @@
 		D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowController.swift; sourceTree = "<group>"; };
 		D8F1E9471C65D6300020AE5F /* CandidatesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewModel.swift; sourceTree = "<group>"; };
 		D8F1E94A1C65DFC20020AE5F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowViewModel.swift; sourceTree = "<group>"; };
 		D8F633F71C30683900D12B9B /* Mojito.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mojito.icns; sourceTree = "<group>"; };
 		D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesItem.xib; sourceTree = "<group>"; };
 		D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CandidatesItem.swift; path = ../CandidatesItem.swift; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 			children = (
 				D8E82CE01C2BD79A00866A7A /* Models */,
 				D8F1E9461C65D5BC0020AE5F /* ViewModels */,
+				D8F1E9501C65E2150020AE5F /* Views */,
 				D840458B1C648BBE007FBD31 /* AppDelegate.swift */,
 				D88094D81C2A1193005E57CF /* ProxyInputController.h */,
 				D88094D91C2A1193005E57CF /* ProxyInputController.m */,
@@ -233,10 +237,6 @@
 				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
 				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
 				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
-				D8C352391C34AF3600FA034E /* CandidatesWindow.swift */,
-				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
-				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
-				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
 				D840457C1C648804007FBD31 /* Logging.swift */,
 				D88094D51C2A1086005E57CF /* Mojito-Bridging-Header.h */,
 				D88094BC1C2A0FE2005E57CF /* Assets.xcassets */,
@@ -295,9 +295,21 @@
 		D8F1E9461C65D5BC0020AE5F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */,
 				D8F1E9471C65D6300020AE5F /* CandidatesViewModel.swift */,
 			);
 			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		D8F1E9501C65E2150020AE5F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8C352391C34AF3600FA034E /* CandidatesWindow.swift */,
+				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
+				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
+				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +430,7 @@
 				D81B91471C33835F00526895 /* Emoji.swift in Sources */,
 				D840458C1C648BBE007FBD31 /* AppDelegate.swift in Sources */,
 				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
+				D8F1E94E1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94B1C65DFC20020AE5F /* Helpers.swift in Sources */,
 				D8F1E9481C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D88094B81C2A0FE2005E57CF /* main.m in Sources */,
@@ -443,6 +456,7 @@
 				D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
+				D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94C1C65DFC20020AE5F /* Helpers.swift in Sources */,
 				D8F1E9491C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,

@@ -8,6 +8,13 @@
 
 import Cocoa
 import ReactiveCocoa
+import Result
+
+enum MojitServerEvent {
+    case SelectNext
+    case SelectPrevious
+    case CandidatesViewMoved(textRect:NSRect)
+}
 
 protocol MojitServerProtocol {
     /// The selected candidate
@@ -18,6 +25,9 @@ protocol MojitServerProtocol {
     
     /// Candidates to display
     var candidates:MutableProperty<[EmojiCandidate]> { get }
+    
+    /// Signal for mojit server events
+    var eventSignal:Signal<MojitServerEvent, NoError> { get }
     
     /// The active input controller
     weak var activeInputController:MojitoInputController? { get set }

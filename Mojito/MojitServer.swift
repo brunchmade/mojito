@@ -12,12 +12,6 @@ import SwiftyJSON
 import ReactiveCocoa
 import Result
 
-enum MojitServerEvent {
-    case SelectNext
-    case SelectPrevious
-    case CandidatesViewMoved(textRect:NSRect)
-}
-
 class MojitServer : IMKServer, MojitServerProtocol {
     let log = XCGLogger.defaultInstance()
 
@@ -31,9 +25,6 @@ class MojitServer : IMKServer, MojitServerProtocol {
     private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
     
     // MARK: Properties
-    private let storyboard:NSStoryboard
-    private let windowController:CandidatesWindowController
-    private let candidatesViewController:CandidatesViewController
     private var emojis:[Emoji] = []
     private let eventObserver:Observer<MojitServerEvent, NoError>
     
@@ -41,10 +32,6 @@ class MojitServer : IMKServer, MojitServerProtocol {
     
     // MARK: Init
     override init!(name: String, bundleIdentifier: String) {
-        self.storyboard = NSStoryboard(name: "Candidates", bundle: nil)
-        self.windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
-        self.candidatesViewController = windowController.contentViewController! as! CandidatesViewController
-
         // read emoji lib data
         let bundle = NSBundle.mainBundle()
         let emojilibPath = bundle.pathForResource("emojilib", ofType: "json")
@@ -85,22 +72,9 @@ class MojitServer : IMKServer, MojitServerProtocol {
     
     func selectNext() {
         self.eventObserver.sendNext(MojitServerEvent.SelectNext)
-        /*
-        let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-        if (index == NSNotFound) {
-            return
-        }
-        candidatesViewController.collectionView.selectionIndexes = NSIndexSet(index: (index + 1) % candidatesViewController.candidates.count)*/
     }
     
     func selectPrevious() {
         self.eventObserver.sendNext(MojitServerEvent.SelectPrevious)
-        /*
-        let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-        if (index == NSNotFound) {
-            return
-        }
-        let count = candidatesViewController.candidates.count
-        candidatesViewController.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)*/
     }
 }

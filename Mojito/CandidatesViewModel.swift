@@ -10,5 +10,13 @@ import Foundation
 import ReactiveCocoa
 
 class CandidatesViewModel {
+    //var selectedIndex:AnyProperty<UInt>
+    
+    private let mojitServer:MojitServerProtocol
+    
+    init(mojitServer:MojitServerProtocol) {
+        self.mojitServer = mojitServer
+        
+    }
 
 }
