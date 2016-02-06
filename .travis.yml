@@ -6,11 +6,9 @@ before_install:
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
-    # upgrade pod
-    - "gem install cocoapods"
-    - "pod --version"
+    - "carthage bootstrap --platform Mac"
 script: >
     xctool
-    -workspace Mojito.xcworkspace
+    -project Mojito.xcodeproj
     -scheme Mojito
     build test

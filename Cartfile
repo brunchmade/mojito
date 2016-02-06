@@ -1,0 +1,4 @@
+github "ReactiveCocoa/ReactiveCocoa" ~> 4.0
+github "SwiftyJSON/SwiftyJSON" ~> 2.3
+github "DaveWoodCom/XCGLogger" ~> 3.2
+

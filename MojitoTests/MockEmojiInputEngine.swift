@@ -8,9 +8,9 @@
 
 class MockEmojiInputEngine: EmojiInputEngineProtocol {
     var keyword:String = ""
-    var candidatesToReturn:[EmojiCandidate!]!
+    var candidatesToReturn:[EmojiCandidate] = []
     
-    func candidates() -> [EmojiCandidate!]! {
+    func candidates() -> [EmojiCandidate] {
         return candidatesToReturn
     }
 }

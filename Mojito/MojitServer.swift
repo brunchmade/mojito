@@ -6,46 +6,43 @@
 //  Copyright © 2015 VictorLin. All rights reserved.
 //
 
+import XCGLogger
 import InputMethodKit
-import CocoaLumberjack
 import SwiftyJSON
+import ReactiveCocoa
+import Result
 
 class MojitServer : IMKServer, MojitServerProtocol {
+    let log = XCGLogger.defaultInstance()
+
+    /// Signal for mojit server events
+    let eventSignal:Signal<MojitServerEvent, NoError>
+    /// Is the candidates window visible or not
+    private(set) var candidatesVisible = MutableProperty<Bool>(false)
+    /// Candidates to display
+    private(set) var candidates = MutableProperty<[EmojiCandidate]>([])
+    /// Selected candidate
+    private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
+    
     // MARK: Properties
-    private let storyboard:NSStoryboard!
-    private let windowController:CandidatesWindowController!
-    private let candidatesViewController:CandidatesViewController
-    private let emojis:[Emoji!]!
+    private var emojis:[Emoji] = []
+    private let eventObserver:Observer<MojitServerEvent, NoError>
     
     weak var activeInputController:MojitoInputController?
-    var selectedCandidate:EmojiCandidate? {
-        get {
-            let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-            if (index == NSNotFound) {
-                return nil
-            }
-            return candidatesViewController.candidates[index]
-        }
-    }
     
     // MARK: Init
-    override init!(name: String!, bundleIdentifier: String!) {
-        storyboard = NSStoryboard(name: "Candidates", bundle: nil)
-        windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
-        candidatesViewController = windowController.contentViewController! as! CandidatesViewController
-
+    override init!(name: String, bundleIdentifier: String) {
         // read emoji lib data
         let bundle = NSBundle.mainBundle()
         let emojilibPath = bundle.pathForResource("emojilib", ofType: "json")
         let emojilibContent = NSData(contentsOfFile: emojilibPath!)
         let emojilibJSON = JSON(data: emojilibContent!)
         let keys = emojilibJSON["keys"]
-        emojis = []
         for (_, obj):(String, JSON) in keys {
             let key = obj.stringValue
             let subJSON = emojilibJSON[key]
-            let categories:[String!]! = subJSON["category"].map({ $1.stringValue })
-            let keywords:[String!]! = subJSON["keywords"].map({ $1.stringValue })
+            let categories:[String] = subJSON["category"].map({ $1.stringValue })
+            let keywords:[String] = subJSON["keywords"].map({ $1.stringValue })
             if let char = subJSON["char"].string {
                 let emoji = Emoji(
                     key: key,
@@ -57,51 +54,27 @@ class MojitServer : IMKServer, MojitServerProtocol {
             }
         }
         
+        (self.eventSignal, self.eventObserver) = Signal<MojitServerEvent, NoError>.pipe()
         super.init(name: name, bundleIdentifier: bundleIdentifier)
     }
     
     // MARK: MojitServerProtocol
     /// Build an EmojiInputEngine and return
     /// - Returns: An emoji input engine which conforms EmojiInputEngineProtocol
-    func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
+    func makeEmojiInputEngine() -> EmojiInputEngineProtocol {
         // TODO: pass configuration and emoji lib data to emoji input engine
         return EmojiInputEngine(emojis: emojis)
     }
     
-    func moveCandidates(rect: NSRect!) {
-        windowController.moveForInputText(rect)
-    }
-    
-    func updateCandidates(candidates: [EmojiCandidate!]!) {
-        DDLogInfo("Update candidates \(candidates)")
-        candidatesViewController.candidates = candidates
-    }
-    
-    func displayCandidates() {
-        DDLogInfo("Display candidates")
-        windowController.showWindow(self)
-    }
-    
-    func hideCandidates() {
-        DDLogInfo("Hide candidates")
-        windowController.window!.orderOut(self)
+    func moveCandidates(rect: NSRect) {
+        self.eventObserver.sendNext(MojitServerEvent.CandidatesViewMoved(textRect: rect))
     }
     
     func selectNext() {
-        let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-        if (index == NSNotFound) {
-            return
-        }
-        candidatesViewController.collectionView.selectionIndexes = NSIndexSet(index: (index + 1) % candidatesViewController.candidates.count)
+        self.eventObserver.sendNext(MojitServerEvent.SelectNext)
     }
     
     func selectPrevious() {
-        let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-        if (index == NSNotFound) {
-            return
-        }
-        let count = candidatesViewController.candidates.count
-        candidatesViewController.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)
-        
+        self.eventObserver.sendNext(MojitServerEvent.SelectPrevious)
     }
 }

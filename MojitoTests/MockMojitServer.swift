@@ -7,44 +7,27 @@
 //
 
 import InputMethodKit
+import ReactiveCocoa
+import Result
 
 class MockMojitServer: IMKServer, MojitServerProtocol {
-    var emojiEngine:EmojiInputEngineProtocol?
-    var selectedCandidateToReturn:EmojiCandidate?
-    var updateCandidatesCalls:NSMutableArray
-    // whether is candidates UI visible or not
-    var candidatesVisible:Bool = false
-
+    var emojiEngine:EmojiInputEngineProtocol
+    private(set) var candidatesVisible = MutableProperty<Bool>(false)
+    private(set) var candidates = MutableProperty<[EmojiCandidate]>([])
+    private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
+    private(set) var eventSignal:Signal<MojitServerEvent, NoError>
     weak var activeInputController:MojitoInputController?
-    var selectedCandidate:EmojiCandidate? {
-        get {
-            return selectedCandidateToReturn
-        }
-    }
     
-    init!(engine: EmojiInputEngineProtocol!) {
-        emojiEngine = engine
-        if (emojiEngine == nil) {
-            emojiEngine = MockEmojiInputEngine()
-        }
-        updateCandidatesCalls = NSMutableArray()
+    private let eventObserver:Observer<MojitServerEvent, NoError>
+    
+    init!(engine: EmojiInputEngineProtocol = MockEmojiInputEngine()) {
+        self.emojiEngine = engine
+        (self.eventSignal, self.eventObserver) = Signal<MojitServerEvent, NoError>.pipe()
         super.init()
     }
     
-    func makeEmojiInputEngine() -> EmojiInputEngineProtocol! {
+    func makeEmojiInputEngine() -> EmojiInputEngineProtocol {
         return emojiEngine
-    }
-
-    func updateCandidates(candidates: [EmojiCandidate!]!) {
-        updateCandidatesCalls.addObject(candidates)
-    }
-    
-    func displayCandidates() {
-        candidatesVisible = true
-    }
-    
-    func hideCandidates() {
-        candidatesVisible = false
     }
     
     func selectNext() {
@@ -54,7 +37,7 @@ class MockMojitServer: IMKServer, MojitServerProtocol {
         
     }
     
-    func moveCandidates(rect: NSRect!) {
+    func moveCandidates(rect: NSRect) {
         
     }
     

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import CocoaLumberjack
+import ReactiveCocoa
 
 class MojitoInputControllerTests: XCTestCase {
     
@@ -18,7 +18,6 @@ class MojitoInputControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        DDLog.addLogger(DDTTYLogger.sharedInstance())
         
         engine = MockEmojiInputEngine()
         server = MockMojitServer(engine: engine)
@@ -31,7 +30,6 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     override func tearDown() {
-        DDLog.removeAllLoggers()
         controller.activateServer(textInput)
         super.tearDown()
     }
@@ -143,12 +141,15 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testInputInsert() {
-        XCTAssertFalse(server.candidatesVisible)
+        let candidatesUpdates = MutableProperty([[EmojiCandidate]]())
+        candidatesUpdates <~ server.candidates.signal.liveCollect()
+        
+        XCTAssertFalse(server.candidatesVisible.value)
         // Type "Hello "
         for char in "Hello ".characters {
             controller.inputText(String(char), client: textInput)
         }
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
     
         let shitEmoji = EmojiCandidate(char: Character("💩"), key: "shit")
         let smileEmoji = EmojiCandidate(char: Character("😀"), key: "smile")
@@ -161,13 +162,13 @@ class MojitoInputControllerTests: XCTestCase {
         }
         XCTAssertEqual(textInput.insertTextCalls.count, 0)
         // ensure update candidates is called correctly
-        XCTAssertEqual(server.updateCandidatesCalls.count, keyword.characters.count)
-        for candidates in server.updateCandidatesCalls {
-            XCTAssertEqual(candidates as? NSArray, engine.candidatesToReturn as NSArray)
+        XCTAssertEqual(candidatesUpdates.value.count, keyword.characters.count)
+        for candidates in candidatesUpdates.value {
+            XCTAssertEqual(candidates as NSArray, engine.candidatesToReturn as NSArray)
         }
         
         // Select smile emoji
-        server.selectedCandidateToReturn = smileEmoji
+        server.selectedCandidate.value = smileEmoji
     
         // Press Enter key
         XCTAssertTrue(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))
@@ -227,14 +228,14 @@ class MojitoInputControllerTests: XCTestCase {
         for char in ":f".characters {
             controller.inputText(String(char), client: textInput)
         }
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
         // Type "o"
         controller.inputText("o", client: textInput)
-        XCTAssertTrue(server.candidatesVisible)
+        XCTAssertTrue(server.candidatesVisible.value)
         
         // press backword delete
         controller.didCommandBySelector(Selector("deleteBackward:"), client: textInput)
-        XCTAssertFalse(server.candidatesVisible)
+        XCTAssertFalse(server.candidatesVisible.value)
         
     }
 }
