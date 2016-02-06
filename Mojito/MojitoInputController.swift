@@ -130,6 +130,10 @@ class MojitoInputController : NSObject {
         // ESC pressed, exit emoji input mode
         } else if (aSelector == "cancelOperation:") {
             if (inputEmojiMode) {
+                // flush the input buffer if it's not empty
+                if (inputBuffer.characters.count > 0) {
+                    textInput.insertText(inputBuffer, replacementRange: NSMakeRange(NSNotFound, NSNotFound))
+                }
                 reset()
                 return true
             }
