@@ -112,10 +112,8 @@
 /* Begin PBXFileReference section */
 		D81B91461C33835F00526895 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineTests.swift; sourceTree = "<group>"; };
-		D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/Mac/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
-		D84045761C64861F007FBD31 /* CocoaLumberjack.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = CocoaLumberjack.framework.dSYM; path = Carthage/Build/Mac/CocoaLumberjack.framework.dSYM; sourceTree = "<group>"; };
 		D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/Mac/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
 		D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyJSON.framework.dSYM; path = Carthage/Build/Mac/SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		D840457C1C648804007FBD31 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -189,6 +187,14 @@
 		687C0858694B9856B608F468 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D84045891C648B29007FBD31 /* Result.framework.dSYM */,
+				D84045821C6489DA007FBD31 /* XCGLogger.framework.dSYM */,
+				D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */,
+				D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */,
+				D840457F1C6489CC007FBD31 /* XCGLogger.framework */,
+				D84045861C648B18007FBD31 /* Result.framework */,
+				D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */,
+				D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */,
 				D84045841C648B0B007FBD31 /* Result.framework */,
 			);
 			name = Frameworks;
@@ -197,16 +203,6 @@
 		D88094A71C2A0FE1005E57CF = {
 			isa = PBXGroup;
 			children = (
-				D84045891C648B29007FBD31 /* Result.framework.dSYM */,
-				D84045861C648B18007FBD31 /* Result.framework */,
-				D84045821C6489DA007FBD31 /* XCGLogger.framework.dSYM */,
-				D840457F1C6489CC007FBD31 /* XCGLogger.framework */,
-				D84045761C64861F007FBD31 /* CocoaLumberjack.framework.dSYM */,
-				D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */,
-				D84045781C64861F007FBD31 /* SwiftyJSON.framework.dSYM */,
-				D840456B1C6484D1007FBD31 /* CocoaLumberjack.framework */,
-				D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */,
-				D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */,
 				D88094B21C2A0FE1005E57CF /* Mojito */,
 				D88094C91C2A0FE2005E57CF /* MojitoTests */,
 				D88094B11C2A0FE1005E57CF /* Products */,
