@@ -6,7 +6,7 @@ before_install:
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
-    - "carthage bootstrap"
+    - "carthage bootstrap --platform Mac"
 script: >
     xctool
     -project Mojito.xcodeproj
