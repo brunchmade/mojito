@@ -10,12 +10,11 @@ import Cocoa
 import Foundation
 
 class CandidatesViewController : NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+    var viewModel:CandidatesViewModel!
+    
     /// Collection view
     @IBOutlet weak var collectionView: NSCollectionView!
-    
     @IBOutlet weak var visualEffectView: NSVisualEffectView!
-
-    var viewModel:CandidatesViewModel!
     
     func bindViewModel(viewModel:CandidatesViewModel) {
         self.viewModel = viewModel
@@ -25,6 +24,24 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
                 // select the first one if it is available
                 if (candidates.count > 0) {
                     self.collectionView.selectionIndexes = NSIndexSet(index: 0)
+                }
+            }
+        viewModel.eventSignal
+            .observeNext { [unowned self] event in
+                switch(event) {
+                case .SelectNext:
+                    let index = self.collectionView.selectionIndexes.firstIndex
+                    if (index == NSNotFound) {
+                        return
+                    }
+                    self.collectionView.selectionIndexes = NSIndexSet(index: (index + 1) % viewModel.candidates.value.count)
+                case .SelectPrevious:
+                    let index = self.collectionView.selectionIndexes.firstIndex
+                    if (index == NSNotFound) {
+                        return
+                    }
+                    let count = viewModel.candidates.value.count
+                    self.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)
                 }
             }
     }
@@ -102,9 +119,9 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
         return candidateItem
     }
     
-	func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel.candidates.value.count
-	}
+    func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.candidates.value.count
+    }
     
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
         // TODO: maybe there is a better way to measure the item size?
