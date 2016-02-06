@@ -24,7 +24,7 @@ class MojitoInputController : NSObject {
             engine.keyword = inputKeyword
             let candidates = engine.candidates()
             if (candidates.count > 0) {
-                mojitServer.updateCandidates(candidates)
+                mojitServer.candidates.value = candidates
                 var rect = NSRect()
                 textInput.attributesForCharacterIndex(0, lineHeightRectangle: &rect)
                 mojitServer.moveCandidates(rect)
@@ -142,9 +142,9 @@ class MojitoInputController : NSObject {
     
     override func commitComposition(sender: AnyObject) {
         textInput = sender as! IMKTextInput
-        log.info("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate)")
+        log.info("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate.value)")
         if (inputEmojiMode) {
-            if let emoji = mojitServer.selectedCandidate {
+            if let emoji = mojitServer.selectedCandidate.value {
                 textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
             // we don't have selected candidate, just flush the input buffer
             } else {

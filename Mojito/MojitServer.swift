@@ -15,6 +15,7 @@ import Result
 enum MojitServerEvent {
     case SelectNext
     case SelectPrevious
+    case CandidatesViewMoved(textRect:NSRect)
 }
 
 class MojitServer : IMKServer, MojitServerProtocol {
@@ -26,6 +27,8 @@ class MojitServer : IMKServer, MojitServerProtocol {
     private(set) var candidatesVisible = MutableProperty<Bool>(false)
     /// Candidates to display
     private(set) var candidates = MutableProperty<[EmojiCandidate]>([])
+    /// Selected candidate
+    private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
     
     // MARK: Properties
     private let storyboard:NSStoryboard
@@ -35,15 +38,6 @@ class MojitServer : IMKServer, MojitServerProtocol {
     private let eventObserver:Observer<MojitServerEvent, NoError>
     
     weak var activeInputController:MojitoInputController?
-    var selectedCandidate:EmojiCandidate? {
-        get {
-            let index = candidatesViewController.collectionView.selectionIndexes.firstIndex
-            if (index == NSNotFound) {
-                return nil
-            }
-            return candidatesViewController.candidates[index]
-        }
-    }
     
     // MARK: Init
     override init!(name: String, bundleIdentifier: String) {
@@ -86,22 +80,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     }
     
     func moveCandidates(rect: NSRect) {
-        windowController.moveForInputText(rect)
-    }
-    
-    func updateCandidates(candidates: [EmojiCandidate]) {
-        log.info("Update candidates \(candidates)")
-        candidatesViewController.candidates = candidates
-    }
-    
-    func displayCandidates() {
-        log.info("Display candidates")
-        windowController.showWindow(self)
-    }
-    
-    func hideCandidates() {
-        log.info("Hide candidates")
-        windowController.window!.orderOut(self)
+        self.eventObserver.sendNext(MojitServerEvent.CandidatesViewMoved(textRect: rect))
     }
     
     func selectNext() {

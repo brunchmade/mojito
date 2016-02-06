@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ReactiveCocoa
 
 class MojitoInputControllerTests: XCTestCase {
     
@@ -140,6 +141,9 @@ class MojitoInputControllerTests: XCTestCase {
     }
     
     func testInputInsert() {
+        let candidatesUpdates = MutableProperty([[EmojiCandidate]]())
+        candidatesUpdates <~ server.candidates.signal.liveCollect()
+        
         XCTAssertFalse(server.candidatesVisible.value)
         // Type "Hello "
         for char in "Hello ".characters {
@@ -158,13 +162,13 @@ class MojitoInputControllerTests: XCTestCase {
         }
         XCTAssertEqual(textInput.insertTextCalls.count, 0)
         // ensure update candidates is called correctly
-        XCTAssertEqual(server.updateCandidatesCalls.count, keyword.characters.count)
-        for candidates in server.updateCandidatesCalls {
-            XCTAssertEqual(candidates as? NSArray, engine.candidatesToReturn as NSArray)
+        XCTAssertEqual(candidatesUpdates.value.count, keyword.characters.count)
+        for candidates in candidatesUpdates.value {
+            XCTAssertEqual(candidates as NSArray, engine.candidatesToReturn as NSArray)
         }
         
         // Select smile emoji
-        server.selectedCandidateToReturn = smileEmoji
+        server.selectedCandidate.value = smileEmoji
     
         // Press Enter key
         XCTAssertTrue(controller.didCommandBySelector(Selector("insertNewline:"), client: textInput))

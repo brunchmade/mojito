@@ -11,7 +11,7 @@ import ReactiveCocoa
 
 protocol MojitServerProtocol {
     /// The selected candidate
-    var selectedCandidate:EmojiCandidate? { get }
+    var selectedCandidate:MutableProperty<EmojiCandidate?> { get }
     
     /// Property for determining whether the candidates view is visible or not
     var candidatesVisible:MutableProperty<Bool> { get }
@@ -27,9 +27,6 @@ protocol MojitServerProtocol {
     
     /// Update candidates position according to given text rect
     func moveCandidates(rect: NSRect)
-    
-    /// Update candidates
-    func updateCandidates(candidates: [EmojiCandidate])
     
     /// Select next candidate
     func selectNext()
