@@ -223,6 +223,21 @@ class MojitoInputControllerTests: XCTestCase {
         ])
     }
 
+    func testPressEscToSubmitInputBuffer() {
+        // Type ":)"
+        for char in ":)".characters {
+            XCTAssertTrue(controller.inputText(String(char), client: textInput))
+        }
+        // Press ESC
+        XCTAssertTrue(controller.didCommandBySelector(Selector("cancelOperation:"), client: textInput))
+        // then it should flush the input buffer
+        XCTAssertEqual(textInput.insertTextCalls.count, 1)
+        XCTAssertEqual(textInput.insertTextCalls.lastObject as? NSDictionary, [
+            "string": ":)",
+            "replacementRange": NSMakeRange(NSNotFound, NSNotFound)
+        ])
+    }
+
     func testShowCandidateOnlyAfter2Chars() {
         // Type ":f"
         for char in ":f".characters {
