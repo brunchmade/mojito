@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 import ReactiveCocoa
 
-class CandidatesViewController : NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
+class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     var viewModel:CandidatesViewModel!
     
     /// Collection view
@@ -44,23 +44,6 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
                     let count = viewModel.candidates.value.count
                     self.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)
                 }
-            }
-        
-        viewModel.selectedCandidate <~ self.collectionView.rac_valuesForKeyPath("selectionIndexes", observer: nil)
-            .toSignalProducer()
-            .flatMapError { error in
-                // there should be no error, raise fatal error?
-                return SignalProducer.empty
-            }
-            .lift { signal in
-                return signal
-                    .map { selectionIndexes -> EmojiCandidate? in
-                        let index = (selectionIndexes as! NSIndexSet).firstIndex
-                        if (index == NSNotFound) {
-                            return nil
-                        }
-                        return viewModel.candidates.value[index]
-                    }
             }
         
     }
@@ -152,6 +135,12 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
         size.height = 24
         size.width += 8
         return size
+    }
+    
+    func collectionView(collectionView: NSCollectionView, didSelectItemsAtIndexPaths indexPaths: Set<NSIndexPath>) {
+        if let index = indexPaths.first {
+            viewModel.selectedCandidate.value = viewModel.candidates.value[index.indexAtPosition(1)]
+        }
     }
 
 }
