@@ -8,6 +8,7 @@
 
 import Cocoa
 import Foundation
+import ReactiveCocoa
 
 class CandidatesViewController : NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
     var viewModel:CandidatesViewModel!
@@ -44,6 +45,24 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
                     self.collectionView.selectionIndexes = NSIndexSet(index: (count + index - 1) % count)
                 }
             }
+        
+        viewModel.selectedCandidate <~ self.collectionView.rac_valuesForKeyPath("selectionIndexes", observer: nil)
+            .toSignalProducer()
+            .flatMapError { error in
+                // there should be no error, raise fatal error?
+                return SignalProducer.empty
+            }
+            .lift { signal in
+                return signal
+                    .map { selectionIndexes -> EmojiCandidate? in
+                        let index = (selectionIndexes as! NSIndexSet).firstIndex
+                        if (index == NSNotFound) {
+                            return nil
+                        }
+                        return viewModel.candidates.value[index]
+                    }
+            }
+        
     }
     
     // TODO: move these stuff to other place
@@ -103,10 +122,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     
     /// Called to handle submit canddate event from the UI
     private func submitCandidate(item: CandidatesItem) {
-        let app = NSApplication.sharedApplication().delegate as! AppDelegate
-        if let controller = app.mojitServer.activeInputController {
-            controller.submitCandidate(item.representedObject as! EmojiCandidate)
-        }
+        viewModel.submitCandidate(item.representedObject as! EmojiCandidate)
     }
     
     func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {

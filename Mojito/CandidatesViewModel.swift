@@ -18,6 +18,7 @@ enum CandidatesViewModelEvent {
 class CandidatesViewModel {
     var candidates:AnyProperty<[EmojiCandidate]>
     let eventSignal:Signal<CandidatesViewModelEvent, NoError>
+    private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
     
     private let mojitServer:MojitServerProtocol
     
@@ -47,6 +48,12 @@ class CandidatesViewModel {
                 }
                 return resultEvent
             }
+        mojitServer.selectedCandidate <~ selectedCandidate
     }
 
+    func submitCandidate(emoji: EmojiCandidate) {
+        if let controller = mojitServer.activeInputController {
+            controller.submitCandidate(emoji)
+        }
+    }
 }
