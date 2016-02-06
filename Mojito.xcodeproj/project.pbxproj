@@ -64,6 +64,8 @@
 		D8F1E94C1C65DFC20020AE5F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94A1C65DFC20020AE5F /* Helpers.swift */; };
 		D8F1E94E1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */; };
 		D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */; };
+		D8F1E9521C6682F60020AE5F /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E9511C6682F60020AE5F /* UIUtils.swift */; };
+		D8F1E9531C6682F60020AE5F /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E9511C6682F60020AE5F /* UIUtils.swift */; };
 		D8F633F81C30683900D12B9B /* Mojito.icns in Resources */ = {isa = PBXBuildFile; fileRef = D8F633F71C30683900D12B9B /* Mojito.icns */; };
 		D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */; };
 		D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
@@ -153,6 +155,7 @@
 		D8F1E9471C65D6300020AE5F /* CandidatesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewModel.swift; sourceTree = "<group>"; };
 		D8F1E94A1C65DFC20020AE5F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		D8F1E94D1C65E1180020AE5F /* CandidatesWindowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindowViewModel.swift; sourceTree = "<group>"; };
+		D8F1E9511C6682F60020AE5F /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		D8F633F71C30683900D12B9B /* Mojito.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mojito.icns; sourceTree = "<group>"; };
 		D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesItem.xib; sourceTree = "<group>"; };
 		D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CandidatesItem.swift; path = ../CandidatesItem.swift; sourceTree = "<group>"; };
@@ -230,10 +233,8 @@
 				D88094D91C2A1193005E57CF /* ProxyInputController.m */,
 				D88094DB1C2A11DD005E57CF /* OVInputSourceHelper.h */,
 				D88094DC1C2A11DD005E57CF /* OVInputSourceHelper.m */,
-				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
-				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
-				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
 				D840457C1C648804007FBD31 /* Logging.swift */,
+				D8F1E9511C6682F60020AE5F /* UIUtils.swift */,
 				D88094D51C2A1086005E57CF /* Mojito-Bridging-Header.h */,
 				D88094BC1C2A0FE2005E57CF /* Assets.xcassets */,
 				D88094BE1C2A0FE2005E57CF /* Main.storyboard */,
@@ -284,6 +285,9 @@
 				D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */,
 				D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */,
 				D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */,
+				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
+				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
+				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -428,6 +432,7 @@
 				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
 				D8F1E94E1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94B1C65DFC20020AE5F /* Helpers.swift in Sources */,
+				D8F1E9521C6682F60020AE5F /* UIUtils.swift in Sources */,
 				D8F1E9481C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D88094B81C2A0FE2005E57CF /* main.m in Sources */,
 				D8E82CFB1C2CB92E00866A7A /* CandidatesWindowController.swift in Sources */,
@@ -454,6 +459,7 @@
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
 				D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94C1C65DFC20020AE5F /* Helpers.swift in Sources */,
+				D8F1E9531C6682F60020AE5F /* UIUtils.swift in Sources */,
 				D8F1E9491C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,
 				D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */,

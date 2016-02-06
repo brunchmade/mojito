@@ -48,59 +48,10 @@ class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSC
         
     }
     
-    // TODO: move these stuff to other place
-    func roundCornerImage(cornerRadius: CGFloat) -> NSImage! {
-        let edgeLength = 2.0 * cornerRadius + 1.0
-        let roundCornerImage = NSImage(size: NSSize(width: edgeLength, height: edgeLength), flipped: false) { rect in
-            let bezierPath = NSBezierPath(roundedRect: rect, xRadius: cornerRadius, yRadius: cornerRadius)
-            NSColor.blackColor().set()
-            bezierPath.fill()
-            return true
-        }
-        roundCornerImage.capInsets = NSEdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius)
-        roundCornerImage.resizingMode = .Stretch
-        return roundCornerImage
-    }
-    
-    func maskImage(cornerRadius: CGFloat, footSize: NSSize) -> NSImage {
-        let roundImage = roundCornerImage(cornerRadius)
-        //let roundCornerImage = roundCornerImage(cornerRadius)
-        let maskedImage = NSImage(size: view.frame.size, flipped: false) { rect in
-            NSColor.blackColor().set()
-            
-            // draw triangle
-            let bezierPath = NSBezierPath()
-            // the very bottom point
-            bezierPath.moveToPoint(NSPoint(x: rect.origin.x + rect.width / 2, y: 1))
-            // the right point
-            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 + footSize.width / 2, y: footSize.height + 2))
-            // the left point
-            bezierPath.lineToPoint(NSPoint(x: rect.origin.x + rect.width / 2 - footSize.width / 2, y: footSize.height + 2))
-            bezierPath.closePath()
-            bezierPath.fill()
-            
-            roundImage.drawInRect(NSRect(x: 0, y: footSize.height, width: rect.width, height: rect.height - footSize.height), fromRect: NSZeroRect, operation: .CompositeSourceOver, fraction: 1.0)
-            
-            //roundCornerImage
-            return true
-        }
-        return maskedImage
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [NSColor.clearColor()]
-        visualEffectView.maskImage = maskImage(7.0, footSize: NSSize(width: 27, height: 13))
-        // XXXXXXX
-        /*
-        candidates = [
-            EmojiCandidate(char: "😀", key: "a"),
-            EmojiCandidate(char: "😀", key: "fo"),
-            EmojiCandidate(char: "😀", key: "smile"),
-            EmojiCandidate(char: "🍹", key: "mojito"),
-            EmojiCandidate(char: "💩", key: "shit"),
-            EmojiCandidate(char: "💩", key: "shit yolo foobar"),
-        ]*/
+        visualEffectView.maskImage = UIUtils.bubbleDialogMaskImage(view.frame.size, cornerRadius: 7.0, footSize: NSSize(width: 27, height: 13))
     }
     
     /// Called to handle submit canddate event from the UI
