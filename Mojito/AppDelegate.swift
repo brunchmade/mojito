@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var candidatesViewController:CandidatesViewController!
     
     private var candidatesWindowViewModel:CandidatesWindowViewModel!
+    private var candidatesViewModel:CandidatesViewModel!
     
     func applicationDidFinishLaunching(notification: NSNotification) {
         let connectionName = NSBundle.mainBundle().objectForInfoDictionaryKey("InputMethodConnectionName") as! String
@@ -31,7 +32,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.candidatesViewController = windowController.contentViewController! as! CandidatesViewController
         
         self.candidatesWindowViewModel = CandidatesWindowViewModel(mojitServer: mojitServer)
+        self.candidatesViewModel = CandidatesViewModel(mojitServer: mojitServer)
         
         windowController.bindViewModel(candidatesWindowViewModel)
+        candidatesViewController.bindViewModel(candidatesViewModel)
     }
 }

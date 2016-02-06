@@ -10,13 +10,13 @@ import Foundation
 import ReactiveCocoa
 
 class CandidatesViewModel {
-    //var selectedIndex:AnyProperty<UInt>
+    var candidates:AnyProperty<[EmojiCandidate]>
     
     private let mojitServer:MojitServerProtocol
     
     init(mojitServer:MojitServerProtocol) {
         self.mojitServer = mojitServer
-        
+        self.candidates = AnyProperty(mojitServer.candidates)
     }
 
 }

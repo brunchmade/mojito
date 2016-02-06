@@ -14,16 +14,19 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     @IBOutlet weak var collectionView: NSCollectionView!
     
     @IBOutlet weak var visualEffectView: NSVisualEffectView!
+
+    var viewModel:CandidatesViewModel!
     
-    /// Candidates to display
-    var candidates:[EmojiCandidate!]! = [] {
-        didSet {
-            collectionView.reloadData()
-            // select the first one if it is available
-            if (candidates.count > 0) {
-                collectionView.selectionIndexes = NSIndexSet(index: 0)
+    func bindViewModel(viewModel:CandidatesViewModel) {
+        self.viewModel = viewModel
+        viewModel.candidates.signal
+            .observeNext { [unowned self] candidates in
+                self.collectionView.reloadData()
+                // select the first one if it is available
+                if (candidates.count > 0) {
+                    self.collectionView.selectionIndexes = NSIndexSet(index: 0)
+                }
             }
-        }
     }
     
     // TODO: move these stuff to other place
@@ -70,6 +73,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
         collectionView.backgroundColors = [NSColor.clearColor()]
         visualEffectView.maskImage = maskImage(7.0, footSize: NSSize(width: 27, height: 13))
         // XXXXXXX
+        /*
         candidates = [
             EmojiCandidate(char: "😀", key: "a"),
             EmojiCandidate(char: "😀", key: "fo"),
@@ -77,7 +81,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
             EmojiCandidate(char: "🍹", key: "mojito"),
             EmojiCandidate(char: "💩", key: "shit"),
             EmojiCandidate(char: "💩", key: "shit yolo foobar"),
-        ]
+        ]*/
     }
     
     /// Called to handle submit canddate event from the UI
@@ -90,7 +94,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     
     func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
         let candidateItem = collectionView.makeItemWithIdentifier("CandidatesItem", forIndexPath: indexPath) as! CandidatesItem
-        let emojiCandidate = candidates[indexPath.item]
+        let emojiCandidate = viewModel.candidates.value[indexPath.item]
         candidateItem.representedObject = emojiCandidate
         candidateItem.submitCallback = {
             self.submitCandidate(candidateItem)
@@ -99,12 +103,12 @@ class CandidatesViewController : NSViewController, NSCollectionViewDataSource, N
     }
     
 	func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-		return candidates.count
+		return viewModel.candidates.value.count
 	}
     
     func collectionView(collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> NSSize {
         // TODO: maybe there is a better way to measure the item size?
-        let emojiCandidate = candidates[indexPath.item]
+        let emojiCandidate = viewModel.candidates.value[indexPath.item]
         let systemFont = NSFont.systemFontOfSize(13)
         let attrs = [
             NSFontNameAttribute: systemFont.fontName,
