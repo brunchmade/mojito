@@ -8,7 +8,7 @@ An OSX input method for emoji
 First cd to mojito folder, run
 
 ```
-pod install
+carthage bootstrap
 ```
 
 to install dependencies.
