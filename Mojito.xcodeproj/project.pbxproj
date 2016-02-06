@@ -30,7 +30,6 @@
 		D84045911C64959E007FBD31 /* XCGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840457F1C6489CC007FBD31 /* XCGLogger.framework */; };
 		D84045921C649D03007FBD31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D840458B1C648BBE007FBD31 /* AppDelegate.swift */; };
 		D88094B81C2A0FE2005E57CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094B71C2A0FE2005E57CF /* main.m */; };
-		D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D88094BA1C2A0FE2005E57CF /* ViewController.m */; };
 		D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D88094BC1C2A0FE2005E57CF /* Assets.xcassets */; };
 		D88094C01C2A0FE2005E57CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D88094BE1C2A0FE2005E57CF /* Main.storyboard */; };
 		D88094D71C2A1086005E57CF /* MojitoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88094D61C2A1086005E57CF /* MojitoInputController.swift */; };
@@ -122,8 +121,6 @@
 		D840458B1C648BBE007FBD31 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D88094B01C2A0FE1005E57CF /* Mojito.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mojito.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D88094B71C2A0FE2005E57CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D88094B91C2A0FE2005E57CF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D88094BA1C2A0FE2005E57CF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D88094BC1C2A0FE2005E57CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D88094BF1C2A0FE2005E57CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D88094C11C2A0FE2005E57CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -220,10 +217,9 @@
 		D88094B21C2A0FE1005E57CF /* Mojito */ = {
 			isa = PBXGroup;
 			children = (
-				D8E82CE01C2BD79A00866A7A /* models */,
+				D8E82CE01C2BD79A00866A7A /* Models */,
+				D8F1E9461C65D5BC0020AE5F /* ViewModels */,
 				D840458B1C648BBE007FBD31 /* AppDelegate.swift */,
-				D88094B91C2A0FE2005E57CF /* ViewController.h */,
-				D88094BA1C2A0FE2005E57CF /* ViewController.m */,
 				D88094D81C2A1193005E57CF /* ProxyInputController.h */,
 				D88094D91C2A1193005E57CF /* ProxyInputController.m */,
 				D88094DB1C2A11DD005E57CF /* OVInputSourceHelper.h */,
@@ -278,7 +274,7 @@
 			name = Mocks;
 			sourceTree = "<group>";
 		};
-		D8E82CE01C2BD79A00866A7A /* models */ = {
+		D8E82CE01C2BD79A00866A7A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D81B91461C33835F00526895 /* Emoji.swift */,
@@ -286,7 +282,14 @@
 				D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */,
 				D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */,
 			);
-			name = models;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D8F1E9461C65D5BC0020AE5F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,7 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E82CE41C2BDA3300866A7A /* EmojiCandidate.swift in Sources */,
-				D88094BB1C2A0FE2005E57CF /* ViewController.m in Sources */,
 				D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */,
 				D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */,
 				D840457D1C648804007FBD31 /* Logging.swift in Sources */,
