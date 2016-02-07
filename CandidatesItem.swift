@@ -33,7 +33,7 @@ class CandidatesItem : NSCollectionViewItem {
             // XXX: Not sure why the label would be nil here, so we just access it via subviews
             let label = view.subviews[0] as! NSTextField
             if (selected) {
-                view.layer!.backgroundColor = NSColor(red: 0, green: 0.455, blue: 0.851, alpha: 1.0).CGColor /*#0074d9*/
+                view.layer!.backgroundColor = NSColor.alternateSelectedControlColor().CGColor
                 label.textColor = NSColor.whiteColor()
             } else {
                 view.layer!.backgroundColor = nil
