@@ -34,9 +34,32 @@ class MojitInstallation {
         let bundleURL = NSBundle.mainBundle().bundleURL
         var inputSource = OVInputSourceHelper.inputSourceForInputSourceID(bundleID)
         if (inputSource == nil) {
+            let inputMethodDirs = NSSearchPathForDirectoriesInDomains(.InputMethodsDirectory, [.UserDomainMask], true)
+            let inputMethodDir = inputMethodDirs.first!
+            let appFolderName = bundleURL.lastPathComponent!
+            let targetInputMethodURL = NSURL(fileURLWithPath: (inputMethodDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
+            log.info("Copy input source \(bundleID) at \(bundleURL) to \(targetInputMethodURL)")
+            // the target app folder already exists, replace it
+            if (NSFileManager.defaultManager().fileExistsAtPath(targetInputMethodURL.path!)) {
+                let tempDir = NSTemporaryDirectory()
+                let tempInputMethodURL = NSURL(fileURLWithPath: (tempDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
+                // copy to temp folder
+                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: tempInputMethodURL)
+                // replace the target app
+                try NSFileManager.defaultManager().replaceItemAtURL(
+                    targetInputMethodURL,
+                    withItemAtURL: tempInputMethodURL,
+                    backupItemName: nil,
+                    options: .UsingNewMetadataOnly,
+                    resultingItemURL: nil
+                )
+            // it doesn't exist, just copy it
+            } else {
+                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: targetInputMethodURL)
+            }
+            
             log.info("Register input source \(bundleID) at \(bundleURL.absoluteString)")
-            let status = OVInputSourceHelper.registerInputSource(bundleURL)
-            if (!status) {
+            if (!OVInputSourceHelper.registerInputSource(bundleURL)) {
                 log.error("Failed to register input source \(bundleURL.absoluteString)")
                 throw MojitInstallationError.InstallInputMethodError
             }
