@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  InputMethodAppDelegate.swift
 //  Mojito
 //
 //  Created by Fang-Pen Lin on 2/4/16.
