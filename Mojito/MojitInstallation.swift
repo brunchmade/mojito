@@ -46,18 +46,33 @@ class MojitInstallation {
                 log.error("Cannot find input source \(bundleID) after install")
                 throw MojitInstallationError.InstallInputMethodError
             }
-            
-            if (!OVInputSourceHelper.inputSourceEnabled(inputSource.takeUnretainedValue())) {
-                log.error("Cannot enable input source \(bundleID)")
-                throw MojitInstallationError.InstallInputMethodError
-            }
+        }
+
+        if(!OVInputSourceHelper.enableInputSource(inputSource.takeUnretainedValue())) {
+            log.error("Cannot enable input source")
+            throw MojitInstallationError.InstallInputMethodError
+        }
+        
+        if (!OVInputSourceHelper.inputSourceEnabled(inputSource.takeUnretainedValue())) {
+            log.error("Input source \(bundleID) is not enabled")
+            throw MojitInstallationError.InstallInputMethodError
         }
         log.info("Input source \(bundleID) installed")
     }
     
     /// Uninstall mojito
     class func uninstall() throws {
-        // TODO:
+        let bundleID = NSBundle.mainBundle().bundleIdentifier!
+        let bundleURL = NSBundle.mainBundle().bundleURL
+        let inputSource = OVInputSourceHelper.inputSourceForInputSourceID(bundleID)
+        if (inputSource != nil) {
+            let status = OVInputSourceHelper.disableInputSource(inputSource.takeUnretainedValue())
+            if (!status) {
+                log.error("Failed to disable input source \(bundleURL.absoluteString)")
+                throw MojitInstallationError.InstallInputMethodError
+            }
+        }
+        log.info("Input source \(bundleID) uninstalled")
     }
     
 }
