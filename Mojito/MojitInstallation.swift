@@ -38,25 +38,12 @@ class MojitInstallation {
             let inputMethodDir = inputMethodDirs.first!
             let appFolderName = bundleURL.lastPathComponent!
             let targetInputMethodURL = NSURL(fileURLWithPath: (inputMethodDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
-            log.info("Copy input source \(bundleID) at \(bundleURL) to \(targetInputMethodURL)")
-            // the target app folder already exists, replace it
+            log.info("Create symbolic link at \(targetInputMethodURL) to \(bundleURL) for \(bundleID)")
+            // the target app folder already exists, remove it first
             if (NSFileManager.defaultManager().fileExistsAtPath(targetInputMethodURL.path!)) {
-                let tempDir = NSTemporaryDirectory()
-                let tempInputMethodURL = NSURL(fileURLWithPath: (tempDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
-                // copy to temp folder
-                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: tempInputMethodURL)
-                // replace the target app
-                try NSFileManager.defaultManager().replaceItemAtURL(
-                    targetInputMethodURL,
-                    withItemAtURL: tempInputMethodURL,
-                    backupItemName: nil,
-                    options: .UsingNewMetadataOnly,
-                    resultingItemURL: nil
-                )
-            // it doesn't exist, just copy it
-            } else {
-                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: targetInputMethodURL)
+                try NSFileManager.defaultManager().removeItemAtURL(targetInputMethodURL)
             }
+            try NSFileManager.defaultManager().createSymbolicLinkAtURL(targetInputMethodURL, withDestinationURL:bundleURL)
             
             log.info("Register input source \(bundleID) at \(bundleURL.absoluteString)")
             if (!OVInputSourceHelper.registerInputSource(bundleURL)) {
