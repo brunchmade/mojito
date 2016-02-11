@@ -18,7 +18,7 @@ import os.path
 
 # .. Useful stuff ..............................................................
 
-application = os.path.join(os.environ['BUILT_PRODUCTS_DIR'], 'Mojito.app')
+application = os.path.join(os.environ['INSTALL_DIR'], 'Mojito.app')
 appname = os.path.basename(application)
 
 def icon_from_app(app_path):
