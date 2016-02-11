@@ -347,6 +347,7 @@
 				D88094AE1C2A0FE1005E57CF /* Resources */,
 				D840456A1C648426007FBD31 /* Embed Frameworks */,
 				D84045751C6485FB007FBD31 /* CopyFiles */,
+				D825026C1C6C67A900C198D0 /* Bump Build Number */,
 			);
 			buildRules = (
 			);
@@ -434,6 +435,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D825026C1C6C67A900C198D0 /* Bump Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bump Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n# from http://stackoverflow.com/questions/9258344/better-way-of-incrementing-build-number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\ngit add \"${INFOPLIST_FILE}\"\ngit commit -m \"Bump build number\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D88094AC1C2A0FE1005E57CF /* Sources */ = {
