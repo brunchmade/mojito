@@ -10,6 +10,7 @@
 		D81B91471C33835F00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B91481C33876C00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B914F1C33D85700526895 /* EmojiInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */; };
+		D82502701C6C6DB000C198D0 /* dmg_settings.py in Resources */ = {isa = PBXBuildFile; fileRef = D825026F1C6C6DB000C198D0 /* dmg_settings.py */; };
 		D84045701C6484D1007FBD31 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; };
 		D84045711C6484D1007FBD31 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D84045721C6484D1007FBD31 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		D81B91461C33835F00526895 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineTests.swift; sourceTree = "<group>"; };
+		D825026F1C6C6DB000C198D0 /* dmg_settings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dmg_settings.py; sourceTree = "<group>"; };
 		D840456C1C6484D1007FBD31 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D840456D1C6484D1007FBD31 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
 		D84045771C64861F007FBD31 /* ReactiveCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ReactiveCocoa.framework.dSYM; path = Carthage/Build/Mac/ReactiveCocoa.framework.dSYM; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				D88094B71C2A0FE2005E57CF /* main.m */,
+				D825026F1C6C6DB000C198D0 /* dmg_settings.py */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				D840456A1C648426007FBD31 /* Embed Frameworks */,
 				D84045751C6485FB007FBD31 /* CopyFiles */,
 				D825026C1C6C67A900C198D0 /* Bump Build Number */,
+				D825026E1C6C69B400C198D0 /* Build Install DMG */,
 			);
 			buildRules = (
 			);
@@ -421,6 +425,7 @@
 				D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */,
 				D8F633F81C30683900D12B9B /* Mojito.icns in Resources */,
 				D88094BD1C2A0FE2005E57CF /* Assets.xcassets in Resources */,
+				D82502701C6C6DB000C198D0 /* dmg_settings.py in Resources */,
 				D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */,
 				D885FDC81C337E800002E0F2 /* emojilib.json in Resources */,
 				D88094C01C2A0FE2005E57CF /* Main.storyboard in Resources */,
@@ -450,6 +455,20 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n# from http://stackoverflow.com/questions/9258344/better-way-of-incrementing-build-number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\ngit add \"${INFOPLIST_FILE}\"\ngit commit -m \"Bump build number\"";
+		};
+		D825026E1C6C69B400C198D0 /* Build Install DMG */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Install DMG";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# You will need to install dmgbuild first, run \"pip install dmgbuild\"\n/Library/Frameworks/Python.framework/Versions/2.7/bin/dmgbuild -s $SRCROOT/Mojito/dmg_settings.py \"Mojito installation\" mojito.dmg";
 		};
 /* End PBXShellScriptBuildPhase section */
 
