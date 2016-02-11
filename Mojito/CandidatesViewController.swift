@@ -75,7 +75,7 @@ class CandidatesViewController : NSViewController, NSCollectionViewDelegate, NSC
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColors = [NSColor.clearColor()]
-        visualEffectView.maskImage = UIUtils.bubbleDialogMaskImage(view.frame.size, cornerRadius: 7.0, footSize: NSSize(width: 27, height: 13))
+        visualEffectView.maskImage = Utils.bubbleDialogMaskImage(view.frame.size, cornerRadius: 7.0, footSize: NSSize(width: 27, height: 13))
     }
     
     /// Called to handle submit canddate event from the UI

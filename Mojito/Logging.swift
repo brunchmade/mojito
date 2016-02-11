@@ -24,7 +24,6 @@ class Logging: NSObject {
         systemLogDestination.showFileName = true
         systemLogDestination.showLineNumber = true
         systemLogDestination.showDate = true
-        
         // Add the destination to the logger
         log.addLogDestination(systemLogDestination)
     }

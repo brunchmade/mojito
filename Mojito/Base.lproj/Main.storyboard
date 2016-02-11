@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10089"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -650,9 +650,9 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                <windowController storyboardIdentifier="ConfigWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="ConfigWindowController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Mojit - Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -665,18 +665,81 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Config View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ConfigViewController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="144"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dmp-FC-m7H">
+                                <rect key="frame" x="138" y="16" width="58" height="18"/>
+                                <buttonCell key="cell" type="check" title="Install" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="mjZ-P3-guf">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xTj-pb-Kju">
+                                <rect key="frame" x="138" y="108" width="52" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mojit " id="8bI-6h-RWB">
+                                    <font key="font" metaFont="systemBold" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j4D-Bd-FH5">
+                                <rect key="frame" x="8" y="8" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="4n4-nr-FhM"/>
+                                    <constraint firstAttribute="width" constant="128" id="kTE-5w-969"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Mojito" id="O84-oX-Hkg"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEE-tE-CBD">
+                                <rect key="frame" x="138" y="48" width="275" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="👥: Wells Riley, Victor Lin and Ian Hirschfeld." id="Guw-EC-H7F">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-ff-jPd">
+                                <rect key="frame" x="138" y="79" width="125" height="17"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="🌎: http://mojit.cool" usesSingleLineMode="YES" id="L1w-Pj-wYR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="dmp-FC-m7H" firstAttribute="top" secondItem="wEE-tE-CBD" secondAttribute="bottom" constant="16" id="1sT-5W-YKk"/>
+                            <constraint firstItem="j4D-Bd-FH5" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="8" id="4zO-Mx-rXf"/>
+                            <constraint firstItem="eMS-ff-jPd" firstAttribute="leading" secondItem="j4D-Bd-FH5" secondAttribute="trailing" constant="4" id="DbY-2A-zfw"/>
+                            <constraint firstAttribute="bottom" secondItem="j4D-Bd-FH5" secondAttribute="bottom" constant="8" id="ICk-MN-UUp"/>
+                            <constraint firstItem="wEE-tE-CBD" firstAttribute="leading" secondItem="j4D-Bd-FH5" secondAttribute="trailing" constant="4" id="UFQ-FQ-JoK"/>
+                            <constraint firstItem="dmp-FC-m7H" firstAttribute="leading" secondItem="j4D-Bd-FH5" secondAttribute="trailing" constant="4" id="Ymb-SV-iUP"/>
+                            <constraint firstItem="xTj-pb-Kju" firstAttribute="leading" secondItem="j4D-Bd-FH5" secondAttribute="trailing" constant="4" id="aZs-Z6-OdF"/>
+                            <constraint firstItem="xTj-pb-Kju" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="14" id="bbN-oW-ocH"/>
+                            <constraint firstItem="eMS-ff-jPd" firstAttribute="top" secondItem="xTj-pb-Kju" secondAttribute="bottom" constant="12" id="ghT-Wu-DSO"/>
+                            <constraint firstItem="wEE-tE-CBD" firstAttribute="top" secondItem="eMS-ff-jPd" secondAttribute="bottom" constant="14" id="hws-Ou-gTa"/>
+                            <constraint firstItem="j4D-Bd-FH5" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="jdh-KJ-xa7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="authorLinks" destination="wEE-tE-CBD" id="tsx-rg-Rbr"/>
+                        <outlet property="installButton" destination="dmp-FC-m7H" id="i2W-HQ-1Ho"/>
+                        <outlet property="mojitTitle" destination="xTj-pb-Kju" id="NXY-Ya-uBN"/>
+                        <outlet property="websiteLink" destination="eMS-ff-jPd" id="cpr-Py-ykB"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="675"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Mojito" width="512" height="512"/>
+    </resources>
 </document>

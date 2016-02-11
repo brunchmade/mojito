@@ -49,7 +49,12 @@ int main(int argc, const char * argv[]) {
         }
 
         NSApplication *app = [NSApplication sharedApplication];
-        AppDelegate *appDelegate = [AppDelegate new];
+        id<NSApplicationDelegate> appDelegate;
+        if ([RunningModeDetection runningMode] == RunningModeInputMethod) {
+            appDelegate = [InputMethodAppDelegate new];
+        } else {
+            appDelegate = [ConfigAppDelegate new];
+        }
         app.delegate = appDelegate;
         [app run];
     }
