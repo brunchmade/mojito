@@ -453,7 +453,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n# from http://stackoverflow.com/questions/9258344/better-way-of-incrementing-build-number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"\ngit add \"${INFOPLIST_FILE}\"\ngit commit -m \"Bump build number\"";
+			shellScript = "#!/bin/bash\n# from http://stackoverflow.com/questions/9258344/better-way-of-incrementing-build-number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${INFOPLIST_FILE}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
