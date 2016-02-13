@@ -4,9 +4,6 @@ cache:
     - cocoapods
     - Carthage
 before_install:
-    - wget https://bootstrap.pypa.io/get-pip.py
-    - sudo python get-pip.py
-    - sudo pip install dmgbuild
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
@@ -18,7 +15,11 @@ script: >
     build test
 
 before_deploy:
-    - ./scripts/archive-build-dmg.sh
+    - wget https://bootstrap.pypa.io/get-pip.py
+    - sudo python get-pip.py
+    - virtualenv deploy-env
+    - deploy-env/bin/pip install dmgbuild
+    - source deploy-env/bin/activate && ./scripts/archive-build-dmg.sh
 deploy:
   provider: releases
   api-key:
