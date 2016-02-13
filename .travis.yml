@@ -4,6 +4,7 @@ cache:
     - cocoapods
     - Carthage
 before_install:
+    - pip install dmgbuild
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
