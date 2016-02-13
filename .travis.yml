@@ -18,8 +18,8 @@ before_deploy:
     - ./scripts/archive-build-dmg.sh
 deploy:
   provider: releases
-  user: "GITHUB USERNAME"
-  password: "GITHUB PASSWORD"
+  api-key:
+    secure: QCMNpaPnwQXA2Q+r8v5fPS58IbYNTHzdvLkYyc+32xfQbPQiZvjDy4GxwS8EDGothwJo8qUXBJsR+Y/97n2oi0APf58jrC6QIvxm3VOT5LbwD49qhdsADW26n4mY8fkSGcmc5jppnlkFzhyBDQD/hiJhmziMkPRCruFYSGSztZiLQBw/64HMHpVGL1u8VBFyvGYoLpP4te8JRldaU5o7Xj6oMqkT/HyEAzZocTqBPUbA57TYcfLGhxDsAfpVI+Ir2Y+7+n6JCtwIjbQXJ6a2gbXhehpNtwC+RITTXATsx1l71S+7K2R9kY23cakBL+gpegb+CwREPFh6B4NMoTz+IRATLDTgLfO3MzGBKUqI9AASjlG4vujpPnuwF3x0PTnf0z83T14JF81ppihCRSTikNbrFRyNrEWuMDE7EhTBkVX4yRiG4ncWEU2jKrmnnsIUIvrbKdQeubEK7p86SNi2RcfD6FXK4bt6MP9ToJwtsDmfQ73wCx9Fo42SOZC0jItn7wwvj0/1GtFRELfVG7TgVbzqJL8YhSQeGd2fPhQ9yjVbDPEvy/O/C8/07meI7IUdQxytASKTXIKpzkio3Yh+CLATEyDcyBI2JqQq4MpgsWv6+gr4xMCmnI4vEeJYyVD2w3C0zsL6bFljSU1pA16rvV8ASqh1DWFo3mqCCaSSPsM=
   file: "build/mojit.dmg"
   skip_cleanup: true
   on:
