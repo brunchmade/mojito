@@ -5,6 +5,13 @@ cache:
     - Carthage
     - deploy-env
 before_install:
+    # install dmgbuild here forbuilding DMG, do it here because it got cached
+    - wget https://bootstrap.pypa.io/get-pip.py
+    - sudo python get-pip.py
+    - sudo pip install virtualenv
+    - virtualenv deploy-env
+    - deploy-env/bin/pip install dmgbuild
+
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
@@ -16,12 +23,7 @@ script: >
     build test
 
 before_deploy:
-    - wget https://bootstrap.pypa.io/get-pip.py
-    - sudo python get-pip.py
-    - sudo pip install virtualenv
-    - virtualenv deploy-env
-    - deploy-env/bin/pip install dmgbuild
-    - sourcedeploy-env/bin/activate && ./scripts/archive-build-dmg.sh
+    - source deploy-env/bin/activate && ./scripts/archive-build-dmg.sh
 deploy:
   provider: releases
   api-key:
