@@ -103,7 +103,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Build Install DMG"
-               scriptText = "# You will need to install dmgbuild first, run &quot;pip install dmgbuild&quot;&#10;/Library/Frameworks/Python.framework/Versions/2.7/bin/dmgbuild -s $SRCROOT/Mojito/dmg_settings.py &quot;Mojito installation&quot; $SRCROOT/mojito.dmg">
+               scriptText = "APP_VERSION=$(/usr/libexec/PlistBuddy -c &quot;Print :ApplicationProperties:CFBundleShortVersionString&quot; &quot;$ARCHIVE_PATH/Info.plist&quot;)&#10;APP_BUILD=$(/usr/libexec/PlistBuddy -c &quot;Print :ApplicationProperties:CFBundleVersion&quot; &quot;$ARCHIVE_PATH/Info.plist&quot;)&#10;# You will need to install dmgbuild first, run &quot;pip install dmgbuild&quot;&#10;/Library/Frameworks/Python.framework/Versions/2.7/bin/dmgbuild -s $SRCROOT/Mojito/dmg_settings.py &quot;Mojito installation&quot; $SRCROOT/mojito-v$APP_VERSION\($APP_BUILD\).dmg &gt;&gt; $SRCROOT/build-dmg.log 2&gt;&amp;1">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
