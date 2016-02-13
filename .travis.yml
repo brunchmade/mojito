@@ -4,6 +4,8 @@ cache:
     - cocoapods
     - Carthage
 before_install:
+    - wget https://bootstrap.pypa.io/get-pip.py
+    - python get-pip.py
     - pip install dmgbuild
     # upgrade xctool
     - "brew update"
