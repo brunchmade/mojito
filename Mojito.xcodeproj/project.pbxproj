@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D800F6B01C6FBB5E00E55218 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800F6AF1C6FBB5E00E55218 /* CandidatesItem.swift */; };
+		D800F6B11C6FC99000E55218 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800F6AF1C6FBB5E00E55218 /* CandidatesItem.swift */; };
 		D81B91471C33835F00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B91481C33876C00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B914F1C33D85700526895 /* EmojiInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */; };
@@ -509,6 +510,7 @@
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
 				D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94C1C65DFC20020AE5F /* Helpers.swift in Sources */,
+				D800F6B11C6FC99000E55218 /* CandidatesItem.swift in Sources */,
 				D8F1E9531C6682F60020AE5F /* Utils.swift in Sources */,
 				D8AF2B4F1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */,
 				D8D57F7C1C6725E600EDF53E /* MojitInstallation.swift in Sources */,
