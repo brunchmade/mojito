@@ -14,9 +14,13 @@ script: >
     -scheme Mojito
     build test
 
+before_deploy:
+    - ./scripts/archive-build-dmg.sh
 deploy:
-  provider: script
-  script: scripts/deploy.sh
+  provider: releases
+  user: "GITHUB USERNAME"
+  password: "GITHUB PASSWORD"
+  file: "build/mojit.dmg"
   skip_cleanup: true
   on:
-    branch: build-dmg
+    tags: true
