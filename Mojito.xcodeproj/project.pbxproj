@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D800F6B01C6FBB5E00E55218 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800F6AF1C6FBB5E00E55218 /* CandidatesItem.swift */; };
 		D81B91471C33835F00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B91481C33876C00526895 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B91461C33835F00526895 /* Emoji.swift */; };
 		D81B914F1C33D85700526895 /* EmojiInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */; };
@@ -39,7 +40,6 @@
 		D885FDC81C337E800002E0F2 /* emojilib.json in Resources */ = {isa = PBXBuildFile; fileRef = D885FDC71C337E7F0002E0F2 /* emojilib.json */; };
 		D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
 		D891F1931C3372220061B6B0 /* CandidatesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */; };
-		D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
 		D8AF2B4E1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AF2B4D1C67DA2A004410F3 /* ConfigViewModel.swift */; };
 		D8AF2B4F1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AF2B4D1C67DA2A004410F3 /* ConfigViewModel.swift */; };
 		D8BD0C961C6C607C0034CE9E /* NSAttributedStringHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD0C951C6C607C0034CE9E /* NSAttributedStringHyperLink.swift */; };
@@ -78,7 +78,6 @@
 		D8F1E95B1C67043F0020AE5F /* ConfigWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1E95A1C67043F0020AE5F /* ConfigWindowController.swift */; };
 		D8F633F81C30683900D12B9B /* Mojito.icns in Resources */ = {isa = PBXBuildFile; fileRef = D8F633F71C30683900D12B9B /* Mojito.icns */; };
 		D8FD90AC1C2F4D62001145FD /* CandidatesItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */; };
-		D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +121,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D800F6AF1C6FBB5E00E55218 /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesItem.swift; sourceTree = "<group>"; };
 		D81B91461C33835F00526895 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		D81B914E1C33D85700526895 /* EmojiInputEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineTests.swift; sourceTree = "<group>"; };
 		D825026F1C6C6DB000C198D0 /* dmg_settings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dmg_settings.py; sourceTree = "<group>"; };
@@ -176,7 +176,6 @@
 		D8F1E95A1C67043F0020AE5F /* ConfigWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigWindowController.swift; sourceTree = "<group>"; };
 		D8F633F71C30683900D12B9B /* Mojito.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Mojito.icns; sourceTree = "<group>"; };
 		D8FD90AB1C2F4D62001145FD /* CandidatesItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesItem.xib; sourceTree = "<group>"; };
-		D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CandidatesItem.swift; path = ../CandidatesItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,9 +330,9 @@
 				D8C352391C34AF3600FA034E /* CandidatesWindow.swift */,
 				D8E82CFA1C2CB92E00866A7A /* CandidatesWindowController.swift */,
 				D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */,
-				D8FD90AD1C2F4E00001145FD /* CandidatesItem.swift */,
 				D8F1E95A1C67043F0020AE5F /* ConfigWindowController.swift */,
 				D8F1E9541C66A7FE0020AE5F /* ConfigViewController.swift */,
+				D800F6AF1C6FBB5E00E55218 /* CandidatesItem.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -462,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D800F6B01C6FBB5E00E55218 /* CandidatesItem.swift in Sources */,
 				D8D57F7B1C6725E600EDF53E /* MojitInstallation.swift in Sources */,
 				D8E82CE41C2BDA3300866A7A /* EmojiCandidate.swift in Sources */,
 				D8F1E95B1C67043F0020AE5F /* ConfigWindowController.swift in Sources */,
@@ -476,7 +476,6 @@
 				D88094DD1C2A11DD005E57CF /* OVInputSourceHelper.m in Sources */,
 				D8E82CE21C2BD8A000866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8F1E9571C66A88B0020AE5F /* ConfigAppDelegate.swift in Sources */,
-				D8FD90AE1C2F4E00001145FD /* CandidatesItem.swift in Sources */,
 				D81B91471C33835F00526895 /* Emoji.swift in Sources */,
 				D8F1E9551C66A7FE0020AE5F /* ConfigViewController.swift in Sources */,
 				D840458C1C648BBE007FBD31 /* InputMethodAppDelegate.swift in Sources */,
@@ -506,7 +505,6 @@
 				D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */,
 				D84045921C649D03007FBD31 /* InputMethodAppDelegate.swift in Sources */,
 				D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */,
-				D891F1941C3372260061B6B0 /* CandidatesItem.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
 				D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
