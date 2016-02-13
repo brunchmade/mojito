@@ -5,8 +5,8 @@ cache:
     - Carthage
 before_install:
     - wget https://bootstrap.pypa.io/get-pip.py
-    - python get-pip.py
-    - pip install dmgbuild
+    - sudo python get-pip.py
+    - sudo pip install dmgbuild
     # upgrade xctool
     - "brew update"
     - "if brew outdated | grep -qx xctool; then brew upgrade xctool; fi"
