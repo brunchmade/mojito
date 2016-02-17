@@ -28,22 +28,40 @@ class MojitInstallation {
         }
     }
     
+    class func targetInputMethodURL() -> NSURL {
+        let bundleURL = NSBundle.mainBundle().bundleURL
+        let inputMethodDirs = NSSearchPathForDirectoriesInDomains(.InputMethodsDirectory, [.UserDomainMask], true)
+        let inputMethodDir = inputMethodDirs.first!
+        let appFolderName = bundleURL.lastPathComponent!
+        let targetInputMethodURL = NSURL(fileURLWithPath: (inputMethodDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
+        return targetInputMethodURL
+    }
+    
     /// Install mojito
     class func install() throws {
         let bundleID = NSBundle.mainBundle().bundleIdentifier!
         let bundleURL = NSBundle.mainBundle().bundleURL
         var inputSource = OVInputSourceHelper.inputSourceForInputSourceID(bundleID)
+        let targetInputMethodURL = self.targetInputMethodURL()
         if (inputSource == nil) {
-            let inputMethodDirs = NSSearchPathForDirectoriesInDomains(.InputMethodsDirectory, [.UserDomainMask], true)
-            let inputMethodDir = inputMethodDirs.first!
-            let appFolderName = bundleURL.lastPathComponent!
-            let targetInputMethodURL = NSURL(fileURLWithPath: (inputMethodDir as NSString).stringByAppendingPathComponent(appFolderName), isDirectory: true)
             log.info("Create symbolic link at \(targetInputMethodURL) to \(bundleURL) for \(bundleID)")
-            // the target app folder already exists, remove it first
+            
+            // Notice: As we are copying the whole app bundle to "~/Library/Input Methods"
+            // the app installed in "/Application" could be different version from the one
+            // installed, maybe we should find a way to solve the problem.
+            // The way I tried to solve this problem was to do a symbolic link, but the problem
+            // is to detect whether we are running under config mode or not, we see the bundle path,
+            // however as if the bundle is a symbolic link to folder other than "~/Library/Input Methods",
+            // we will have problem for detecting mode.
+            
+            // the target app folder already exists, replace it
             if (NSFileManager.defaultManager().fileExistsAtPath(targetInputMethodURL.path!)) {
                 try NSFileManager.defaultManager().removeItemAtURL(targetInputMethodURL)
+                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: targetInputMethodURL)
+            // the target app folder doesn't exist, copy to it
+            } else {
+                try NSFileManager.defaultManager().copyItemAtURL(bundleURL, toURL: targetInputMethodURL)
             }
-            try NSFileManager.defaultManager().createSymbolicLinkAtURL(targetInputMethodURL, withDestinationURL:bundleURL)
             
             log.info("Register input source \(bundleID) at \(bundleURL.absoluteString)")
             if (!OVInputSourceHelper.registerInputSource(bundleURL)) {
@@ -81,6 +99,10 @@ class MojitInstallation {
                 log.error("Failed to disable input source \(bundleURL.absoluteString)")
                 throw MojitInstallationError.InstallInputMethodError
             }
+        }
+        let targetInputMethodURL = self.targetInputMethodURL()
+        if (NSFileManager.defaultManager().fileExistsAtPath(targetInputMethodURL.path!)) {
+            try NSFileManager.defaultManager().removeItemAtURL(targetInputMethodURL)
         }
         log.info("Input source \(bundleID) uninstalled")
     }
