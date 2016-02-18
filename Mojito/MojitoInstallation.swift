@@ -16,7 +16,7 @@ enum MojitoInstallationError:ErrorType {
 
 class MojitoInstallation {
     static let log = XCGLogger.defaultInstance()
-    /// Whether the mojit input method installed
+    /// Whether the mojito input method installed
     class var installed:Bool {
         get {
             let bundleID = NSBundle.mainBundle().bundleIdentifier!

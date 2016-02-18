@@ -60,7 +60,7 @@
 		D8E82CEF1C2BE6A800866A7A /* EmojiCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */; };
 		D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */; };
 		D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */; };
-		D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */; };
+		D8E82CF31C2BE70E00866A7A /* MockMojitoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */; };
 		D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */; };
 		D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E82CF61C2CA14200866A7A /* Candidates.storyboard */; };
 		D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
@@ -162,7 +162,7 @@
 		D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngine.swift; sourceTree = "<group>"; };
 		D8E82CE91C2BE07100866A7A /* MojitoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoServer.swift; sourceTree = "<group>"; };
 		D8E82CEB1C2BE41200866A7A /* MojitoServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoServerProtocol.swift; sourceTree = "<group>"; };
-		D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMojitServer.swift; sourceTree = "<group>"; };
+		D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMojitoServer.swift; sourceTree = "<group>"; };
 		D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockEmojiInputEngine.swift; sourceTree = "<group>"; };
 		D8E82CF61C2CA14200866A7A /* Candidates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Candidates.storyboard; sourceTree = "<group>"; };
 		D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */,
-				D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */,
+				D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */,
 				D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */,
 			);
 			name = Mocks;
@@ -516,7 +516,7 @@
 				D8D57F7C1C6725E600EDF53E /* MojitoInstallation.swift in Sources */,
 				D8F1E9491C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,
-				D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */,
+				D8E82CF31C2BE70E00866A7A /* MockMojitoServer.swift in Sources */,
 				D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

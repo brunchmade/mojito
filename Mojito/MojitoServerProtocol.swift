@@ -26,7 +26,7 @@ protocol MojitoServerProtocol {
     /// Candidates to display
     var candidates:MutableProperty<[EmojiCandidate]> { get }
     
-    /// Signal for mojit server events
+    /// Signal for mojito server events
     var eventSignal:Signal<MojitoServerEvent, NoError> { get }
     
     /// The active input controller
