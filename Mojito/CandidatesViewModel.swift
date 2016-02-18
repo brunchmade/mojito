@@ -20,12 +20,12 @@ class CandidatesViewModel {
     let eventSignal:Signal<CandidatesViewModelEvent, NoError>
     private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
     
-    private let mojitServer:MojitServerProtocol
+    private let mojitoServer:MojitoServerProtocol
     
-    init(mojitServer:MojitServerProtocol) {
-        self.mojitServer = mojitServer
-        self.candidates = AnyProperty(mojitServer.candidates)
-        self.eventSignal = mojitServer.eventSignal
+    init(mojitoServer:MojitoServerProtocol) {
+        self.mojitoServer = mojitoServer
+        self.candidates = AnyProperty(mojitoServer.candidates)
+        self.eventSignal = mojitoServer.eventSignal
             .filter {
                 switch($0) {
                 case .SelectNext:
@@ -48,11 +48,11 @@ class CandidatesViewModel {
                 }
                 return resultEvent
             }
-        mojitServer.selectedCandidate <~ selectedCandidate
+        mojitoServer.selectedCandidate <~ selectedCandidate
     }
 
     func submitCandidate(emoji: EmojiCandidate) {
-        if let controller = mojitServer.activeInputController {
+        if let controller = mojitoServer.activeInputController {
             controller.submitCandidate(emoji)
         }
     }

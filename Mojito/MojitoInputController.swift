@@ -17,17 +17,17 @@ class MojitoInputController : NSObject {
     private var inputBuffer:String = "" {
         didSet {
             if (inputBuffer.characters.count >= 3) {
-                mojitServer.candidatesVisible.value = true
+                mojitoServer.candidatesVisible.value = true
             } else {
-                mojitServer.candidatesVisible.value = false
+                mojitoServer.candidatesVisible.value = false
             }
             engine.keyword = inputKeyword
             let candidates = engine.candidates()
             if (candidates.count > 0) {
-                mojitServer.candidates.value = candidates
+                mojitoServer.candidates.value = candidates
                 var rect = NSRect()
                 textInput.attributesForCharacterIndex(0, lineHeightRectangle: &rect)
-                mojitServer.moveCandidates(rect)
+                mojitoServer.moveCandidates(rect)
             }
             textInput.setMarkedText(inputBuffer, selectionRange: NSMakeRange(0, inputBuffer.characters.count), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
         }
@@ -56,21 +56,21 @@ class MojitoInputController : NSObject {
     private var inputEmojiMode:Bool = false {
         didSet {
             if (!inputEmojiMode) {
-                mojitServer.candidatesVisible.value = false
+                mojitoServer.candidatesVisible.value = false
             }
         }
     }
-    private var mojitServer:MojitServerProtocol
+    private var mojitoServer:MojitoServerProtocol
     private var engine:EmojiInputEngineProtocol
     private var textInput:IMKTextInput
     
     init!(server: IMKServer, delegate: AnyObject!, client inputClient: AnyObject) {
         log.info("Init MojitoInputController, server=\(server), delegate=\(delegate), client=\(inputClient)")
-        mojitServer = server as! MojitServerProtocol
-        engine = mojitServer.makeEmojiInputEngine()
+        mojitoServer = server as! MojitoServerProtocol
+        engine = mojitoServer.makeEmojiInputEngine()
         textInput = inputClient as! IMKTextInput
         super.init()
-        mojitServer.activeInputController = self
+        mojitoServer.activeInputController = self
     }
     
     func menu() -> NSMenu! {
@@ -81,15 +81,15 @@ class MojitoInputController : NSObject {
         textInput = sender as! IMKTextInput
         log.info("activateServer \(sender)")
         // TODO: maybe we should find a better way to let UI notify input controller that a candidate is double clicked?
-        mojitServer.activeInputController = self
+        mojitoServer.activeInputController = self
         reset()
     }
     
     func deactivateServer(sender: AnyObject) {
         textInput = sender as! IMKTextInput
         log.info("deactivateServer \(sender)")
-        mojitServer.candidatesVisible.value = false
-        mojitServer.activeInputController = nil
+        mojitoServer.candidatesVisible.value = false
+        mojitoServer.activeInputController = nil
         reset()
     }
     
@@ -118,13 +118,13 @@ class MojitoInputController : NSObject {
         // TODO: should also support shift + tab, not sure how can we get shift here thought
         } else if (aSelector == "moveLeft:" || aSelector == "moveUp:" ) {
             if (inputEmojiMode) {
-                mojitServer.selectPrevious()
+                mojitoServer.selectPrevious()
                 return true
             }
         // navigate to the previous emoji candidate
         } else if (aSelector == "moveRight:" || aSelector == "moveDown:" || aSelector == "insertTab:") {
             if (inputEmojiMode) {
-                mojitServer.selectNext()
+                mojitoServer.selectNext()
                 return true
             }
         // ESC pressed, exit emoji input mode
@@ -146,9 +146,9 @@ class MojitoInputController : NSObject {
     
     override func commitComposition(sender: AnyObject) {
         textInput = sender as! IMKTextInput
-        log.info("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitServer.selectedCandidate.value)")
+        log.info("commitComposition \(sender), inputBuffer=\(inputBuffer), selectedCandidate=\(mojitoServer.selectedCandidate.value)")
         if (inputEmojiMode) {
-            if let emoji = mojitServer.selectedCandidate.value {
+            if let emoji = mojitoServer.selectedCandidate.value {
                 textInput.insertText(String(emoji.char), replacementRange: NSMakeRange(NSNotFound, NSNotFound))
             // we don't have selected candidate, just flush the input buffer
             } else {

@@ -12,7 +12,7 @@ import ReactiveCocoa
 class MojitoInputControllerTests: XCTestCase {
     
     var engine:MockEmojiInputEngine!
-    var server:MockMojitServer!
+    var server:MockMojitoServer!
     var textInput:MockIMKTextInput!
     var controller:MojitoInputController!
 
@@ -20,7 +20,7 @@ class MojitoInputControllerTests: XCTestCase {
         super.setUp()
         
         engine = MockEmojiInputEngine()
-        server = MockMojitServer(engine: engine)
+        server = MockMojitoServer(engine: engine)
         textInput = MockIMKTextInput()
         controller = MojitoInputController(server: server, delegate: nil, client: textInput)
         controller.activateServer(textInput)

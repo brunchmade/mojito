@@ -1,5 +1,5 @@
 //
-//  MojitServerProtocol.swift
+//  MojitoServerProtocol.swift
 //  Mojito
 //
 //  Created by Fang-Pen Lin on 12/24/15.
@@ -10,13 +10,13 @@ import Cocoa
 import ReactiveCocoa
 import Result
 
-enum MojitServerEvent {
+enum MojitoServerEvent {
     case SelectNext
     case SelectPrevious
     case CandidatesViewMoved(textRect:NSRect)
 }
 
-protocol MojitServerProtocol {
+protocol MojitoServerProtocol {
     /// The selected candidate
     var selectedCandidate:MutableProperty<EmojiCandidate?> { get }
     
@@ -27,7 +27,7 @@ protocol MojitServerProtocol {
     var candidates:MutableProperty<[EmojiCandidate]> { get }
     
     /// Signal for mojit server events
-    var eventSignal:Signal<MojitServerEvent, NoError> { get }
+    var eventSignal:Signal<MojitoServerEvent, NoError> { get }
     
     /// The active input controller
     weak var activeInputController:MojitoInputController? { get set }

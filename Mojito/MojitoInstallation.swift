@@ -9,12 +9,12 @@
 import Foundation
 import XCGLogger
 
-enum MojitInstallationError:ErrorType {
+enum MojitoInstallationError:ErrorType {
     case InstallInputMethodError
     case UninstallInputMethodError
 }
 
-class MojitInstallation {
+class MojitoInstallation {
     static let log = XCGLogger.defaultInstance()
     /// Whether the mojit input method installed
     class var installed:Bool {
@@ -66,24 +66,24 @@ class MojitInstallation {
             log.info("Register input source \(bundleID) at \(bundleURL.absoluteString)")
             if (!OVInputSourceHelper.registerInputSource(bundleURL)) {
                 log.error("Failed to register input source \(bundleURL.absoluteString)")
-                throw MojitInstallationError.InstallInputMethodError
+                throw MojitoInstallationError.InstallInputMethodError
             }
             
             inputSource = OVInputSourceHelper.inputSourceForInputSourceID(bundleID)
             if (inputSource == nil) {
                 log.error("Cannot find input source \(bundleID) after install")
-                throw MojitInstallationError.InstallInputMethodError
+                throw MojitoInstallationError.InstallInputMethodError
             }
         }
 
         if(!OVInputSourceHelper.enableInputSource(inputSource.takeUnretainedValue())) {
             log.error("Cannot enable input source")
-            throw MojitInstallationError.InstallInputMethodError
+            throw MojitoInstallationError.InstallInputMethodError
         }
         
         if (!OVInputSourceHelper.inputSourceEnabled(inputSource.takeUnretainedValue())) {
             log.error("Input source \(bundleID) is not enabled")
-            throw MojitInstallationError.InstallInputMethodError
+            throw MojitoInstallationError.InstallInputMethodError
         }
         log.info("Input source \(bundleID) installed")
     }
@@ -97,7 +97,7 @@ class MojitInstallation {
             let status = OVInputSourceHelper.disableInputSource(inputSource.takeUnretainedValue())
             if (!status) {
                 log.error("Failed to disable input source \(bundleURL.absoluteString)")
-                throw MojitInstallationError.InstallInputMethodError
+                throw MojitoInstallationError.InstallInputMethodError
             }
         }
         let targetInputMethodURL = self.targetInputMethodURL()

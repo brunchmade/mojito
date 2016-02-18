@@ -11,7 +11,7 @@ import XCGLogger
 
 class InputMethodAppDelegate: NSObject, NSApplicationDelegate {
     let log = XCGLogger.defaultInstance()
-    var mojitServer:MojitServer!
+    var mojitoServer:MojitoServer!
     
     private var storyboard:NSStoryboard!
     private var windowController:CandidatesWindowController!
@@ -25,15 +25,15 @@ class InputMethodAppDelegate: NSObject, NSApplicationDelegate {
         let connectionName = NSBundle.mainBundle().objectForInfoDictionaryKey("InputMethodConnectionName") as! String
         log.info("Connection \(connectionName)")
         
-        self.mojitServer = MojitServer(name: connectionName, bundleIdentifier: NSBundle.mainBundle().bundleIdentifier!)
-        log.info("Initialized IMKServer \(mojitServer)")
+        self.mojitoServer = MojitoServer(name: connectionName, bundleIdentifier: NSBundle.mainBundle().bundleIdentifier!)
+        log.info("Initialized IMKServer \(mojitoServer)")
         
         self.storyboard = NSStoryboard(name: "Candidates", bundle: nil)
         self.windowController = storyboard.instantiateControllerWithIdentifier("CandidatesWindowController") as! CandidatesWindowController
         self.candidatesViewController = windowController.contentViewController! as! CandidatesViewController
         
-        self.candidatesWindowViewModel = CandidatesWindowViewModel(mojitServer: mojitServer)
-        self.candidatesViewModel = CandidatesViewModel(mojitServer: mojitServer)
+        self.candidatesWindowViewModel = CandidatesWindowViewModel(mojitoServer: mojitoServer)
+        self.candidatesViewModel = CandidatesViewModel(mojitoServer: mojitoServer)
         
         windowController.bindViewModel(candidatesWindowViewModel)
         candidatesViewController.bindViewModel(candidatesViewModel)
