@@ -651,7 +651,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="ConfigWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="ConfigWindowController" customModule="Mojito" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Mojit - Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Mojito - Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -681,8 +681,8 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xTj-pb-Kju">
-                                <rect key="frame" x="138" y="108" width="52" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mojit " id="8bI-6h-RWB">
+                                <rect key="frame" x="138" y="108" width="63" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mojito " id="8bI-6h-RWB">
                                     <font key="font" metaFont="systemBold" size="18"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -704,9 +704,9 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-ff-jPd">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-ff-jPd">
                                 <rect key="frame" x="138" y="79" width="125" height="17"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="🌎: http://mojit.cool" usesSingleLineMode="YES" id="L1w-Pj-wYR">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="🌎: http://mojito.cool" usesSingleLineMode="YES" id="L1w-Pj-wYR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -730,7 +730,7 @@
                     <connections>
                         <outlet property="authorLinks" destination="wEE-tE-CBD" id="tsx-rg-Rbr"/>
                         <outlet property="installButton" destination="dmp-FC-m7H" id="i2W-HQ-1Ho"/>
-                        <outlet property="mojitTitle" destination="xTj-pb-Kju" id="NXY-Ya-uBN"/>
+                        <outlet property="mojitoTitle" destination="8bI-6h-RWB" id="ONC-kf-woA"/>
                         <outlet property="websiteLink" destination="eMS-ff-jPd" id="cpr-Py-ykB"/>
                     </connections>
                 </viewController>

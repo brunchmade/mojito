@@ -45,22 +45,22 @@
 		D8AF2B4F1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AF2B4D1C67DA2A004410F3 /* ConfigViewModel.swift */; };
 		D8BD0C961C6C607C0034CE9E /* NSAttributedStringHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BD0C951C6C607C0034CE9E /* NSAttributedStringHyperLink.swift */; };
 		D8C3523A1C34AF3600FA034E /* CandidatesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C352391C34AF3600FA034E /* CandidatesWindow.swift */; };
-		D8D57F7B1C6725E600EDF53E /* MojitInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D57F7A1C6725E600EDF53E /* MojitInstallation.swift */; };
-		D8D57F7C1C6725E600EDF53E /* MojitInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D57F7A1C6725E600EDF53E /* MojitInstallation.swift */; };
+		D8D57F7B1C6725E600EDF53E /* MojitoInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D57F7A1C6725E600EDF53E /* MojitoInstallation.swift */; };
+		D8D57F7C1C6725E600EDF53E /* MojitoInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D57F7A1C6725E600EDF53E /* MojitoInstallation.swift */; };
 		D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */; };
 		D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88094D61C2A1086005E57CF /* MojitoInputController.swift */; };
 		D8E82CDF1C2A807600866A7A /* MockIMKTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */; };
 		D8E82CE21C2BD8A000866A7A /* EmojiInputEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */; };
 		D8E82CE41C2BDA3300866A7A /* EmojiCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */; };
 		D8E82CE81C2BDD8900866A7A /* EmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */; };
-		D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE91C2BE07100866A7A /* MojitServer.swift */; };
-		D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */; };
-		D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE91C2BE07100866A7A /* MojitServer.swift */; };
-		D8E82CEE1C2BE6A500866A7A /* MojitServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */; };
+		D8E82CEA1C2BE07100866A7A /* MojitoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE91C2BE07100866A7A /* MojitoServer.swift */; };
+		D8E82CEC1C2BE41200866A7A /* MojitoServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CEB1C2BE41200866A7A /* MojitoServerProtocol.swift */; };
+		D8E82CED1C2BE6A300866A7A /* MojitoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE91C2BE07100866A7A /* MojitoServer.swift */; };
+		D8E82CEE1C2BE6A500866A7A /* MojitoServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CEB1C2BE41200866A7A /* MojitoServerProtocol.swift */; };
 		D8E82CEF1C2BE6A800866A7A /* EmojiCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */; };
 		D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */; };
 		D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */; };
-		D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */; };
+		D8E82CF31C2BE70E00866A7A /* MockMojitoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */; };
 		D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */; };
 		D8E82CF71C2CA14200866A7A /* Candidates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8E82CF61C2CA14200866A7A /* Candidates.storyboard */; };
 		D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */; };
@@ -154,15 +154,15 @@
 		D8AF2B4D1C67DA2A004410F3 /* ConfigViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigViewModel.swift; sourceTree = "<group>"; };
 		D8BD0C951C6C607C0034CE9E /* NSAttributedStringHyperLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringHyperLink.swift; sourceTree = "<group>"; };
 		D8C352391C34AF3600FA034E /* CandidatesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesWindow.swift; sourceTree = "<group>"; };
-		D8D57F7A1C6725E600EDF53E /* MojitInstallation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitInstallation.swift; sourceTree = "<group>"; };
+		D8D57F7A1C6725E600EDF53E /* MojitoInstallation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoInstallation.swift; sourceTree = "<group>"; };
 		D8E82CD91C2A780D00866A7A /* MojitoInputControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoInputControllerTests.swift; sourceTree = "<group>"; };
 		D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockIMKTextInput.swift; sourceTree = "<group>"; };
 		D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngineProtocol.swift; sourceTree = "<group>"; };
 		D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCandidate.swift; sourceTree = "<group>"; };
 		D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputEngine.swift; sourceTree = "<group>"; };
-		D8E82CE91C2BE07100866A7A /* MojitServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitServer.swift; sourceTree = "<group>"; };
-		D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitServerProtocol.swift; sourceTree = "<group>"; };
-		D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMojitServer.swift; sourceTree = "<group>"; };
+		D8E82CE91C2BE07100866A7A /* MojitoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoServer.swift; sourceTree = "<group>"; };
+		D8E82CEB1C2BE41200866A7A /* MojitoServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MojitoServerProtocol.swift; sourceTree = "<group>"; };
+		D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMojitoServer.swift; sourceTree = "<group>"; };
 		D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockEmojiInputEngine.swift; sourceTree = "<group>"; };
 		D8E82CF61C2CA14200866A7A /* Candidates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Candidates.storyboard; sourceTree = "<group>"; };
 		D8E82CF81C2CAD7D00866A7A /* CandidatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidatesViewController.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				D8E82CDE1C2A807600866A7A /* MockIMKTextInput.swift */,
-				D8E82CF21C2BE70E00866A7A /* MockMojitServer.swift */,
+				D8E82CF21C2BE70E00866A7A /* MockMojitoServer.swift */,
 				D8E82CF41C2BE73500866A7A /* MockEmojiInputEngine.swift */,
 			);
 			name = Mocks;
@@ -307,10 +307,10 @@
 				D8E82CE31C2BDA3300866A7A /* EmojiCandidate.swift */,
 				D8E82CE11C2BD8A000866A7A /* EmojiInputEngineProtocol.swift */,
 				D8E82CE71C2BDD8900866A7A /* EmojiInputEngine.swift */,
-				D8E82CEB1C2BE41200866A7A /* MojitServerProtocol.swift */,
-				D8E82CE91C2BE07100866A7A /* MojitServer.swift */,
+				D8E82CEB1C2BE41200866A7A /* MojitoServerProtocol.swift */,
+				D8E82CE91C2BE07100866A7A /* MojitoServer.swift */,
 				D88094D61C2A1086005E57CF /* MojitoInputController.swift */,
-				D8D57F7A1C6725E600EDF53E /* MojitInstallation.swift */,
+				D8D57F7A1C6725E600EDF53E /* MojitoInstallation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -463,10 +463,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D800F6B01C6FBB5E00E55218 /* CandidatesItem.swift in Sources */,
-				D8D57F7B1C6725E600EDF53E /* MojitInstallation.swift in Sources */,
+				D8D57F7B1C6725E600EDF53E /* MojitoInstallation.swift in Sources */,
 				D8E82CE41C2BDA3300866A7A /* EmojiCandidate.swift in Sources */,
 				D8F1E95B1C67043F0020AE5F /* ConfigWindowController.swift in Sources */,
-				D8E82CEC1C2BE41200866A7A /* MojitServerProtocol.swift in Sources */,
+				D8E82CEC1C2BE41200866A7A /* MojitoServerProtocol.swift in Sources */,
 				D8E82CF91C2CAD7D00866A7A /* CandidatesViewController.swift in Sources */,
 				D840457D1C648804007FBD31 /* Logging.swift in Sources */,
 				D8AF2B4E1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */,
@@ -480,7 +480,7 @@
 				D81B91471C33835F00526895 /* Emoji.swift in Sources */,
 				D8F1E9551C66A7FE0020AE5F /* ConfigViewController.swift in Sources */,
 				D840458C1C648BBE007FBD31 /* InputMethodAppDelegate.swift in Sources */,
-				D8E82CEA1C2BE07100866A7A /* MojitServer.swift in Sources */,
+				D8E82CEA1C2BE07100866A7A /* MojitoServer.swift in Sources */,
 				D8F1E94E1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
 				D8F1E94B1C65DFC20020AE5F /* Helpers.swift in Sources */,
 				D8F1E9591C66A96C0020AE5F /* RunningModeDetection.swift in Sources */,
@@ -498,14 +498,14 @@
 			files = (
 				D8E82CEF1C2BE6A800866A7A /* EmojiCandidate.swift in Sources */,
 				D81B914F1C33D85700526895 /* EmojiInputEngineTests.swift in Sources */,
-				D8E82CEE1C2BE6A500866A7A /* MojitServerProtocol.swift in Sources */,
+				D8E82CEE1C2BE6A500866A7A /* MojitoServerProtocol.swift in Sources */,
 				D891F1931C3372220061B6B0 /* CandidatesWindowController.swift in Sources */,
 				D8E82CDF1C2A807600866A7A /* MockIMKTextInput.swift in Sources */,
 				D81B91481C33876C00526895 /* Emoji.swift in Sources */,
 				D8E82CF11C2BE6AC00866A7A /* EmojiInputEngine.swift in Sources */,
 				D8E82CDC1C2A803A00866A7A /* MojitoInputController.swift in Sources */,
 				D84045921C649D03007FBD31 /* InputMethodAppDelegate.swift in Sources */,
-				D8E82CED1C2BE6A300866A7A /* MojitServer.swift in Sources */,
+				D8E82CED1C2BE6A300866A7A /* MojitoServer.swift in Sources */,
 				D8E82CF01C2BE6AA00866A7A /* EmojiInputEngineProtocol.swift in Sources */,
 				D8E82CDA1C2A780D00866A7A /* MojitoInputControllerTests.swift in Sources */,
 				D8F1E94F1C65E1180020AE5F /* CandidatesWindowViewModel.swift in Sources */,
@@ -513,10 +513,10 @@
 				D800F6B11C6FC99000E55218 /* CandidatesItem.swift in Sources */,
 				D8F1E9531C6682F60020AE5F /* Utils.swift in Sources */,
 				D8AF2B4F1C67DA2A004410F3 /* ConfigViewModel.swift in Sources */,
-				D8D57F7C1C6725E600EDF53E /* MojitInstallation.swift in Sources */,
+				D8D57F7C1C6725E600EDF53E /* MojitoInstallation.swift in Sources */,
 				D8F1E9491C65D6300020AE5F /* CandidatesViewModel.swift in Sources */,
 				D891F1921C3372200061B6B0 /* CandidatesViewController.swift in Sources */,
-				D8E82CF31C2BE70E00866A7A /* MockMojitServer.swift in Sources */,
+				D8E82CF31C2BE70E00866A7A /* MockMojitoServer.swift in Sources */,
 				D8E82CF51C2BE73500866A7A /* MockEmojiInputEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

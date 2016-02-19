@@ -15,11 +15,11 @@ class CandidatesWindowViewModel {
     /// Property for candidate window visibility
     var visible:AnyProperty<Bool>
     
-    private let mojitServer:MojitServerProtocol
+    private let mojitoServer:MojitoServerProtocol
     
-    init(mojitServer:MojitServerProtocol) {
-        self.mojitServer = mojitServer
-        let signal = mojitServer.eventSignal
+    init(mojitoServer:MojitoServerProtocol) {
+        self.mojitoServer = mojitoServer
+        let signal = mojitoServer.eventSignal
             .filter {
                 switch($0) {
                 case .CandidatesViewMoved:
@@ -38,6 +38,6 @@ class CandidatesWindowViewModel {
                 return nil
         }
         self.textRect = AnyProperty<NSRect!>(initialValue: nil, signal: signal)
-        self.visible = AnyProperty<Bool>(mojitServer.candidatesVisible)
+        self.visible = AnyProperty<Bool>(mojitoServer.candidatesVisible)
     }
 }

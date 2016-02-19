@@ -1,5 +1,5 @@
 //
-//  MockMojitServer.swift
+//  MockMojitoServer.swift
 //  Mojito
 //
 //  Created by Fang-Pen Lin on 12/24/15.
@@ -10,19 +10,19 @@ import InputMethodKit
 import ReactiveCocoa
 import Result
 
-class MockMojitServer: IMKServer, MojitServerProtocol {
+class MockMojitoServer: IMKServer, MojitoServerProtocol {
     var emojiEngine:EmojiInputEngineProtocol
     private(set) var candidatesVisible = MutableProperty<Bool>(false)
     private(set) var candidates = MutableProperty<[EmojiCandidate]>([])
     private(set) var selectedCandidate = MutableProperty<EmojiCandidate?>(nil)
-    private(set) var eventSignal:Signal<MojitServerEvent, NoError>
+    private(set) var eventSignal:Signal<MojitoServerEvent, NoError>
     weak var activeInputController:MojitoInputController?
     
-    private let eventObserver:Observer<MojitServerEvent, NoError>
+    private let eventObserver:Observer<MojitoServerEvent, NoError>
     
     init!(engine: EmojiInputEngineProtocol = MockEmojiInputEngine()) {
         self.emojiEngine = engine
-        (self.eventSignal, self.eventObserver) = Signal<MojitServerEvent, NoError>.pipe()
+        (self.eventSignal, self.eventObserver) = Signal<MojitoServerEvent, NoError>.pipe()
         super.init()
     }
     

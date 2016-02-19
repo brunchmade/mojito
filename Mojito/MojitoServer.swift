@@ -1,5 +1,5 @@
 //
-//  MojitServer.swift
+//  MojitoServer.swift
 //  Mojito
 //
 //  Created by Fang-Pen Lin on 12/24/15.
@@ -12,11 +12,11 @@ import SwiftyJSON
 import ReactiveCocoa
 import Result
 
-class MojitServer : IMKServer, MojitServerProtocol {
+class MojitoServer : IMKServer, MojitoServerProtocol {
     let log = XCGLogger.defaultInstance()
 
-    /// Signal for mojit server events
-    let eventSignal:Signal<MojitServerEvent, NoError>
+    /// Signal for mojito server events
+    let eventSignal:Signal<MojitoServerEvent, NoError>
     /// Is the candidates window visible or not
     private(set) var candidatesVisible = MutableProperty<Bool>(false)
     /// Candidates to display
@@ -26,7 +26,7 @@ class MojitServer : IMKServer, MojitServerProtocol {
     
     // MARK: Properties
     private var emojis:[Emoji] = []
-    private let eventObserver:Observer<MojitServerEvent, NoError>
+    private let eventObserver:Observer<MojitoServerEvent, NoError>
     
     weak var activeInputController:MojitoInputController?
     
@@ -54,11 +54,11 @@ class MojitServer : IMKServer, MojitServerProtocol {
             }
         }
         
-        (self.eventSignal, self.eventObserver) = Signal<MojitServerEvent, NoError>.pipe()
+        (self.eventSignal, self.eventObserver) = Signal<MojitoServerEvent, NoError>.pipe()
         super.init(name: name, bundleIdentifier: bundleIdentifier)
     }
     
-    // MARK: MojitServerProtocol
+    // MARK: MojitoServerProtocol
     /// Build an EmojiInputEngine and return
     /// - Returns: An emoji input engine which conforms EmojiInputEngineProtocol
     func makeEmojiInputEngine() -> EmojiInputEngineProtocol {
@@ -67,14 +67,14 @@ class MojitServer : IMKServer, MojitServerProtocol {
     }
     
     func moveCandidates(rect: NSRect) {
-        self.eventObserver.sendNext(MojitServerEvent.CandidatesViewMoved(textRect: rect))
+        self.eventObserver.sendNext(MojitoServerEvent.CandidatesViewMoved(textRect: rect))
     }
     
     func selectNext() {
-        self.eventObserver.sendNext(MojitServerEvent.SelectNext)
+        self.eventObserver.sendNext(MojitoServerEvent.SelectNext)
     }
     
     func selectPrevious() {
-        self.eventObserver.sendNext(MojitServerEvent.SelectPrevious)
+        self.eventObserver.sendNext(MojitoServerEvent.SelectPrevious)
     }
 }

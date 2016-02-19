@@ -13,7 +13,7 @@ import Result
 class ConfigViewModel {
     let installed:AnyProperty<Bool>
     /// the action for install or uninstall, depends on installed state
-    let installOrUninstallAction:Action<AnyObject?, AnyObject, MojitInstallationError>
+    let installOrUninstallAction:Action<AnyObject?, AnyObject, MojitoInstallationError>
     
     private let installSignal:Signal<Bool, NoError>
     private let installObserver:Observer<Bool, NoError>
@@ -21,20 +21,20 @@ class ConfigViewModel {
     init() {
         let (installSignal, installObserver) = Signal<Bool, NoError>.pipe()
         (self.installSignal, self.installObserver) = (installSignal, installObserver)
-        self.installed = AnyProperty(initialValue: MojitInstallation.installed, signal: self.installSignal)
+        self.installed = AnyProperty(initialValue: MojitoInstallation.installed, signal: self.installSignal)
         self.installOrUninstallAction = Action { _ in
             return SignalProducer { observer, _ in
                 do {
-                    if (MojitInstallation.installed) {
-                        try MojitInstallation.uninstall()
+                    if (MojitoInstallation.installed) {
+                        try MojitoInstallation.uninstall()
                     } else {
-                        try MojitInstallation.install()
+                        try MojitoInstallation.install()
                     }
                     observer.sendCompleted()
                 } catch {
-                    observer.sendFailed(MojitInstallationError.InstallInputMethodError)
+                    observer.sendFailed(MojitoInstallationError.InstallInputMethodError)
                 }
-                installObserver.sendNext(MojitInstallation.installed)
+                installObserver.sendNext(MojitoInstallation.installed)
             }
         }
     }

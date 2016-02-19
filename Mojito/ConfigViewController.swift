@@ -21,7 +21,7 @@ class ConfigViewController: NSViewController {
     var viewModel:ConfigViewModel!
     
     @IBOutlet weak var installButton: NSButton!
-    @IBOutlet weak var mojitTitle: NSTextField!
+    @IBOutlet weak var mojitoTitle: NSTextField!
     @IBOutlet weak var websiteLink: NSTextField!
     @IBOutlet weak var authorLinks: NSTextField!
     
@@ -43,7 +43,7 @@ class ConfigViewController: NSViewController {
         let bundleInfo = NSBundle.mainBundle().infoDictionary!
         let build = bundleInfo["CFBundleVersion"]!
         let version = bundleInfo["CFBundleShortVersionString"]!
-        mojitTitle.stringValue = "Mojit v\(version) (build \(build))"
+        mojitoTitle.stringValue = "Mojito v\(version) (build \(build))"
         
         websiteLink.allowsEditingTextAttributes = true
         websiteLink.selectable = true
